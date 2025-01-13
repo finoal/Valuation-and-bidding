@@ -101,7 +101,7 @@ const RegisterPage: React.FC = () => {
         {/* 注册按钮 */}
         <button
           onClick={handleRegister}
-          className="btn btn-primary w-full p-4 rounded-xl text-white text-xl mb-4 hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105"
+          className="btn btn-primary w-full p-4 rounded-xl text-white text-xl mb-4 grid place-items-center hover:bg-[#30a0b2] transition duration-300 ease-in-out transform hover:scale-105"
         >
           注册
         </button>

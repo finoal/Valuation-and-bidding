@@ -1,6 +1,7 @@
 const nftsMetadata = [
   {
     description: "It's actually a bison?",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/buffalo.jpg",
     name: "Buffalo",
@@ -21,6 +22,7 @@ const nftsMetadata = [
   },
   {
     description: "What is it so worried about?",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/zebra.jpg",
     name: "Zebra",
@@ -41,6 +43,7 @@ const nftsMetadata = [
   },
   {
     description: "What a horn!",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/rhino.jpg",
     name: "Rhino",
@@ -61,6 +64,7 @@ const nftsMetadata = [
   },
   {
     description: "Is that an underbyte?",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/fish.jpg",
     name: "Fish",
@@ -81,6 +85,7 @@ const nftsMetadata = [
   },
   {
     description: "So delicate.",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/flamingo.jpg",
     name: "Flamingo",
@@ -101,6 +106,7 @@ const nftsMetadata = [
   },
   {
     description: "Raaaar!",
+    kind: "Painting",
     external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://austingriffith.com/images/paintings/godzilla.jpg",
     name: "Godzilla",

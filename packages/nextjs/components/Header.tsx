@@ -44,10 +44,22 @@ export const Header = () => {
           icon: <UserIcon className="h-4 w-4" />,
         },
         {
+          label: "添加拍品",
+          href: "/createNft",
+          condition: isAuthenticated && !isAccrediting,
+          icon: <UserIcon className="h-4 w-4" />,
+        },
+        {
           label: "拍卖",
           href: "/auction",
           condition: isAuthenticated && !isAccrediting,
           icon: <BugAntIcon className="h-4 w-4" />,
+        },
+        {
+          label:"debug", // 用于调试
+          href: "/debug",
+          condition: isAuthenticated && !isAccrediting,
+          icon: <UserIcon className="h-4 w-4" />,
         },
         {
           label: "鉴定",

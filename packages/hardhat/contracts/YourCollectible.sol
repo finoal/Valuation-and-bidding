@@ -69,6 +69,21 @@ function stringToBytes32(string memory source)
         uint256 integral; //积分
     }
 
+    //评估机构
+    struct Assess {
+        string name; // 机构名称
+        string assessUri; // 机构相关信息，机构的相关证书
+        User user; // 用户
+    }
+
+    //accrediting 鉴定信息
+    struct Accrediting {
+        string name;
+        uint256 tokenId;
+        string messages;
+        address owner;
+        bool isApproved;
+    }
 
     // 用户注册功能
     mapping(address => User) private  _users; // 用户映射
@@ -161,7 +176,22 @@ function stringToBytes32(string memory source)
         return tokenId;
     }
 
-    
+    //设置鉴定状态，只有鉴定状态为ture时，鉴定机构才可以进行鉴定
+    function modiyAccredited(uint256 tokenId, bool isAccredited) public {
+        require(ownerOf(tokenId) == msg.sender, "You are not the owner");
+        _idToNftItem[tokenId].isAccredited = isAccredited;
+    }
+
+    // //鉴定机构添加个人信息
+    // function addmessage(string memory name, string memory uri) public {
+    //     //判断是否是鉴定机构
+    //     require(user.isAccrediting, "You are not an acgcredited institution");
+
+    //     User memory user = _users[msg.seller];
+
+
+    // }
+
     function placeNftOnSale(uint256 tokenId, uint256 price) external payable { // 上架NFT
         require(price > 0, "Price must be greater than 0");
         require(ownerOf(tokenId) == msg.sender, "You are not the owner");
@@ -176,7 +206,7 @@ function stringToBytes32(string memory source)
             seller: payable(msg.sender),
             isListed: true,
             tokenUri: tokenURI(tokenId),
-            isAccredited: _idToNftItem[tokenId].isAccredited //
+            isAccredited: _idToNftItem[tokenId].isAccredited 
 
         });
 
@@ -511,24 +541,4 @@ function stringToBytes32(string memory source)
         return allAuctions;
     }
 
-//评估机构
-    // struct Assess {
-    //     string name,
-    //     uint256 tokenId,
-    //     string messages,
-    //     address owner,
-    // }
-//注册
-//accrediting 鉴定机构
-    struct Accrediting {
-        string name;
-        uint256 tokenId;
-        string messages;
-        address owner;
-        bool isApproved;
-    }
-    //添加评估信息
-    // function addAccrediting()  returns () {
-        
-    // }i
 }

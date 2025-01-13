@@ -13,6 +13,7 @@ export interface Collectible extends Partial<NFTMetaData> {
   id: number;
   uri: string;
   owner: string;
+  isAccredited: boolean;
   transactionRecords?: {
     transactionId: string;
     timestamp: string;
@@ -25,7 +26,11 @@ export interface Collectible extends Partial<NFTMetaData> {
 export const MyHoldings = () => {
   const { address: connectedAddress } = useAccount();
   const [myAllCollectibles, setMyAllCollectibles] = useState<Collectible[]>([]);
+  const [filteredCollectibles, setFilteredCollectibles] = useState<Collectible[]>([]);
   const [allCollectiblesLoading, setAllCollectiblesLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<string>(""); // 搜索框输入
+  const [currentPage, setCurrentPage] = useState<number>(1); // 当前页码
+  const itemsPerPage = 3; // 每页显示数量
 
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "YourCollectible",
@@ -38,70 +43,96 @@ export const MyHoldings = () => {
     watch: true,
   });
 
-  // 获取特定NFT的交易记录
   const { data: nftTransactionEvents, isLoading: transactionLoading } = useScaffoldEventHistory({
     contractName: "YourCollectible",
     eventName: "NftPurchased",
     fromBlock: 0n,
   });
 
+  const updateCollectible = (updatedNft: Collectible) => {
+    setMyAllCollectibles(prevCollectibles =>
+      prevCollectibles.map(nft => (nft.id === updatedNft.id ? { ...nft, isAccredited: updatedNft.isAccredited } : nft)),
+    );
+    // 重新设置filteredCollectibles以触发重新渲染
+    setFilteredCollectibles(prevFilteredCollectibles =>
+      prevFilteredCollectibles.map(nft =>
+        nft.id === updatedNft.id ? { ...nft, isAccredited: updatedNft.isAccredited } : nft,
+      ),
+    );
+  };
   useEffect(() => {
     const updateMyCollectibles = async (): Promise<void> => {
-      if (myTotalBalance === undefined || yourCollectibleContract === undefined || connectedAddress === undefined)
-        return;
+      if (!myTotalBalance || !yourCollectibleContract || !connectedAddress) return;
 
       setAllCollectiblesLoading(true);
       const collectibleUpdate: Collectible[] = [];
       const totalBalance = parseInt(myTotalBalance.toString());
+
       for (let tokenIndex = 0; tokenIndex < totalBalance; tokenIndex++) {
         try {
-          const tokenId = await yourCollectibleContract.read.tokenOfOwnerByIndex([connectedAddress, BigInt(tokenIndex)]);
+          const tokenId = await yourCollectibleContract.read.tokenOfOwnerByIndex([
+            connectedAddress,
+            BigInt(tokenIndex),
+          ]);
+          //获取图片uri
           const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
-
-          // const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(tokenURI as string);
-
-          // 获取交易记录（根据 tokenId 过滤）
+          const nftitem = await yourCollectibleContract.read.getNftItem([tokenId]);
           const tokenTransactions =
-            nftTransactionEvents?.filter(event => {
-              console.log(event.args); // 调试输出事件参数，查看实际字段
-              return event.args.tokenId.toString() === tokenId.toString();
-            }) || [];
+            nftTransactionEvents?.filter(event => event.args.tokenId.toString() === tokenId.toString()) || [];
 
-          const transactionRecords = tokenTransactions.map(event => {
-            // 强制转换类型，确保处理 BigInt
-            const timestamp = new Date(Number(event.args.timestamp) * 1000).toLocaleString();
-            const price = (Number(event.args.price) / 1e18).toFixed(4) + " ETH"; // 假设 price 为 BigInt，转换为 ETH
-            return {
-              transactionId: event.args.transactionId?.toString(),
-              timestamp,
-              price,
-              from: event.args.buyer,
-              to: event.args.seller,
-            };
-          });
+          const transactionRecords = tokenTransactions.map(event => ({
+            transactionId: event.args.transactionId?.toString(),
+            timestamp: new Date(Number(event.args.timestamp) * 1000).toLocaleString(),
+            price: (Number(event.args.price) / 1e18).toFixed(4) + " ETH",
+            from: event.args.buyer,
+            to: event.args.seller,
+          }));
 
           collectibleUpdate.push({
             id: parseInt(tokenId.toString()),
             uri: tokenURI,
             owner: connectedAddress,
+            isAccredited: nftitem.isAccredited,
             ...nftMetadata,
-            transactionRecords, // 加入交易记录
+            transactionRecords,
           });
         } catch (e) {
-          notification.error("Error fetching all collectibles");
-          setAllCollectiblesLoading(false);
-          console.log(e);
+          notification.error("Error fetching collectibles");
+          console.error(e);
         }
       }
       collectibleUpdate.sort((a, b) => a.id - b.id);
       setMyAllCollectibles(collectibleUpdate);
+      setFilteredCollectibles(collectibleUpdate); // 初始化筛选结果
       setAllCollectiblesLoading(false);
     };
 
     updateMyCollectibles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connectedAddress, myTotalBalance, nftTransactionEvents]);
+
+  useEffect(() => {
+    // 避免不必要的状态更新
+    const filtered = myAllCollectibles.filter(item =>
+      item.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.kind?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.id.toString().includes(searchQuery)
+    );
+
+    if (JSON.stringify(filtered) !== JSON.stringify(filteredCollectibles)) {
+      setFilteredCollectibles(filtered);
+      setCurrentPage(1); // 每次筛选时重置到第一页
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchQuery]);
+
+  const paginatedCollectibles = filteredCollectibles.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const totalPages = Math.ceil(filteredCollectibles.length / itemsPerPage);
 
   if (allCollectiblesLoading || transactionLoading)
     return (
@@ -112,26 +143,36 @@ export const MyHoldings = () => {
 
   return (
     <>
-      {myAllCollectibles.length === 0 ? (
+      <div className="flex justify-center mb-4">
+        <input
+          type="text"
+          placeholder="筛选种类、名称或ID"
+          className="input input-bordered w-1/2"
+          value={searchQuery}
+          onChange={e => setSearchQuery(e.target.value)}
+        />
+      </div>
+      {paginatedCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
-          <div className="text-2xl text-primary-content">No NFTs found</div>
+          <div className="text-2xl text-primary-content">未找到匹配的藏品。</div>
         </div>
       ) : (
         <div className="flex flex-wrap gap-4 my-8 px-5 justify-center">
-          {myAllCollectibles.map(item => (
+          {paginatedCollectibles.map(item => (
             <div key={item.id} className="flex flex-col items-center">
-              <NFTCard nft={item} />
+              {/* <NFTCard nft={item} /> */}
+              <NFTCard nft={item} updateCollectible={updateCollectible} />
               {item.transactionRecords?.length > 0 && (
                 <div className="mt-4 w-full">
-                  <h3 className="font-bold text-lg">Transaction History:</h3>
+                  <h3 className="font-bold text-lg">交易记录:</h3>
                   <table className="table table-zebra w-full">
                     <thead>
                       <tr>
-                        <th>Transaction ID</th>
-                        <th>Timestamp</th>
-                        <th>Price</th>
-                        <th>From</th>
-                        <th>To</th>
+                        <th>交易ID</th>
+                        <th>时间戳</th>
+                        <th>价格</th>
+                        <th>发送账户</th>
+                        <th>目标账户</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -152,6 +193,25 @@ export const MyHoldings = () => {
           ))}
         </div>
       )}
+      <div className="flex justify-center items-center mt-6">
+        <button
+          className="btn btn-secondary"
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+        >
+          上一页
+        </button>
+        <span className="mx-4">
+          第 {currentPage} 页 / 共 {Math.max(totalPages, 1)} 页
+        </span>
+        <button
+          className="btn btn-secondary"
+          disabled={currentPage === totalPages || totalPages === 0}
+          onClick={() => setCurrentPage(currentPage + 1)}
+        >
+          下一页
+        </button>
+      </div>
     </>
   );
 };
