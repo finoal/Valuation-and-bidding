@@ -17,16 +17,24 @@ contract YourCollectible is
     ERC721Royalty
 {
 
-//密码加密
-function stringToBytes32(string memory source) 
-        internal
-        pure
-        returns (bytes32 result)
-    {   // 通过调用keccak256计算字符串的hash值
-        assembly {
-            result := mload(add(source, 32)) // 通过keccak256计算字符串的hash值
+    //追踪和生成唯一的ID
+    using Counters for Counters.Counter;
+
+    Counters.Counter private _tokenIdCounter; // 唯一ID计数器
+    Counters.Counter private _transactionCounter; // 交易顺序计数器
+
+    uint256 public totalFeesCollected; // 收集的手续费
+
+    //密码加密
+    function stringToBytes32(string memory source) 
+            internal
+            pure
+            returns (bytes32 result)
+        {   // 通过调用keccak256计算字符串的hash值
+            assembly {
+                result := mload(add(source, 32)) // 通过keccak256计算字符串的hash值
+            }
         }
-    }
 
     // 将bytes32类型转换为字符串
     function bytes32ToString(bytes32 x) internal pure returns (string memory) { // 通过keccak256计算字符串的hash值
@@ -67,14 +75,9 @@ function stringToBytes32(string memory source)
         string bio; // 个人简介
         bool isAccrediting; //是否鉴定机构
         uint256 integral; //积分
+        string assessUri; // 机构相关信息，机构的相关证书
     }
 
-    //评估机构
-    struct Assess {
-        string name; // 机构名称
-        string assessUri; // 机构相关信息，机构的相关证书
-        User user; // 用户
-    }
 
     //accrediting 鉴定信息
     struct Accrediting {
@@ -87,10 +90,12 @@ function stringToBytes32(string memory source)
 
     // 用户注册功能
     mapping(address => User) private  _users; // 用户映射
+    // 鉴定事件 参数 tokenid institution 鉴定机构地址 message 鉴定信息
+    event AccreditationPerformed(uint256 indexed tokenId, address indexed institution, string message);
 
     function registerUser(string memory _name, string memory _password, string memory _bio, bool _isAccrediting) public {
         require(bytes(_users[msg.sender].name).length == 0, "User already registered");
-        _users[msg.sender] = User(_name, stringToBytes32(_password), payable(msg.sender), _bio, _isAccrediting, 0);
+        _users[msg.sender] = User(_name, stringToBytes32(_password), payable(msg.sender), _bio, _isAccrediting, 0, "");
 
     }
 
@@ -112,15 +117,19 @@ function stringToBytes32(string memory source)
     }
 
 
+    function updateUserInfo(string memory _assessUri) public {
+        // 鉴定机构更新信息
+        require(_users[msg.sender].isAccrediting, "Not an accrediting institution");
+        require(bytes(_assessUri).length > 0, "Assess info cannot be empty");
+        _users[msg.sender].assessUri = _assessUri;
+    }
 
-    //追踪和生成唯一的ID
-    using Counters for Counters.Counter;
-
-    Counters.Counter private _tokenIdCounter; // 唯一ID计数器
-    Counters.Counter private _transactionCounter; // 交易顺序计数器
-
-    uint256 public totalFeesCollected; // 收集的手续费
-
+        //查看鉴定机构信息
+    function getUserMessage(address userAddress) public view  returns (string memory, string memory, uint256, string memory) {
+        User memory user = _users[userAddress];
+        require(user.isAccrediting, "Not an accrediting institution");
+        return (user.name, user.bio, user.integral, user.assessUri);
+    }
 
     // NFT数据结构
     struct NftItem {
@@ -130,6 +139,8 @@ function stringToBytes32(string memory source)
         bool isListed; // 是否上架
         string tokenUri; // NFT的URI 包含对NFT的元数据（相关描述，分类）
         bool isAccredited; // 是否允许被鉴定
+        uint256 accreditedCount; // 被鉴定次数
+        address[] accreditedInstitutions; // 鉴定该NFT的机构列表
     }
 
     mapping(uint256 => NftItem) private _idToNftItem; // NFT数据
@@ -170,7 +181,9 @@ function stringToBytes32(string memory source)
             seller: payable(address(0)),
             isListed: false,
             tokenUri: completeTokenURI,
-            isAccredited: false
+            isAccredited: false,
+            accreditedCount: 0, //被鉴定次数
+            accreditedInstitutions: new address[](0)
         });
 
         return tokenId;
@@ -182,15 +195,42 @@ function stringToBytes32(string memory source)
         _idToNftItem[tokenId].isAccredited = isAccredited;
     }
 
-    // //鉴定机构添加个人信息
-    // function addmessage(string memory name, string memory uri) public {
-    //     //判断是否是鉴定机构
-    //     require(user.isAccrediting, "You are not an acgcredited institution");
+    // 获取所有可被鉴定的NFT
+    function getAccreditableNFTs() external view returns (NftItem[] memory) {
+        uint256 totalTokens = _tokenIdCounter.current();//获取当前的token数量
+        uint256 count = 0;//初始化数量
+        //遍历所有的token找到所有可被鉴定的NFT
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            if (_idToNftItem[i].isAccredited) {
+                count++;//确定数组长度
+            }
+        }
 
-    //     User memory user = _users[msg.seller];
+        NftItem[] memory accreditableNFTs = new NftItem[](count);
+        uint256 index = 0;
+
+        for (uint256 i = 1; i <= totalTokens; i++) {
+            if (_idToNftItem[i].isAccredited) {
+                accreditableNFTs[index] = _idToNftItem[i];
+                index++;
+            }
+        }
+        return accreditableNFTs;
+    }
+
+    // NFT鉴定功能
+    function performAccreditation(uint256 tokenId, string memory message) external {
+        require(_users[msg.sender].isAccrediting, "Only accrediting institutions can perform this action");
+        require(bytes(_users[msg.sender].assessUri).length > 0, "Accreditation info must be completed");
+        require(_idToNftItem[tokenId].isAccredited, "NFT is not set for accreditation");
+
+        // 记录鉴定机构
+        _idToNftItem[tokenId].accreditedInstitutions.push(msg.sender);
+
+        emit AccreditationPerformed(tokenId, msg.sender, message);
+    }
 
 
-    // }
 
     function placeNftOnSale(uint256 tokenId, uint256 price) external payable { // 上架NFT
         require(price > 0, "Price must be greater than 0");
@@ -206,8 +246,9 @@ function stringToBytes32(string memory source)
             seller: payable(msg.sender),
             isListed: true,
             tokenUri: tokenURI(tokenId),
-            isAccredited: _idToNftItem[tokenId].isAccredited 
-
+            isAccredited: _idToNftItem[tokenId].isAccredited,
+            accreditedCount: _idToNftItem[tokenId].accreditedCount,
+            accreditedInstitutions: _idToNftItem[tokenId].accreditedInstitutions
         });
 
         _listedTokenIds.push(tokenId);
@@ -386,9 +427,9 @@ function stringToBytes32(string memory source)
      * @dev 创建一个新的拍卖
      * @param tokenId NFT的Token ID
      * @param startPrice 起拍价格
-     * @param duration 拍卖持续时间（以秒为单位）
+     * @param blocktime 拍卖结束时间
      */
-    function createAuction(uint256 tokenId,string memory uri, uint256 startPrice, uint256 duration) external payable {
+    function createAuction(uint256 tokenId,string memory uri, uint256 startPrice, uint256 blocktime) external payable {
     // 确保调用者是NFT的当前持有者
     require(ownerOf(tokenId) == msg.sender, "You are not the owner");
 
@@ -396,7 +437,7 @@ function stringToBytes32(string memory source)
     require(!_auctions[tokenId].isActive, "Auction already active for this token");
 
     // 确保拍卖持续时间合法
-    require(duration > 0, "Duration must be greater than 0");
+    require(blocktime > block.timestamp, "Duration must be greater than 0");
 
     // 获取初始创建者和版税金额
     (address creator, ) = royaltyInfo(tokenId, startPrice);//uint256 royaltyAmount
@@ -417,13 +458,13 @@ function stringToBytes32(string memory source)
         startPrice: startPrice,
         highestBid: 0,
         highestBidder: payable(address(0)),
-        endTime: block.timestamp + duration,
+        endTime: blocktime,
         isActive: true,
-        isroyalty: royalty
+        isroyalty: royalty // 是否有版税
     });
 
     // 触发拍卖创建事件
-    emit AuctionCreated(tokenId, msg.sender, startPrice, block.timestamp + duration);
+    emit AuctionCreated(tokenId, msg.sender, startPrice, blocktime);
 }
 
 
@@ -462,40 +503,50 @@ function stringToBytes32(string memory source)
      * @dev 结束拍卖并完成交易
      * @param tokenId 拍卖的NFT的Token ID
      */
+    // 更新拍卖逻辑，加入鉴定机构分成
     function endAuction(uint256 tokenId) external {
-        // Auction storage auction = _auctions[tokenId];
-
-        // 确保拍卖仍在进行中
         require(_auctions[tokenId].isActive, "Auction is not active");
 
-
-        // 将拍卖标记为已结束
         _auctions[tokenId].isActive = false;
 
-        require( ! _auctions[tokenId].isActive ,"faild of end");
-
         if (_auctions[tokenId].highestBidder != address(0)) {
-            // 如果有竞标者，完成交易
-            // 将NFT转移给最高出价者
+            uint256 highestBid = _auctions[tokenId].highestBid;
+            uint256 sellerAmount = highestBid;
+            if (_auctions[tokenId].isroyalty) {
+
+                // 获取初始创建者和版税金额
+                (address creator, uint256 royaltyAmount) = royaltyInfo(tokenId, highestBid);
+
+                uint256 transactionId = _transactionCounter.current(); // 交易ID
+
+                sellerAmount = sellerAmount - royaltyAmount;
+
+                if (royaltyAmount > 0) {
+                    payable(creator).transfer(royaltyAmount);
+                    _transactionCounter.increment();
+                    emit RoyaltyPaid(transactionId, tokenId, creator, royaltyAmount, block.timestamp);
+                }
+                
+            }
+            uint256 institutionFee = (highestBid * 10) / 100; // 10%鉴定费
+            sellerAmount = sellerAmount - institutionFee;
+
+            // 分发给鉴定机构
+            address[] memory institutions = _idToNftItem[tokenId].accreditedInstitutions;
+            uint256 institutionShare = institutionFee / institutions.length;
+
+            for (uint256 i = 0; i < institutions.length; i++) {
+                payable(institutions[i]).transfer(institutionShare);
+            }
+
+            // 转账给卖家
+            _auctions[tokenId].seller.transfer(sellerAmount);
+
+            // 转移NFT所有权
             _transfer(_auctions[tokenId].seller, _auctions[tokenId].highestBidder, tokenId);
 
-            // 将最高出价金额转移给卖家
-            uint256 royaltyAmount;
-            address creator;
-            // 获取初始创建者和版税金额
-            (creator, royaltyAmount) = royaltyInfo(tokenId, _auctions[tokenId].highestBid);
-            _auctions[tokenId].highestBid = _auctions[tokenId].highestBid - royaltyAmount;
-
-            // 将最高出价金额转移给卖家
-            _auctions[tokenId].seller.transfer(_auctions[tokenId].highestBid);
-
-            if (royaltyAmount > 0) {
-                payable(creator).transfer(royaltyAmount);
-            }
-            // 触发拍卖结束事件
-            emit AuctionEnded(tokenId, _auctions[tokenId].highestBidder, _auctions[tokenId].highestBid);
+            emit AuctionEnded(tokenId, _auctions[tokenId].highestBidder, sellerAmount);
         } else {
-            // 如果没有竞标者，取消拍卖
             emit AuctionEnded(tokenId, address(0), 0);
         }
     }

@@ -6,6 +6,7 @@ import { notification } from "~~/utils/scaffold-eth";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { addToIPFS, uploadImageToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NextPage } from "next";
+//进行数据库操作;
 import axios from "axios";
 
 const CreateNft: NextPage = () => {
@@ -24,7 +25,7 @@ const CreateNft: NextPage = () => {
       setFiles(Array.from(selectedFiles));
     }
   };
-
+  //获取合约的操作信息
   const publicClient = usePublicClient();
 
   const handleMintNft = async () => {

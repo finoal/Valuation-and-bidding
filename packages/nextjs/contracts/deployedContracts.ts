@@ -19,6 +19,31 @@ const deployedContracts = {
           inputs: [
             {
               indexed: true,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: true,
+              internalType: "address",
+              name: "institution",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "message",
+              type: "string",
+            },
+          ],
+          name: "AccreditationPerformed",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
               internalType: "address",
               name: "owner",
               type: "address",
@@ -594,7 +619,7 @@ const deployedContracts = {
             },
             {
               internalType: "uint256",
-              name: "duration",
+              name: "blocktime",
               type: "uint256",
             },
           ],
@@ -614,6 +639,61 @@ const deployedContracts = {
           name: "endAuction",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getAccreditableNFTs",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "uint256",
+                  name: "tokenId",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "price",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address payable",
+                  name: "seller",
+                  type: "address",
+                },
+                {
+                  internalType: "bool",
+                  name: "isListed",
+                  type: "bool",
+                },
+                {
+                  internalType: "string",
+                  name: "tokenUri",
+                  type: "string",
+                },
+                {
+                  internalType: "bool",
+                  name: "isAccredited",
+                  type: "bool",
+                },
+                {
+                  internalType: "uint256",
+                  name: "accreditedCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address[]",
+                  name: "accreditedInstitutions",
+                  type: "address[]",
+                },
+              ],
+              internalType: "struct YourCollectible.NftItem[]",
+              name: "",
+              type: "tuple[]",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -711,6 +791,16 @@ const deployedContracts = {
                   internalType: "bool",
                   name: "isAccredited",
                   type: "bool",
+                },
+                {
+                  internalType: "uint256",
+                  name: "accreditedCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address[]",
+                  name: "accreditedInstitutions",
+                  type: "address[]",
                 },
               ],
               internalType: "struct YourCollectible.NftItem[]",
@@ -861,6 +951,16 @@ const deployedContracts = {
                   name: "isAccredited",
                   type: "bool",
                 },
+                {
+                  internalType: "uint256",
+                  name: "accreditedCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address[]",
+                  name: "accreditedInstitutions",
+                  type: "address[]",
+                },
               ],
               internalType: "struct YourCollectible.NftItem",
               name: "",
@@ -899,6 +999,40 @@ const deployedContracts = {
               internalType: "uint256",
               name: "",
               type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "userAddress",
+              type: "address",
+            },
+          ],
+          name: "getUserMessage",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
             },
           ],
           stateMutability: "view",
@@ -1031,6 +1165,24 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              internalType: "string",
+              name: "message",
+              type: "string",
+            },
+          ],
+          name: "performAccreditation",
+          outputs: [],
+          stateMutability: "nonpayable",
           type: "function",
         },
         {
@@ -1388,6 +1540,19 @@ const deployedContracts = {
             },
           ],
           name: "unlistNft",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "_assessUri",
+              type: "string",
+            },
+          ],
+          name: "updateUserInfo",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",

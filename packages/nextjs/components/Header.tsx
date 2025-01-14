@@ -56,9 +56,21 @@ export const Header = () => {
           icon: <BugAntIcon className="h-4 w-4" />,
         },
         {
-          label:"debug", // 用于调试
+          label: "debug", // 用于调试
           href: "/debug",
           condition: isAuthenticated && !isAccrediting,
+          icon: <UserIcon className="h-4 w-4" />,
+        },
+        {
+          label: "查看机构信息",
+          href: "/getUserMessage",
+          condition: isAuthenticated && isAccrediting,
+          icon: <UserIcon className="h-4 w-4" />,
+        },
+        {
+          label: "更新机构信息",
+          href: "/userMessage",
+          condition: isAuthenticated && isAccrediting,
           icon: <UserIcon className="h-4 w-4" />,
         },
         {
