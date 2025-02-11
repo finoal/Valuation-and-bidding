@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { Address } from "~~/components/scaffold-eth";
-import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { usePublicClient } from "wagmi";
-
+import { useRouter } from "next/navigation"; //页面跳转
+import NFTMessage from "../nftMessage/page"; // **导入 NFT 详情页组件**
 export interface AuctionNFT {
   tokenId: number;
   uri: string;
@@ -12,20 +13,24 @@ export interface AuctionNFT {
   currentBid: string;
   highestBidder: string;
   startingBid: string;
+  bidCount: number;
   name?: string;
   description?: string;
   image?: string;
   countdown?: string; // 剩余时间倒计时
+  accreditedCount?: number; // 鉴定次数
 }
 
 const PAGE_SIZE = 3; // 每页显示的拍卖数量
 
 const AuctionPage = () => {
+  const router = useRouter();
   const [auctionNfts, setAuctionNfts] = useState<AuctionNFT[]>([]);
   const [filteredNfts, setFilteredNfts] = useState<AuctionNFT[]>([]); // 筛选后的拍卖数据
   const [currentPage, setCurrentPage] = useState(1); // 当前页码
   const [isLoading, setIsLoading] = useState(false);
   const [bidAmount, setBidAmount] = useState("");
+  const [selectedTokenId, setSelectedTokenId] = useState<number | null>(null); // 存储选中的 NFT ID
   const [filterDescription, setFilterDescription] = useState(""); // 筛选描述
   const [filterPrice, setFilterPrice] = useState({ min: "", max: "" }); // 筛选价格范围
   const publicClient = usePublicClient();
@@ -35,12 +40,19 @@ const AuctionPage = () => {
     watch: true,
   });
 
+  const { data: yourCollectibleContract } = useScaffoldContract({
+    contractName: "YourCollectible",
+  });
+
   const { writeContractAsync } = useScaffoldWriteContract("YourCollectible");
 
   // 获取 NFT 元数据
   const fetchNftDetails = async (tokenId: number, uri: string): Promise<AuctionNFT> => {
     try {
       const metadata = await getMetadataFromIPFS(uri);
+      const accreditedCount = await yourCollectibleContract?.read.getAccreditedCount([BigInt(tokenId)]);
+      console.log("accreditedCount:", accreditedCount);
+      // 获取鉴定次数
       return {
         tokenId,
         uri,
@@ -48,10 +60,12 @@ const AuctionPage = () => {
         currentBid: "0",
         highestBidder: "",
         startingBid: "0",
+        bidCount: 0, //竞价次数
         name: metadata.name || "未命名",
         description: metadata.description || "无描述",
         image: metadata.image || "",
         countdown: "加载中...",
+        accreditedCount: Number(accreditedCount), // 添加鉴定次数
       };
     } catch (error) {
       console.error("获取 NFT 元数据失败:", error);
@@ -88,9 +102,7 @@ const AuctionPage = () => {
     const minutes = Math.floor((remainingTime % 3600) / 60);
     const seconds = remainingTime % 60;
 
-    return `${hours.toString().padStart(2, "0")}:${minutes
-      .toString()
-      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
   // 启动倒计时并检测结束状态
@@ -104,7 +116,8 @@ const AuctionPage = () => {
             // 如果倒计时已结束，调用合约的 endAuction 方法
             if (countdown === "已结束") {
               clearInterval(intervalId); // 停止定时器
-              handleEndAuction(tokenId); // 调用合约方法结束拍卖
+              alert(`拍卖 ${tokenId} 已结束！`);
+              //handleEndAuction(tokenId); // 调用合约方法结束拍卖
             }
 
             return { ...nft, countdown };
@@ -137,8 +150,9 @@ const AuctionPage = () => {
           nftDetails.currentBid = auction.highestBid.toString();
           nftDetails.highestBidder = auction.highestBidder;
           nftDetails.startingBid = auction.startPrice.toString();
+          nftDetails.bidCount = Number(auction.bidCount);
           nftDetails.countdown = calculateCountdown(endTime);
-
+          console.log("111", auction.bidCount);
           nftData.push(nftDetails);
 
           updateCountdownAndEndAuction(endTime, tokenId); // 启动倒计时并监测拍卖结束
@@ -175,17 +189,17 @@ const AuctionPage = () => {
   );
 
   // 调用合约方法结束拍卖
-  const handleEndAuction = async (tokenId: number) => {
-    try {
-      await writeContractAsync({
-        functionName: "endAuction",
-        args: [BigInt(tokenId)],
-      });
-      alert(`拍卖 ${tokenId} 已结束！`);
-    } catch (error) {
-      console.error(`结束拍卖失败 (Token ID: ${tokenId}):`, error);
-    }
-  };
+  // const handleEndAuction = async (tokenId: number) => {
+  //   try {
+  //     await writeContractAsync({
+  //       functionName: "endAuction",
+  //       args: [BigInt(tokenId)],
+  //     });
+  //     alert(`拍卖 ${tokenId} 已结束！`);
+  //   } catch (error) {
+  //     console.error(`结束拍卖失败 (Token ID: ${tokenId}):`, error);
+  //   }
+  // };
 
   // 处理出价
   const handleBid = async (tokenId: number) => {
@@ -214,11 +228,18 @@ const AuctionPage = () => {
       </div>
     );
   }
+  // 封装跳转逻辑，不使用 URL 传参
+  const handleNavigateToDetail = (tokenId: number) => {
+    setSelectedTokenId(tokenId); // 存储 tokenId
+    console.log(`NFT 选中,Token ID: ${tokenId}`);
+    console.log(selectedTokenId);
+    router.push(`/nftMessage`);
+  };
 
   return (
     <div className="container mx-auto">
       <header className="my-4">
-        <h1 className="text-3xl font-bold text-center">NFT 拍卖市场</h1>
+        <h1 className="text-3xl font-bold text-center">拍卖市场</h1>
       </header>
       {/* 筛选功能 */}
       <div className="flex flex-col sm:flex-row justify-between mb-6">
@@ -258,6 +279,7 @@ const AuctionPage = () => {
                 key={nft.tokenId}
                 className="card card-compact bg-base-100 shadow-lg rounded-xl overflow-hidden"
               >
+                 <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft.tokenId)}>
                 <figure>
                   <img
                     src={nft.image}
@@ -265,9 +287,14 @@ const AuctionPage = () => {
                     className="w-full h-64 object-cover"
                   />
                 </figure>
+                </div>
                 <div className="card-body space-y-3">
                   <h2 className="card-title text-xl">{nft.name}</h2>
                   <p>{nft.description}</p>
+                  <div className="flex justify-between">
+                    <span>起拍价:</span>
+                    <span>{Number(nft.startingBid) / 1e18} ETH</span>
+                  </div>
                   <div className="flex justify-between">
                     <span>当前出价:</span>
                     <span>{Number(nft.currentBid) / 1e18} ETH</span>
@@ -275,6 +302,14 @@ const AuctionPage = () => {
                   <div className="flex justify-between">
                     <span>最高出价者:</span>
                     <Address address={nft.highestBidder} />
+                  </div>
+                  <div className="flex justify-between">
+                    <span>鉴定次数:</span>
+                    <span>{Number(nft.accreditedCount)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>竞拍次数:</span>
+                    <span>{nft.bidCount}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>剩余时间:</span>
@@ -295,6 +330,13 @@ const AuctionPage = () => {
                       出价
                     </button>
                   </div>
+                  {/* 查看详情按钮 */}
+                  <button
+                    className="btn btn-secondary mt-2"
+                    onClick={() => router.push(`/nft-details?tokenId=${nft.tokenId}`)}
+                  >
+                    查看详情
+                  </button>
                   {/* <button
                     className="btn btn-secondary mt-2"
                     onClick={() => handleEndAuction(nft.tokenId)}

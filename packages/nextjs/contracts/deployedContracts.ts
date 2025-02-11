@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     YourCollectible: {
-      address: "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
       abi: [
         {
           inputs: [],
@@ -34,6 +34,12 @@ const deployedContracts = {
               internalType: "string",
               name: "message",
               type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
             },
           ],
           name: "AccreditationPerformed",
@@ -697,6 +703,25 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [
+            {
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+          ],
+          name: "getAccreditedCount",
+          outputs: [
+            {
+              internalType: "uint256",
+              name: "accreditedCount",
+              type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [],
           name: "getAllAuctions",
           outputs: [
@@ -746,6 +771,21 @@ const deployedContracts = {
                   internalType: "bool",
                   name: "isroyalty",
                   type: "bool",
+                },
+                {
+                  internalType: "uint256",
+                  name: "num",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "bidCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address[]",
+                  name: "bidders",
+                  type: "address[]",
                 },
               ],
               internalType: "struct YourCollectible.Auction[]",
@@ -886,6 +926,21 @@ const deployedContracts = {
                   internalType: "bool",
                   name: "isroyalty",
                   type: "bool",
+                },
+                {
+                  internalType: "uint256",
+                  name: "num",
+                  type: "uint256",
+                },
+                {
+                  internalType: "uint256",
+                  name: "bidCount",
+                  type: "uint256",
+                },
+                {
+                  internalType: "address[]",
+                  name: "bidders",
+                  type: "address[]",
                 },
               ],
               internalType: "struct YourCollectible.Auction",

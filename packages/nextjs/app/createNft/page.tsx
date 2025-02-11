@@ -73,11 +73,11 @@ const CreateNft: NextPage = () => {
         });
       }
 
-      notification.success("NFT成功铸造!");
+      notification.success("藏品创建成功!");
     } catch (error) {
       notification.remove(notificationId);
       console.error(error);
-      notification.error("铸造NFT失败");
+      notification.error("铸造藏品失败");
     } finally {
       setIsProcessing(false);
     }
@@ -109,7 +109,7 @@ const CreateNft: NextPage = () => {
 
         {/* 右侧表单区域 */}
         <div className="w-full md:w-2/3 p-8">
-          <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">添加拍品</h1>
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">添加藏品</h1>
           <input
             type="file"
             accept="image/*"
@@ -151,7 +151,7 @@ const CreateNft: NextPage = () => {
             disabled={isProcessing}
             className={`btn w-full p-4 rounded-xl text-white ${isProcessing ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"} transition duration-300`}
           >
-            {isProcessing ? "创建中..." : "创建NFT"}
+            {isProcessing ? "创建中..." : "创建藏品"}
           </button>
         </div>
       </div>

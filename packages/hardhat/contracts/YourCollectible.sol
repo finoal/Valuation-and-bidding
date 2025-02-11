@@ -91,7 +91,7 @@ contract YourCollectible is
     // 用户注册功能
     mapping(address => User) private  _users; // 用户映射
     // 鉴定事件 参数 tokenid institution 鉴定机构地址 message 鉴定信息
-    event AccreditationPerformed(uint256 indexed tokenId, address indexed institution, string message);
+    event AccreditationPerformed(uint256 indexed tokenId, address indexed institution, string message, uint256 timestamp);
 
     function registerUser(string memory _name, string memory _password, string memory _bio, bool _isAccrediting) public {
         require(bytes(_users[msg.sender].name).length == 0, "User already registered");
@@ -178,7 +178,7 @@ contract YourCollectible is
         _idToNftItem[tokenId] = NftItem({
             tokenId: tokenId,
             price: 0,
-            seller: payable(address(0)),
+            seller: payable(msg.sender),
             isListed: false,
             tokenUri: completeTokenURI,
             isAccredited: false,
@@ -193,6 +193,11 @@ contract YourCollectible is
     function modiyAccredited(uint256 tokenId, bool isAccredited) public {
         require(ownerOf(tokenId) == msg.sender, "You are not the owner");
         _idToNftItem[tokenId].isAccredited = isAccredited;
+    }
+
+    //通过id获取被鉴定的次数
+    function getAccreditedCount(uint256 tokenId) public view returns (uint256 accreditedCount) {
+        return  _idToNftItem[tokenId].accreditedCount;
     }
 
     // 获取所有可被鉴定的NFT
@@ -219,16 +224,19 @@ contract YourCollectible is
     }
 
     // NFT鉴定功能
-    function performAccreditation(uint256 tokenId, string memory message) external {
+    function performAccreditation(uint256 tokenId, string memory message) public {
         require(_users[msg.sender].isAccrediting, "Only accrediting institutions can perform this action");
         require(bytes(_users[msg.sender].assessUri).length > 0, "Accreditation info must be completed");
         require(_idToNftItem[tokenId].isAccredited, "NFT is not set for accreditation");
 
         // 记录鉴定机构
         _idToNftItem[tokenId].accreditedInstitutions.push(msg.sender);
+        _idToNftItem[tokenId].accreditedCount += 1; // 增加鉴定次数
 
-        emit AccreditationPerformed(tokenId, msg.sender, message);
+
+        emit AccreditationPerformed(tokenId, msg.sender, message, block.timestamp);
     }
+
 
 
 
@@ -409,7 +417,11 @@ contract YourCollectible is
         uint256 endTime; // 拍卖结束时间（时间戳）
         bool isActive; // 拍卖是否仍在进行中
         bool isroyalty; // 是否有版税
+        uint256 num; // 参与竞拍人数
+        uint256 bidCount; // 竞价次数
+        address[] bidders; // 参与者地址列表
     }
+
 
     // 使用映射存储所有拍卖，以Token ID为键
     mapping(uint256 => Auction) private _auctions;
@@ -460,7 +472,11 @@ contract YourCollectible is
         highestBidder: payable(address(0)),
         endTime: blocktime,
         isActive: true,
-        isroyalty: royalty // 是否有版税
+        isroyalty: royalty, // 是否有版税
+        num: 0, // 竞拍初始参与人数为0
+        bidCount: 0, // 竞价次数初始为0
+        bidders: new address[](0) // 参与者地址列表初始为空
+        
     });
 
     // 触发拍卖创建事件
@@ -482,6 +498,9 @@ contract YourCollectible is
         // 确保拍卖没有结束
         require(block.timestamp <  _auctions[tokenId].endTime, "Auction has ended");
 
+        // 确保出价高于起拍价
+        require(msg.value > _auctions[tokenId].startPrice, "Bid must be higher than start bid");
+
         // 确保出价高于当前最高出价
         require(msg.value >  _auctions[tokenId].highestBid, "Bid must be higher than current highest bid");
 
@@ -490,12 +509,30 @@ contract YourCollectible is
              _auctions[tokenId].highestBidder.transfer( _auctions[tokenId].highestBid);
         }
 
-        // 更新拍卖的最高出价和竞标者信息
+        // 更新拍卖的最高出价和竞标者信息以及参与人数
          _auctions[tokenId].highestBid = msg.value;
          _auctions[tokenId].highestBidder = payable(msg.sender);
+        // 增加竞价次数
+        _auctions[tokenId].bidCount += 1;
+
+        // 如果出价者是新的参与者，则增加参与者人数并记录地址
+        if (!isBidder(_auctions[tokenId].bidders, msg.sender)) {
+            _auctions[tokenId].num += 1;
+            _auctions[tokenId].bidders.push(msg.sender);
+        }
 
         // 触发新出价事件
         emit NewBid(tokenId, msg.sender, msg.value, block.timestamp); 
+    }
+
+    // 辅助函数：检查地址是否已经在参与者列表中
+    function isBidder(address[] memory bidders, address bidder) private pure returns (bool) {
+        for (uint i = 0; i < bidders.length; i++) {
+            if (bidders[i] == bidder) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 结束拍卖函数
@@ -528,7 +565,7 @@ contract YourCollectible is
                 }
                 
             }
-            uint256 institutionFee = (highestBid * 10) / 100; // 10%鉴定费
+            uint256 institutionFee = (highestBid * 20) / 100; // 20%鉴定费
             sellerAmount = sellerAmount - institutionFee;
 
             // 分发给鉴定机构

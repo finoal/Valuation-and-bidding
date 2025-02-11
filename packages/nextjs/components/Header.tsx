@@ -75,7 +75,7 @@ export const Header = () => {
         },
         {
           label: "鉴定",
-          href: "/wallet",
+          href: "/authenticate",
           condition: isAuthenticated && isAccrediting,
           icon: <UserIcon className="h-4 w-4" />,
         },
