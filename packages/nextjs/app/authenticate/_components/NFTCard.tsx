@@ -6,6 +6,7 @@ import { Address } from "~~/components/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { uploadImageToIPFS, addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useRouter } from "next/navigation"; //页面跳转
 
 export const NFTCard = ({
   nft,
@@ -20,7 +21,7 @@ export const NFTCard = ({
   const [isProcessing, setIsProcessing] = useState(false);
 
   const { writeContractAsync } = useScaffoldWriteContract("YourCollectible");
-
+  const router = useRouter();
   // 处理文件选择
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = event.target.files;
@@ -87,15 +88,25 @@ export const NFTCard = ({
       setIsProcessing(false);
     }
   };
+  // 封装跳转逻辑，不使用 URL 传参
+    const handleNavigateToDetail = (nft: Collectible) => {
+      nft.accreditedCount = Number(nft.accreditedCount);
+      console.log(`NFT 选中,Token ID: ${nft.id}`);
+      // 将选择的 NFT 存储到状态中，之后在详情页面访问
+      localStorage.setItem("selectedNft", JSON.stringify(nft)); // 使用 localStorage 保存数据
+      router.push(`/nftMessage`);
+    };
 
   return (
     <div className="card card-compact bg-base-100 shadow-lg w-[300px] shadow-secondary">
+      <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft)}>
       <figure className="relative">
         <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
         <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
           <span className="text-white "># {nft.id}</span>
         </figcaption>
       </figure>
+      </div>
       <div className="card-body space-y-3">
         <div className="flex items-center justify-center">
           <p className="text-xl p-0 m-0 font-semibold">名称 : {nft.name}</p>

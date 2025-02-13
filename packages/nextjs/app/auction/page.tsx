@@ -5,7 +5,6 @@ import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { usePublicClient } from "wagmi";
 import { useRouter } from "next/navigation"; //页面跳转
-import NFTMessage from "../nftMessage/page"; // **导入 NFT 详情页组件**
 export interface AuctionNFT {
   tokenId: number;
   uri: string;
@@ -30,7 +29,6 @@ const AuctionPage = () => {
   const [currentPage, setCurrentPage] = useState(1); // 当前页码
   const [isLoading, setIsLoading] = useState(false);
   const [bidAmount, setBidAmount] = useState("");
-  const [selectedTokenId, setSelectedTokenId] = useState<number | null>(null); // 存储选中的 NFT ID
   const [filterDescription, setFilterDescription] = useState(""); // 筛选描述
   const [filterPrice, setFilterPrice] = useState({ min: "", max: "" }); // 筛选价格范围
   const publicClient = usePublicClient();
@@ -65,7 +63,7 @@ const AuctionPage = () => {
         description: metadata.description || "无描述",
         image: metadata.image || "",
         countdown: "加载中...",
-        accreditedCount: Number(accreditedCount), // 添加鉴定次数
+        accreditedCount: Number(accreditedCount) || 0, // 添加鉴定次数
       };
     } catch (error) {
       console.error("获取 NFT 元数据失败:", error);
@@ -229,10 +227,10 @@ const AuctionPage = () => {
     );
   }
   // 封装跳转逻辑，不使用 URL 传参
-  const handleNavigateToDetail = (tokenId: number) => {
-    setSelectedTokenId(tokenId); // 存储 tokenId
-    console.log(`NFT 选中,Token ID: ${tokenId}`);
-    console.log(selectedTokenId);
+  const handleNavigateToDetail = (nft: AuctionNFT) => {
+    console.log(`NFT 选中,Token ID: ${nft.tokenId}`);
+    // 将选择的 NFT 存储到状态中，之后在详情页面访问
+    localStorage.setItem("selectedNft", JSON.stringify(nft)); // 使用 localStorage 保存数据
     router.push(`/nftMessage`);
   };
 
@@ -279,7 +277,7 @@ const AuctionPage = () => {
                 key={nft.tokenId}
                 className="card card-compact bg-base-100 shadow-lg rounded-xl overflow-hidden"
               >
-                 <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft.tokenId)}>
+                 <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft)}>
                 <figure>
                   <img
                     src={nft.image}
@@ -333,7 +331,7 @@ const AuctionPage = () => {
                   {/* 查看详情按钮 */}
                   <button
                     className="btn btn-secondary mt-2"
-                    onClick={() => router.push(`/nft-details?tokenId=${nft.tokenId}`)}
+                    onClick={() => handleNavigateToDetail(nft)}
                   >
                     查看详情
                   </button>

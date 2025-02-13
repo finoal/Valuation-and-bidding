@@ -159,6 +159,9 @@ contract YourCollectible is
     event RoyaltyPaid(uint256 transactionId, uint256 indexed tokenId, address indexed creator, uint256 amount, uint256 timestamp);
     event FeesReceived(address indexed sender, uint256 amount);
     event Transfer( address indexed from,address indexed to,uint256 indexed tokenId,uint256 timestamp,  bytes32 transactionId );
+    //积分记录
+    event Integral(address indexed sender, uint256 tokenId, uint256 integral, uint256 timestamp );
+
     constructor() ERC721("YourCollectible", "ZJ") {}
 
     function _baseURI() internal pure override returns (string memory) {
@@ -232,8 +235,9 @@ contract YourCollectible is
         // 记录鉴定机构
         _idToNftItem[tokenId].accreditedInstitutions.push(msg.sender);
         _idToNftItem[tokenId].accreditedCount += 1; // 增加鉴定次数
-
-
+        //每鉴定一次给予1积分。
+        _users[msg.sender].integral += 1;
+        emit Integral(msg.sender, tokenId, 1, block.timestamp);
         emit AccreditationPerformed(tokenId, msg.sender, message, block.timestamp);
     }
 
@@ -420,6 +424,7 @@ contract YourCollectible is
         uint256 num; // 参与竞拍人数
         uint256 bidCount; // 竞价次数
         address[] bidders; // 参与者地址列表
+        uint256 startTime;
     }
 
 
@@ -428,7 +433,7 @@ contract YourCollectible is
 
     // 事件，用于记录拍卖相关活动
     //创建拍卖
-    event AuctionCreated(uint256 indexed tokenId, address indexed seller, uint256 startPrice, uint256 endTime);
+    event AuctionCreated(uint256 indexed tokenId, address indexed seller, uint256 startPrice, uint256 endTime, uint256 startTime);
     //竞价 id 出价者 金额 
     event NewBid(uint256 indexed tokenId, address indexed bidder, uint256 amount,uint256 timestamp);
     // 竞拍结束 赢家 金额
@@ -462,6 +467,7 @@ contract YourCollectible is
        royalty = true;
     }
 
+    uint256 start = block.timestamp;
     // 初始化拍卖并存储到映射中
     _auctions[tokenId] = Auction({
         tokenId: tokenId,
@@ -475,12 +481,12 @@ contract YourCollectible is
         isroyalty: royalty, // 是否有版税
         num: 0, // 竞拍初始参与人数为0
         bidCount: 0, // 竞价次数初始为0
-        bidders: new address[](0) // 参与者地址列表初始为空
-        
+        bidders: new address[](0), // 参与者地址列表初始为空
+        startTime: start
     });
 
     // 触发拍卖创建事件
-    emit AuctionCreated(tokenId, msg.sender, startPrice, blocktime);
+    emit AuctionCreated(tokenId, msg.sender, startPrice, blocktime, block.timestamp);
 }
 
 

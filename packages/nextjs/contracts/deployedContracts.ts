@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     YourCollectible: {
-      address: "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      address: "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
       abi: [
         {
           inputs: [],
@@ -122,6 +122,12 @@ const deployedContracts = {
               name: "endTime",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "startTime",
+              type: "uint256",
+            },
           ],
           name: "AuctionCreated",
           type: "event",
@@ -206,6 +212,37 @@ const deployedContracts = {
             },
           ],
           name: "FeesWithdrawn",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: true,
+              internalType: "address",
+              name: "sender",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "tokenId",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "integral",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
+          ],
+          name: "Integral",
           type: "event",
         },
         {
@@ -787,6 +824,11 @@ const deployedContracts = {
                   name: "bidders",
                   type: "address[]",
                 },
+                {
+                  internalType: "uint256",
+                  name: "startTime",
+                  type: "uint256",
+                },
               ],
               internalType: "struct YourCollectible.Auction[]",
               name: "",
@@ -941,6 +983,11 @@ const deployedContracts = {
                   internalType: "address[]",
                   name: "bidders",
                   type: "address[]",
+                },
+                {
+                  internalType: "uint256",
+                  name: "startTime",
+                  type: "uint256",
                 },
               ],
               internalType: "struct YourCollectible.Auction",
