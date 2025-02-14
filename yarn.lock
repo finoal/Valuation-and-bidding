@@ -1001,6 +1001,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@kurkle/color@npm:^0.3.0":
+  version: 0.3.4
+  resolution: "@kurkle/color@npm:0.3.4"
+  checksum: 10/a15bfb55eec4ff92ee27cdacff54e85c7497ec1f9e8e0e8eaec3d39320cc90b82eb7f716d92792a8235fad1617003c6e0c0d2cd07f6a79b7b138ca17ec5eb6e7
+  languageName: node
+  linkType: hard
+
 "@leichtgewicht/ip-codec@npm:^2.0.1":
   version: 2.0.5
   resolution: "@leichtgewicht/ip-codec@npm:2.0.5"
@@ -2494,6 +2501,7 @@ __metadata:
     autoprefixer: "npm:^10.4.12"
     blo: "npm:^1.0.1"
     burner-connector: "npm:^0.0.5"
+    chart.js: "npm:^4.0.0"
     daisyui: "npm:4.5.0"
     eslint: "npm:^8.15.0"
     eslint-config-next: "npm:^14.0.4"
@@ -2508,6 +2516,7 @@ __metadata:
     prettier: "npm:^2.8.4"
     qrcode.react: "npm:^3.1.0"
     react: "npm:^18.2.0"
+    react-chartjs-2: "npm:^5.0.0"
     react-copy-to-clipboard: "npm:^5.1.0"
     react-dom: "npm:^18.2.0"
     react-hot-toast: "npm:^2.4.0"
@@ -5469,6 +5478,15 @@ __metadata:
   version: 0.0.2
   resolution: "charenc@npm:0.0.2"
   checksum: 10/81dcadbe57e861d527faf6dd3855dc857395a1c4d6781f4847288ab23cffb7b3ee80d57c15bba7252ffe3e5e8019db767757ee7975663ad2ca0939bb8fcaf2e5
+  languageName: node
+  linkType: hard
+
+"chart.js@npm:^4.0.0":
+  version: 4.4.7
+  resolution: "chart.js@npm:4.4.7"
+  dependencies:
+    "@kurkle/color": "npm:^0.3.0"
+  checksum: 10/f80c5e61adf8118d71d189db431f9bf82864e42d19d1c19008afdcf5e8933545f1f8a8662a4e7809f21a518781f12f2242657864c863016303cbf63a2aade72b
   languageName: node
   linkType: hard
 
@@ -12732,6 +12750,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-chartjs-2@npm:^5.0.0":
+  version: 5.3.0
+  resolution: "react-chartjs-2@npm:5.3.0"
+  peerDependencies:
+    chart.js: ^4.1.1
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+  checksum: 10/3cad39fa154be833f9d091ad09f6a630ec1e31cc2536ec63f20ad0e49847b291e7973274df1d30bbae5e5168488789407625cde52c020146b611a47c79092d45
+  languageName: node
+  linkType: hard
+
 "react-copy-to-clipboard@npm:^5.1.0":
   version: 5.1.0
   resolution: "react-copy-to-clipboard@npm:5.1.0"
@@ -13454,12 +13482,14 @@ __metadata:
     "@types/cors": "npm:^2"
     "@types/express": "npm:^4"
     axios: "npm:^1.7.7"
+    chart.js: "npm:^4.0.0"
     cors: "npm:^2.8.5"
     ethers: "npm:^6.13.4"
     express: "npm:^4.21.2"
     husky: "npm:^8.0.1"
     lint-staged: "npm:^13.0.3"
     mysql2: "npm:^3.11.5"
+    react-chartjs-2: "npm:^5.0.0"
     react-router-dom: "npm:^7.1.1"
     web3modal: "npm:^1.9.12"
   languageName: unknown

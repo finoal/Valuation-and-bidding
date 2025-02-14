@@ -16,6 +16,7 @@ export interface Collectible {
   kind?: string; // NFT的类型
   description?: string; // NFT的描述
   image?: string; // NFT的图片URI
+  tokenId?: number; // NFT的tokenId
 }
 
 export const MyHoldings = () => {
@@ -49,6 +50,7 @@ export const MyHoldings = () => {
               isAccredited: nft.isAccredited,
               accreditedCount: nft.accreditedCount,
               ...metadata,
+              tokenId: parseInt(nft.tokenId.toString()),
             };
           }),
         );

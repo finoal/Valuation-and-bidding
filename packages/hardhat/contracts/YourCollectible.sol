@@ -85,11 +85,13 @@ contract YourCollectible is
         uint256 tokenId;
         string messages;
         address owner;
-        bool isApproved;
+        uint256 time;
     }
 
     // 用户注册功能
     mapping(address => User) private  _users; // 用户映射
+    mapping(address => Accrediting) private _Accreditings;
+    mapping(uint256 => Accrediting) private _AccreditById;
     // 鉴定事件 参数 tokenid institution 鉴定机构地址 message 鉴定信息
     event AccreditationPerformed(uint256 indexed tokenId, address indexed institution, string message, uint256 timestamp);
 
@@ -238,9 +240,13 @@ contract YourCollectible is
         //每鉴定一次给予1积分。
         _users[msg.sender].integral += 1;
         emit Integral(msg.sender, tokenId, 1, block.timestamp);
+        _Accreditings[msg.sender] = Accrediting(_users[msg.sender].name,tokenId, message,msg.sender, block.timestamp);
+        _AccreditById[tokenId] = Accrediting(_users[msg.sender].name,tokenId, message,msg.sender, block.timestamp);
         emit AccreditationPerformed(tokenId, msg.sender, message, block.timestamp);
     }
+//通过地址获取鉴定记录
 
+//通过id获取鉴定记录
 
 
 

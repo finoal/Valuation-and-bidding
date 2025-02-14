@@ -55,12 +55,12 @@ export const Header = () => {
           condition: isAuthenticated && !isAccrediting,
           icon: <BugAntIcon className="h-4 w-4" />,
         },
-        {
-          label: "debug", // 用于调试
-          href: "/debug",
-          condition: isAuthenticated && !isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
-        },
+        // {
+        //   label: "debug", // 用于调试
+        //   href: "/debug",
+        //   condition: isAuthenticated && !isAccrediting,
+        //   icon: <UserIcon className="h-4 w-4" />,
+        // },
         {
           label: "查看机构信息",
           href: "/getUserMessage",
@@ -76,6 +76,12 @@ export const Header = () => {
         {
           label: "鉴定",
           href: "/authenticate",
+          condition: isAuthenticated && isAccrediting,
+          icon: <UserIcon className="h-4 w-4" />,
+        },
+        {
+          label: "我的鉴定",
+          href: "/myauthmessage",
           condition: isAuthenticated && isAccrediting,
           icon: <UserIcon className="h-4 w-4" />,
         },

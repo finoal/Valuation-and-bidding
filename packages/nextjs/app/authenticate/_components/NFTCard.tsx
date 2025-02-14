@@ -70,16 +70,15 @@ export const NFTCard = ({
       notification.success("鉴定完成！");
       setIsModalOpen(false);
 
-      // 更新卡片信息
+      // 更新卡片信息，确保使用 BigInt 进行计算
+      const currentCount = BigInt(nft.accreditedCount || 0);
       updateCollectible({
         ...nft,
-        accreditedCount: (nft.accreditedCount || 0) + 1, // 更新鉴定次数
+        accreditedCount: currentCount + BigInt(1), // 使用 BigInt 进行加法运算
       });
 
       // 提示费用分配规则
-      alert(
-        "鉴定完成！请注意：只有该藏品拍卖成功后，参与鉴定的机构将瓜分拍卖价值的 20%。"
-      );
+      alert("鉴定完成！请注意：只有该藏品拍卖成功后，参与鉴定的机构将瓜分拍卖价值的 20%。");
     } catch (error) {
       notification.remove(notificationId);
       notification.error("鉴定失败，请重试！");
@@ -90,10 +89,16 @@ export const NFTCard = ({
   };
   // 封装跳转逻辑，不使用 URL 传参
     const handleNavigateToDetail = (nft: Collectible) => {
-      nft.accreditedCount = Number(nft.accreditedCount);
-      console.log(`NFT 选中,Token ID: ${nft.id}`);
-      // 将选择的 NFT 存储到状态中，之后在详情页面访问
-      localStorage.setItem("selectedNft", JSON.stringify(nft)); // 使用 localStorage 保存数据
+      // 创建一个新对象，将 BigInt 转换为普通数字
+      const nftForStorage = {
+        ...nft,
+        accreditedCount: Number(nft.accreditedCount || 0),
+        id: Number(nft.id),
+        tokenId: Number(nft.tokenId || nft.id)
+      };
+
+      console.log(`NFT 选中,Token ID: ${nftForStorage.id}`);
+      localStorage.setItem("selectedNft", JSON.stringify(nftForStorage));
       router.push(`/nftMessage`);
     };
 
@@ -119,7 +124,7 @@ export const NFTCard = ({
         </div>
         <div className="flex items-center justify-center">
           <p className="text-xl p-0 m-0 font-semibold">
-            被鉴定数 : {Number(nft.accreditedCount)}
+            被鉴定数 : {Number(nft.accreditedCount || 0)}
           </p>
         </div>
         <div className="flex items-center justify-center">

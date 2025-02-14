@@ -5,6 +5,7 @@ import { useScaffoldContract } from "~~/hooks/scaffold-eth";
 import { useAccount } from "wagmi";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { notification } from "~~/utils/scaffold-eth";
+import { useRouter } from "next/navigation";
 
 export interface Institution {
   username: string;
@@ -20,6 +21,7 @@ const AssessInstitution = () => {
   const [institution, setInstitution] = useState<Institution | null>(null); // 单个鉴定机构数据
   const [loading, setLoading] = useState<boolean>(false); // 加载状态
   const [fetchCompleted, setFetchCompleted] = useState<boolean>(false); // 防止重复加载
+  const router = useRouter();
 
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "YourCollectible",
@@ -90,11 +92,24 @@ const AssessInstitution = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-blue-500 to-green-500 p-8">
-      <h1 className="text-4xl font-bold text-center text-white mb-8">鉴定机构信息展示</h1>
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-4xl font-bold text-center text-white">鉴定机构信息展示</h1>
+        {/* <button 
+          className="btn btn-primary" 
+          onClick={() => window.history.back()}
+        >
+          返回
+        </button> */}
+      </div>
       <div className="bg-white shadow-xl rounded-xl p-6 max-w-md mx-auto">
         <h2 className="text-2xl font-bold mb-2">{institution.username}</h2>
         <p className="text-gray-700 mb-4">{institution.description}</p>
-        <p className="text-lg font-medium text-blue-600 mb-4">积分: {institution.integral}</p>
+        <div 
+          className="text-lg font-medium text-blue-600 mb-4 cursor-pointer hover:text-blue-800"
+          onClick={() => router.push('/integral')}
+        >
+          积分: {institution.integral}
+        </div>
         <p className="text-gray-700 mb-4">
           机构名称：{institution.name == "" ? "未添加机构名称信息" : institution.name}
         </p>
