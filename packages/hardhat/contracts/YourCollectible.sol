@@ -196,7 +196,7 @@ contract YourCollectible is
 
     //设置鉴定状态，只有鉴定状态为ture时，鉴定机构才可以进行鉴定
     function modiyAccredited(uint256 tokenId, bool isAccredited) public {
-        require(ownerOf(tokenId) == msg.sender, "You are not the owner");
+        require(ownerOf(tokenId) == msg.sender || isAuthorizedForAuction(tokenId, msg.sender), "You are not the owner or authorized");
         _idToNftItem[tokenId].isAccredited = isAccredited;
     }
 
@@ -250,80 +250,80 @@ contract YourCollectible is
 
 
 
-    function placeNftOnSale(uint256 tokenId, uint256 price) external payable { // 上架NFT
-        require(price > 0, "Price must be greater than 0");
-        require(ownerOf(tokenId) == msg.sender, "You are not the owner");
-        require(!_idToNftItem[tokenId].isListed, "NFT is already listed");
+    // function placeNftOnSale(uint256 tokenId, uint256 price) external payable { // 上架NFT
+    //     require(price > 0, "Price must be greater than 0");
+    //     require(ownerOf(tokenId) == msg.sender, "You are not the owner");
+    //     require(!_idToNftItem[tokenId].isListed, "NFT is already listed");
 
-        uint256 listingFee = calculateListingFee(price);
-        require(msg.value >= listingFee, "Insufficient listing fee");
+    //     uint256 listingFee = calculateListingFee(price);
+    //     require(msg.value >= listingFee, "Insufficient listing fee");
 
-        _idToNftItem[tokenId] = NftItem({
-            tokenId: tokenId,
-            price: price,
-            seller: payable(msg.sender),
-            isListed: true,
-            tokenUri: tokenURI(tokenId),
-            isAccredited: _idToNftItem[tokenId].isAccredited,
-            accreditedCount: _idToNftItem[tokenId].accreditedCount,
-            accreditedInstitutions: _idToNftItem[tokenId].accreditedInstitutions
-        });
+    //     _idToNftItem[tokenId] = NftItem({
+    //         tokenId: tokenId,
+    //         price: price,
+    //         seller: payable(msg.sender),
+    //         isListed: true,
+    //         tokenUri: tokenURI(tokenId),
+    //         isAccredited: _idToNftItem[tokenId].isAccredited,
+    //         accreditedCount: _idToNftItem[tokenId].accreditedCount,
+    //         accreditedInstitutions: _idToNftItem[tokenId].accreditedInstitutions
+    //     });
 
-        _listedTokenIds.push(tokenId);
-        _tokenIdToListedIndex[tokenId] = _listedTokenIds.length - 1;
+    //     _listedTokenIds.push(tokenId);
+    //     _tokenIdToListedIndex[tokenId] = _listedTokenIds.length - 1;
 
-        uint256 transactionId = _transactionCounter.current();
-        _transactionCounter.increment();
+    //     uint256 transactionId = _transactionCounter.current();
+    //     _transactionCounter.increment();
 
-        emit NftListed(tokenId, msg.sender, price, block.timestamp, transactionId);
-    }
+    //     emit NftListed(tokenId, msg.sender, price, block.timestamp, transactionId);
+    // }
 
-    function unlistNft(uint256 tokenId) external {
-        NftItem storage item = _idToNftItem[tokenId];
-        require(item.isListed, "NFT is not listed");
-        require(item.seller == msg.sender, "You are not the seller");
-        item.isListed = false;
-        item.price = 0;
-        item.seller = payable(address(0));
+    // function unlistNft(uint256 tokenId) external {
+    //     NftItem storage item = _idToNftItem[tokenId];
+    //     require(item.isListed, "NFT is not listed");
+    //     require(item.seller == msg.sender, "You are not the seller");
+    //     item.isListed = false;
+    //     item.price = 0;
+    //     item.seller = payable(address(0));
 
-        _removeFromListed(tokenId);
+    //     _removeFromListed(tokenId);
 
-        uint256 transactionId = _transactionCounter.current();
-        _transactionCounter.increment();
+    //     uint256 transactionId = _transactionCounter.current();
+    //     _transactionCounter.increment();
 
-        emit NftUnlisted(transactionId,tokenId, msg.sender, block.timestamp);
-    }
+    //     emit NftUnlisted(transactionId,tokenId, msg.sender, block.timestamp);
+    // }
 
-    function purchaseNft(uint256 tokenId) external payable nonReentrant { // 购买NFT
-        NftItem storage item = _idToNftItem[tokenId];
-        require(item.isListed, "NFT is not listed for sale");
-        require(msg.value >= item.price, "Insufficient payment");
-        require(item.seller != msg.sender, "Cannot purchase your own NFT");
+    // function purchaseNft(uint256 tokenId) external payable nonReentrant { // 购买NFT
+    //     NftItem storage item = _idToNftItem[tokenId];
+    //     require(item.isListed, "NFT is not listed for sale");
+    //     require(msg.value >= item.price, "Insufficient payment");
+    //     require(item.seller != msg.sender, "Cannot purchase your own NFT");
 
-        _transfer(item.seller, msg.sender, tokenId);
+    //     _transfer(item.seller, msg.sender, tokenId);
 
-        payable(item.seller).transfer(item.price);
+    //     payable(item.seller).transfer(item.price);
 
-        (address creator, uint256 royaltyAmount) = royaltyInfo(tokenId, msg.value);
-        uint256 transactionId = _transactionCounter.current();
-        if (royaltyAmount > 0) {
-            payable(creator).transfer(royaltyAmount);
-            _transactionCounter.increment();
+    //     (address creator, uint256 royaltyAmount) = royaltyInfo(tokenId, msg.value);
+    //     uint256 transactionId = _transactionCounter.current();
+    //     if (royaltyAmount > 0) {
+    //         payable(creator).transfer(royaltyAmount);
+    //         _transactionCounter.increment();
 
-            emit RoyaltyPaid(transactionId, tokenId, creator, royaltyAmount, block.timestamp);
-        }
+    //         emit RoyaltyPaid(transactionId, tokenId, creator, royaltyAmount, block.timestamp);
+    //     }
 
         
-        _transactionCounter.increment();
+    //     _transactionCounter.increment();
 
-        emit NftPurchased(tokenId, msg.sender, item.seller, item.price, block.timestamp, transactionId);
+    //     emit NftPurchased(tokenId, msg.sender, item.seller, item.price, block.timestamp, transactionId);
 
-        item.isListed = false;
-        item.seller = payable(address(0));
-        item.price = 0;
+    //     item.isListed = false;
+    //     item.seller = payable(address(0));
+    //     item.price = 0;
 
-        _removeFromListed(tokenId);
-    }
+    //     _removeFromListed(tokenId);
+    // }
 
     event TransactionRecord(address indexed buyer, address indexed seller, uint256 tokenId, uint256 amount, uint256 timestamp, uint256 transactionId);
 
@@ -338,33 +338,33 @@ contract YourCollectible is
         emit ListingFeePercentageUpdated(_newListingFeePercentage);
     }
 
-    function getListedItemsCount() external view returns (uint256) { // 获取已上架NFT数量
-        return _listedTokenIds.length;
-    }
+    // function getListedItemsCount() external view returns (uint256) { // 获取已上架NFT数量
+    //     return _listedTokenIds.length;
+    // }
 
-    function _removeFromListed(uint256 tokenId) internal { // 从已上架NFT列表中移除
-        uint256 lastIndex = _listedTokenIds.length - 1;
-        uint256 index = _tokenIdToListedIndex[tokenId];
+    // function _removeFromListed(uint256 tokenId) internal { // 从已上架NFT列表中移除
+    //     uint256 lastIndex = _listedTokenIds.length - 1;
+    //     uint256 index = _tokenIdToListedIndex[tokenId];
 
-        uint256 lastTokenId = _listedTokenIds[lastIndex];
-        _listedTokenIds[index] = lastTokenId;
-        _tokenIdToListedIndex[lastTokenId] = index;
+    //     uint256 lastTokenId = _listedTokenIds[lastIndex];
+    //     _listedTokenIds[index] = lastTokenId;
+    //     _tokenIdToListedIndex[lastTokenId] = index;
 
-        _listedTokenIds.pop();
-        delete _tokenIdToListedIndex[tokenId];
-    }
+    //     _listedTokenIds.pop();
+    //     delete _tokenIdToListedIndex[tokenId];
+    // }
 
-    function getAllListedNfts() external view returns (NftItem[] memory) { // 获取所有已上架NFT
-        uint256 totalListed = _listedTokenIds.length;
-        NftItem[] memory items = new NftItem[](totalListed);
+    // function getAllListedNfts() external view returns (NftItem[] memory) { // 获取所有已上架NFT
+    //     uint256 totalListed = _listedTokenIds.length;
+    //     NftItem[] memory items = new NftItem[](totalListed);
 
-        for (uint256 i = 0; i < totalListed; ++i) {
-            uint256 tokenId = _listedTokenIds[i];
-            items[i] = _idToNftItem[tokenId];
-        }
+    //     for (uint256 i = 0; i < totalListed; ++i) {
+    //         uint256 tokenId = _listedTokenIds[i];
+    //         items[i] = _idToNftItem[tokenId];
+    //     }
 
-        return items;
-    }
+    //     return items;
+    // }
     
     function calculateListingFee(uint256 priceInWei) public view returns (uint256) { // 计算拍卖手续费
         return (priceInWei * listingFeePercentage) / 10000;
@@ -437,6 +437,96 @@ contract YourCollectible is
     // 使用映射存储所有拍卖，以Token ID为键
     mapping(uint256 => Auction) private _auctions;
 
+    // 授权映射：tokenId => 被授权地址 => 是否授权
+    mapping(uint256 => mapping(address => bool)) private _auctionAuthorized;
+
+    
+    // 授权地址列表：tokenId => 授权地址数组
+    mapping(uint256 => address[]) private _authorizedAddresses;
+    
+    // 反向映射：地址 => 被授权的tokenId数组
+    mapping(address => uint256[]) private _addressToAuthorizedTokenIds;
+
+    // 授权事件
+    event AuctionAuthorized(uint256 indexed tokenId, address indexed owner, address indexed authorized);
+    event AuctionAuthorizationRevoked(uint256 indexed tokenId, address indexed owner, address indexed authorized);
+
+    // 授权用户结束拍卖的权限
+    function authorizeAuctionEnder(uint256 tokenId, address user) public {
+        require(ownerOf(tokenId) == msg.sender, "Not the token owner");
+        require(user != address(0), "Invalid user address");
+        require(!_auctionAuthorized[tokenId][user], "Address already authorized");
+        _auctionAuthorized[tokenId][user] = true;
+        _authorizedAddresses[tokenId].push(user); // 添加到授权地址列表
+        _addressToAuthorizedTokenIds[user].push(tokenId); // 添加到反向映射
+        emit AuctionAuthorized(tokenId, msg.sender, user);
+    }
+
+    // 撤销用户的授权
+    function revokeAuctionAuthorization(uint256 tokenId, address user) public {
+        require(ownerOf(tokenId) == msg.sender, "Not the token owner");
+        require(user != address(0), "Invalid user address");
+        _auctionAuthorized[tokenId][user] = false;
+         // 从授权地址列表中移除
+        for (uint256 i = 0; i < _authorizedAddresses[tokenId].length; i++) {
+            if (_authorizedAddresses[tokenId][i] == user) {
+                _authorizedAddresses[tokenId][i] = _authorizedAddresses[tokenId][_authorizedAddresses[tokenId].length - 1];
+                _authorizedAddresses[tokenId].pop();
+                break;
+            }
+        }
+        // 从反向映射中移除
+        for (uint256 i = 0; i < _addressToAuthorizedTokenIds[user].length; i++) {
+            if (_addressToAuthorizedTokenIds[user][i] == tokenId) {
+                _addressToAuthorizedTokenIds[user][i] = _addressToAuthorizedTokenIds[user][_addressToAuthorizedTokenIds[user].length - 1];
+                _addressToAuthorizedTokenIds[user].pop();
+                break;
+            }
+        }
+        emit AuctionAuthorizationRevoked(tokenId, msg.sender, user);
+    }
+
+    // 检查用户是否被授权
+    function isAuthorizedForAuction(uint256 tokenId, address user) public view returns (bool) {
+        return _auctionAuthorized[tokenId][user];
+    }
+
+    // 获取特定 NFT 的所有授权地址
+    function getAuthorizedAddresses(uint256 tokenId) public view returns (address[] memory) {
+        return _authorizedAddresses[tokenId];
+    }
+    
+    // 获取特定地址被授权的所有 tokenId
+    function getAuthorizedTokenIds(address user) public view returns (uint256[] memory) {
+        return _addressToAuthorizedTokenIds[user];
+    }
+
+    // 获取特定地址被授权的所有 tokenId
+    function getAuthorizedTokenIds() public view returns (uint256[] memory) {
+        return _addressToAuthorizedTokenIds[msg.sender];
+    }
+
+    // 清除NFT的所有授权
+    function _clearAuctionAuthorizations(uint256 tokenId) internal {
+        address[] storage authorizedUsers = _authorizedAddresses[tokenId];
+        for (uint256 i = 0; i < authorizedUsers.length; i++) {
+            address user = authorizedUsers[i];
+            _auctionAuthorized[tokenId][user] = false;
+            
+            // 从反向映射中移除
+            for (uint256 j = 0; j < _addressToAuthorizedTokenIds[user].length; j++) {
+                if (_addressToAuthorizedTokenIds[user][j] == tokenId) {
+                    _addressToAuthorizedTokenIds[user][j] = _addressToAuthorizedTokenIds[user][_addressToAuthorizedTokenIds[user].length - 1];
+                    _addressToAuthorizedTokenIds[user].pop();
+                    break;
+                }
+            }
+        }
+        delete _authorizedAddresses[tokenId];   
+    }
+    
+
+
     // 事件，用于记录拍卖相关活动
     //创建拍卖
     event AuctionCreated(uint256 indexed tokenId, address indexed seller, uint256 startPrice, uint256 endTime, uint256 startTime);
@@ -454,7 +544,7 @@ contract YourCollectible is
      */
     function createAuction(uint256 tokenId,string memory uri, uint256 startPrice, uint256 blocktime) external payable {
     // 确保调用者是NFT的当前持有者
-    require(ownerOf(tokenId) == msg.sender, "You are not the owner");
+    require(ownerOf(tokenId) == msg.sender || isAuthorizedForAuction(tokenId, msg.sender), "You are not the owner or authorized");
 
     // 确保该NFT当前没有进行中的拍卖
     require(!_auctions[tokenId].isActive, "Auction already active for this token");
@@ -552,9 +642,22 @@ contract YourCollectible is
      * @dev 结束拍卖并完成交易
      * @param tokenId 拍卖的NFT的Token ID
      */
-    // 更新拍卖逻辑，加入鉴定机构分成
-    function endAuction(uint256 tokenId) external {
+    // 修改结束拍卖函数
+    function endAuction(uint256 tokenId, uint256 currentTime) external {
         require(_auctions[tokenId].isActive, "Auction is not active");
+        require(
+            currentTime >= _auctions[tokenId].endTime,
+            string(abi.encodePacked("Auction has not ended yet. Current time: ", uint2str(currentTime), ", End time: ", uint2str(_auctions[tokenId].endTime)))
+        );
+        
+        // require(
+        //     block.timestamp >= _auctions[tokenId].endTime,
+        //     "Auction has not ended yet"
+        // );
+        require(
+            ownerOf(tokenId) == msg.sender || _auctionAuthorized[tokenId][msg.sender],
+            "Not authorized to end auction"
+        );
 
         _auctions[tokenId].isActive = false;
 
@@ -562,7 +665,6 @@ contract YourCollectible is
             uint256 highestBid = _auctions[tokenId].highestBid;
             uint256 sellerAmount = highestBid;
             if (_auctions[tokenId].isroyalty) {
-
                 // 获取初始创建者和版税金额
                 (address creator, uint256 royaltyAmount) = royaltyInfo(tokenId, highestBid);
 
@@ -575,7 +677,6 @@ contract YourCollectible is
                     _transactionCounter.increment();
                     emit RoyaltyPaid(transactionId, tokenId, creator, royaltyAmount, block.timestamp);
                 }
-                
             }
             uint256 institutionFee = (highestBid * 20) / 100; // 20%鉴定费
             sellerAmount = sellerAmount - institutionFee;
@@ -591,6 +692,9 @@ contract YourCollectible is
             // 转账给卖家
             _auctions[tokenId].seller.transfer(sellerAmount);
 
+            // 在转移NFT之前清除所有授权
+            _clearAuctionAuthorizations(tokenId);
+            
             // 转移NFT所有权
             _transfer(_auctions[tokenId].seller, _auctions[tokenId].highestBidder, tokenId);
 
@@ -598,6 +702,17 @@ contract YourCollectible is
         } else {
             emit AuctionEnded(tokenId, address(0), 0);
         }
+    }
+
+    // 重写 _transfer 函数以确保在转移时清除授权
+    function _transfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal virtual override {
+        super._transfer(from, to, tokenId);
+        // 清除该NFT的所有授权
+        _clearAuctionAuthorizations(tokenId);
     }
 
     // 查看拍卖信息函数
@@ -639,6 +754,29 @@ contract YourCollectible is
         }
 
         return allAuctions;
+    }
+
+    // //获取当前时间戳
+    // function getTime(uint256 endTime) public view returns (uint256, uint256) {
+    //     return (block.timestamp, endTime);
+    // }
+
+        function uint2str(uint256 _i) internal pure returns (string memory) {
+        if (_i == 0) return "0";
+        uint256 j = _i;
+        uint256 length;
+        while (j != 0) {
+            length++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(length);
+        uint256 k = length;
+        j = _i;
+        while (j != 0) {
+            bstr[--k] = bytes1(uint8(48 + j % 10));
+            j /= 10;
+        }
+        return string(bstr);
     }
 
 }

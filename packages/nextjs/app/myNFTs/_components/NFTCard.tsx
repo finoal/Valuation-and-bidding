@@ -5,10 +5,12 @@ import { Collectible } from "./MyHoldings";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
+import { useRouter } from "next/navigation"; // 页面跳转
 
 export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCollectible: (updatedNft: Collectible) => void }) => {
   // };
   // export const NFTCard = ({ nft }: { nft: Collectible }) => {
+  const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false); // 控制弹窗显示状态
   const [startPrice, setStartPrice] = useState(0);
   const [selectedDateTime, setSelectedDateTime] = useState<string>("");
@@ -53,12 +55,11 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     const notificationId = notification.loading("正在结束拍卖...");
     try {
       const now = Math.floor(Date.now() / 1000); // 当前时间戳（秒）
-      if (now < Number(auction?.endTime)) {
-        await writeContractAsync({
-          functionName: "endAuction",
-          args: [BigInt(nft.id.toString())],
-        });
-      }
+
+      await writeContractAsync({
+        functionName: "endAuction",
+        args: [BigInt(nft.id.toString()), BigInt(now)],
+      });
 
       notification.remove(notificationId);
       notification.success("拍卖成功结束！");
@@ -92,14 +93,23 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     }
   };
 
+  // 封装跳转逻辑
+  const handleNavigateToDetail = (nft: number) => {
+    console.log(`NFT 选中, Token ID: ${nft}`);
+    localStorage.setItem("selectedNft", JSON.stringify(nft));
+    router.push(`/userAuth`);
+  };
+
   return (
     <div className="card card-compact bg-base-100 shadow-lg w-[300px] shadow-secondary">
-      <figure className="relative">
-        <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-        <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-          <span className="text-white "># {nft.id}</span>
-        </figcaption>
-      </figure>
+      <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft.id)}>
+        <figure className="relative">
+          <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
+          <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
+            <span className="text-white "># {nft.id}</span>
+          </figcaption>
+        </figure>
+      </div>
       <div className="card-body space-y-3">
         <div className="flex items-center justify-center">
           <p className="text-xl p-0 m-0 font-semibold">名称 : {nft.name}</p>

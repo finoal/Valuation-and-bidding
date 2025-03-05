@@ -86,6 +86,12 @@ export const Header = () => {
           icon: <UserIcon className="h-4 w-4" />,
         },
         {
+          label: "我的授权",
+          href: "/power",
+          condition: isAuthenticated,
+          icon: <UserIcon className="h-4 w-4" />,
+        },
+        {
           label: "注销", // 退出登录
           href: "", // 避免 href 冲突，全部由 onClick 控制
           condition: isAuthenticated, // 登录状态时显示

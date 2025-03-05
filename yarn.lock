@@ -4129,7 +4129,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/modal-ui@npm:2.7.0":
+"@walletconnect/modal-ui@npm:2.7.0, @walletconnect/modal-ui@npm:^2.7.0":
   version: 2.7.0
   resolution: "@walletconnect/modal-ui@npm:2.7.0"
   dependencies:
@@ -13481,6 +13481,7 @@ __metadata:
     "@openzeppelin/contracts": "npm:^5.1.0"
     "@types/cors": "npm:^2"
     "@types/express": "npm:^4"
+    "@walletconnect/modal-ui": "npm:^2.7.0"
     axios: "npm:^1.7.7"
     chart.js: "npm:^4.0.0"
     cors: "npm:^2.8.5"

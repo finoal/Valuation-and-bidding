@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.1.0",
+    "@walletconnect/modal-ui": "^2.7.0",
     "axios": "^1.7.7",
     "chart.js": "^4.0.0",
     "cors": "^2.8.5",
