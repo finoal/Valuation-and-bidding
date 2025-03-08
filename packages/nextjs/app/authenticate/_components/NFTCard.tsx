@@ -103,46 +103,47 @@ export const NFTCard = ({
     };
 
   return (
-    <div className="card card-compact bg-base-100 shadow-lg w-[300px] shadow-secondary">
+    <div className="card card-compact bg-base-100 shadow-lg w-[300px] h-[550px] shadow-secondary hover:shadow-xl transition-shadow duration-300">
       <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft)}>
-      <figure className="relative">
-        <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-        <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-          <span className="text-white "># {nft.id}</span>
-        </figcaption>
-      </figure>
+        <figure className="relative h-[180px] overflow-hidden">
+          <img src={nft.image} alt="NFT Image" className="w-full h-full object-cover" />
+          <figcaption className="glass absolute bottom-4 left-4 p-4 rounded-xl backdrop-blur-sm">
+            <span className="text-white font-semibold"># {nft.id}</span>
+          </figcaption>
+        </figure>
       </div>
-      <div className="card-body space-y-3">
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">名称 : {nft.name}</p>
-        </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">种类 : {nft.kind}</p>
-        </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">描述 : {nft.description}</p>
-        </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">
-            被鉴定数 : {Number(nft.accreditedCount || 0)}
-          </p>
-        </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">
-            所有人 : <Address address={nft.owner} />
-          </p>
+      <div className="card-body flex flex-col h-[370px] p-4">
+        <div className="flex-grow space-y-2">
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold truncate w-full">名称 : {nft.name}</p>
+          </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold truncate w-full">种类 : {nft.kind}</p>
+          </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold break-words line-clamp-3">描述 : {nft.description}</p>
+          </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold">
+              被鉴定数 : {Number(nft.accreditedCount || 0)}
+            </p>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg font-semibold">所有人 : </span>
+            <Address address={nft.owner} />
+          </div>
         </div>
 
-        {/* 发起鉴定按钮 */}
-        <button
-          className="btn btn-primary mt-4"
-          onClick={() => setIsModalOpen(true)}
-        >
-          开始鉴定
-        </button>
+        <div className="mt-auto space-y-2 w-full">
+          <button
+            className="btn btn-primary w-full hover:bg-opacity-90 transition-colors duration-300"
+            onClick={() => setIsModalOpen(true)}
+          >
+            开始鉴定
+          </button>
+        </div>
       </div>
 
-      {/* 鉴定信息弹窗 */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">

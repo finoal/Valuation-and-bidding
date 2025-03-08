@@ -114,7 +114,7 @@ const AssessInstitution = () => {
           机构名称：{institution.name == "" ? "未添加机构名称信息" : institution.name}
         </p>
         <p className="text-gray-700 mb-4">机构介绍：{institution.desc}</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">证书信息:
           {institution.certificate.length > 0 ? (
             institution.certificate.map((image, idx) => (
               <img

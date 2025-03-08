@@ -1,0 +1,6173 @@
+[
+  {
+    "id": "NFT_jy9gik75z",
+    "name": "抽象主义·元宇宙场景",
+    "kind": "AI生成艺术",
+    "description": "这是一幅极具代表性的AI生成艺术作品，采用抽象主义风格，展现了元宇宙场景的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "3870000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1737355143170,
+    "lastUpdated": 1738729924976,
+    "views": 4511,
+    "likes": 732,
+    "shares": 480
+  },
+  {
+    "id": "NFT_26wj7bjh5",
+    "name": "复古未来主义·城市景观",
+    "kind": "数字艺术",
+    "description": "这件数字艺术作品融合了复古未来主义元素，围绕城市景观展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "4080000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "129800000000000000",
+        "timestamp": 1741334792790
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "164274880000000000",
+        "timestamp": 1741299871500
+      },
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "146674000000000000",
+        "timestamp": 1741060192711
+      },
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "110000000000000000",
+        "timestamp": 1740933803231
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1736394597893,
+    "lastUpdated": 1736609208424,
+    "views": 6022,
+    "likes": 584,
+    "shares": 384
+  },
+  {
+    "id": "NFT_dxdgpte60",
+    "name": "表现主义·抽象概念",
+    "kind": "虚拟现实艺术",
+    "description": "这是一件关于抽象概念的虚拟现实艺术作品，艺术家采用表现主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "9880000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739862901025
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739582756969
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1740305678824
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "抽象概念"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1724049466299,
+    "lastUpdated": 1725375789794,
+    "views": 5846,
+    "likes": 226,
+    "shares": 347
+  },
+  {
+    "id": "NFT_cy6jhwunm",
+    "name": "古典主义·区块链",
+    "kind": "AI生成艺术",
+    "description": "这是一件关于区块链的AI生成艺术作品，艺术家采用古典主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "5950000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1740201914500
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740254158126
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1740744513603,
+    "lastUpdated": 1740857511711,
+    "views": 8033,
+    "likes": 917,
+    "shares": 159
+  },
+  {
+    "id": "NFT_1i6v74esk",
+    "name": "超现实主义·虚拟空间",
+    "kind": "NFT艺术",
+    "description": "艺术家通过NFT艺术的形式，以超现实主义的手法诠释了虚拟空间。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "8300000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1721502221609,
+    "lastUpdated": 1721556368661,
+    "views": 3038,
+    "likes": 19,
+    "shares": 374
+  },
+  {
+    "id": "NFT_v7suw9yp0",
+    "name": "古典主义·自然风光",
+    "kind": "版画",
+    "description": "这是一幅极具代表性的版画作品，采用古典主义风格，展现了自然风光的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "4410000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1710926639016,
+    "lastUpdated": 1712920820868,
+    "views": 9749,
+    "likes": 738,
+    "shares": 13
+  },
+  {
+    "id": "NFT_rtrg0rrgu",
+    "name": "波普艺术·社会议题",
+    "kind": "虚拟现实艺术",
+    "description": "这件虚拟现实艺术作品融合了波普艺术元素，围绕社会议题展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "710000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1738756879698
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1740272233654
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1719080833617,
+    "lastUpdated": 1721451716207,
+    "views": 5386,
+    "likes": 116,
+    "shares": 391
+  },
+  {
+    "id": "NFT_d2ne069n6",
+    "name": "波普艺术·历史文化",
+    "kind": "交互式艺术",
+    "description": "艺术家通过交互式艺术的形式，以波普艺术的手法诠释了历史文化。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "4680000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1740486087204,
+    "lastUpdated": 1741850857483,
+    "views": 5463,
+    "likes": 779,
+    "shares": 319
+  },
+  {
+    "id": "NFT_tzsq7ehwh",
+    "name": "赛博朋克·历史文化",
+    "kind": "AI生成艺术",
+    "description": "这是一幅极具代表性的AI生成艺术作品，采用赛博朋克风格，展现了历史文化的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "8400000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1710256837458,
+    "lastUpdated": 1710275476320,
+    "views": 5195,
+    "likes": 349,
+    "shares": 236
+  },
+  {
+    "id": "NFT_9lkjrhh9x",
+    "name": "未来主义·人工智能",
+    "kind": "版画",
+    "description": "这件版画作品融合了未来主义元素，围绕人工智能展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "6780000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739524279416
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1739260735056
+      },
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739671652241
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1720527957612,
+    "lastUpdated": 1721350870459,
+    "views": 8290,
+    "likes": 187,
+    "shares": 20
+  },
+  {
+    "id": "NFT_69ogmo3ns",
+    "name": "印象派·城市景观",
+    "kind": "数字艺术",
+    "description": "艺术家通过数字艺术的形式，以印象派的手法诠释了城市景观。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "4230000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1741155973435
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1738999162849
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1740647910252
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "印象派"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1719762453984,
+    "lastUpdated": 1721764188817,
+    "views": 7335,
+    "likes": 681,
+    "shares": 416
+  },
+  {
+    "id": "NFT_8l9qx954c",
+    "name": "赛博朋克·数字身份",
+    "kind": "版画",
+    "description": "这是一幅极具代表性的版画作品，采用赛博朋克风格，展现了数字身份的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "4560000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "数字身份"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1718205295815,
+    "lastUpdated": 1719092741439,
+    "views": 6218,
+    "likes": 289,
+    "shares": 394
+  },
+  {
+    "id": "NFT_y94pk9q1p",
+    "name": "后现代主义·科技未来",
+    "kind": "中国画",
+    "description": "这是一幅极具代表性的中国画作品，采用后现代主义风格，展现了科技未来的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "900000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "中国画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "科技未来"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1738387668358,
+    "lastUpdated": 1740359261157,
+    "views": 6223,
+    "likes": 894,
+    "shares": 480
+  },
+  {
+    "id": "NFT_jjm37ocdm",
+    "name": "超现实主义·区块链",
+    "kind": "增强现实艺术",
+    "description": "这是一幅极具代表性的增强现实艺术作品，采用超现实主义风格，展现了区块链的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "910000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "169037000000000000",
+        "timestamp": 1741297398337
+      },
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "121000000000000000",
+        "timestamp": 1741074903550
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "133100000000000000",
+        "timestamp": 1740985574904
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1733572355624,
+    "lastUpdated": 1735217057763,
+    "views": 9521,
+    "likes": 365,
+    "shares": 431
+  },
+  {
+    "id": "NFT_ra5igu7rg",
+    "name": "复古未来主义·区块链",
+    "kind": "摄影作品",
+    "description": "作品以摄影作品为载体，运用复古未来主义的表现方式，深入探讨了区块链的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "7190000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740273599132
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1709865955261,
+    "lastUpdated": 1712030128955,
+    "views": 7017,
+    "likes": 903,
+    "shares": 37
+  },
+  {
+    "id": "NFT_qugc1507e",
+    "name": "极简主义·虚拟空间",
+    "kind": "元宇宙艺术",
+    "description": "这是一件关于虚拟空间的元宇宙艺术作品，艺术家采用极简主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "6870000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "元宇宙艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1718475571888,
+    "lastUpdated": 1720316699255,
+    "views": 9054,
+    "likes": 54,
+    "shares": 66
+  },
+  {
+    "id": "NFT_ddpa62z26",
+    "name": "极简主义·抽象概念",
+    "kind": "NFT艺术",
+    "description": "这是一件关于抽象概念的NFT艺术作品，艺术家采用极简主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "9550000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739656115052
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1739167398777
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739284532252
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "抽象概念"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1735119959379,
+    "lastUpdated": 1736202578129,
+    "views": 5607,
+    "likes": 76,
+    "shares": 126
+  },
+  {
+    "id": "NFT_seev397u2",
+    "name": "赛博朋克·人工智能",
+    "kind": "数字艺术",
+    "description": "这件数字艺术作品融合了赛博朋克元素，围绕人工智能展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "2460000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1725875126408,
+    "lastUpdated": 1726963311247,
+    "views": 9901,
+    "likes": 859,
+    "shares": 276
+  },
+  {
+    "id": "NFT_afj6rm2u9",
+    "name": "后现代主义·历史文化",
+    "kind": "AI生成艺术",
+    "description": "这是一幅极具代表性的AI生成艺术作品，采用后现代主义风格，展现了历史文化的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "7560000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1741292482195
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1710455975890,
+    "lastUpdated": 1710876638523,
+    "views": 4007,
+    "likes": 44,
+    "shares": 310
+  },
+  {
+    "id": "NFT_10vjn8uta",
+    "name": "后现代主义·城市景观",
+    "kind": "元宇宙艺术",
+    "description": "艺术家通过元宇宙艺术的形式，以后现代主义的手法诠释了城市景观。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "9370000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "142600000000000000",
+        "timestamp": 1741025356094
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "176824000000000000",
+        "timestamp": 1740943158159
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "124000000000000000",
+        "timestamp": 1740893414418
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "元宇宙艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1727443263910,
+    "lastUpdated": 1729061142015,
+    "views": 58,
+    "likes": 468,
+    "shares": 416
+  },
+  {
+    "id": "NFT_6j7x2e7eq",
+    "name": "新水墨·环境保护",
+    "kind": "交互式艺术",
+    "description": "这是一件关于环境保护的交互式艺术作品，艺术家采用新水墨的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "9930000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "新水墨"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1715549735529,
+    "lastUpdated": 1718110163509,
+    "views": 2395,
+    "likes": 70,
+    "shares": 49
+  },
+  {
+    "id": "NFT_ac09r2pj8",
+    "name": "超现实主义·元宇宙场景",
+    "kind": "AI生成艺术",
+    "description": "这是一幅极具代表性的AI生成艺术作品，采用超现实主义风格，展现了元宇宙场景的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "5100000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1713935216356,
+    "lastUpdated": 1715407592587,
+    "views": 2196,
+    "likes": 241,
+    "shares": 77
+  },
+  {
+    "id": "NFT_yk5x1bbyq",
+    "name": "像素艺术·自然风光",
+    "kind": "水彩画",
+    "description": "这是一幅极具代表性的水彩画作品，采用像素艺术风格，展现了自然风光的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "1010000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739332410054
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "水彩画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "像素艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1729646571772,
+    "lastUpdated": 1731260660445,
+    "views": 2103,
+    "likes": 109,
+    "shares": 4
+  },
+  {
+    "id": "NFT_p71djlvgl",
+    "name": "印象派·元宇宙场景",
+    "kind": "版画",
+    "description": "作品以版画为载体，运用印象派的表现方式，深入探讨了元宇宙场景的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "2980000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739577950465
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "印象派"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1722712060848,
+    "lastUpdated": 1722820576276,
+    "views": 2098,
+    "likes": 140,
+    "shares": 381
+  },
+  {
+    "id": "NFT_quhrvm36j",
+    "name": "超现实主义·历史文化",
+    "kind": "元宇宙艺术",
+    "description": "这件元宇宙艺术作品融合了超现实主义元素，围绕历史文化展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "240000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "124000000000000000",
+        "timestamp": 1741257702365
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "元宇宙艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1711683431411,
+    "lastUpdated": 1713510066516,
+    "views": 1389,
+    "likes": 955,
+    "shares": 416
+  },
+  {
+    "id": "NFT_7nsc69eaj",
+    "name": "超现实主义·民族特色",
+    "kind": "AI生成艺术",
+    "description": "这件AI生成艺术作品融合了超现实主义元素，围绕民族特色展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "400000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "民族特色"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1739375740369,
+    "lastUpdated": 1740699627230,
+    "views": 9119,
+    "likes": 487,
+    "shares": 40
+  },
+  {
+    "id": "NFT_qmxzso8eq",
+    "name": "波普艺术·城市景观",
+    "kind": "数字艺术",
+    "description": "作品以数字艺术为载体，运用波普艺术的表现方式，深入探讨了城市景观的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "2570000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1718465657687,
+    "lastUpdated": 1719537368490,
+    "views": 658,
+    "likes": 979,
+    "shares": 269
+  },
+  {
+    "id": "NFT_sy8n4u3g6",
+    "name": "像素艺术·环境保护",
+    "kind": "摄影作品",
+    "description": "这是一幅极具代表性的摄影作品作品，采用像素艺术风格，展现了环境保护的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "5740000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "121000000000000000",
+        "timestamp": 1741275193741
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "像素艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1737747120551,
+    "lastUpdated": 1738874376358,
+    "views": 3134,
+    "likes": 339,
+    "shares": 291
+  },
+  {
+    "id": "NFT_6po5x739k",
+    "name": "写实主义·元宇宙场景",
+    "kind": "版画",
+    "description": "这件版画作品融合了写实主义元素，围绕元宇宙场景展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "5650000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1734154018363,
+    "lastUpdated": 1736733261430,
+    "views": 1906,
+    "likes": 998,
+    "shares": 487
+  },
+  {
+    "id": "NFT_jnn6ssl2v",
+    "name": "写实主义·社会议题",
+    "kind": "中国画",
+    "description": "作品以中国画为载体，运用写实主义的表现方式，深入探讨了社会议题的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "4660000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "119000000000000000",
+        "timestamp": 1740961595611
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "中国画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1727604542008,
+    "lastUpdated": 1729403863801,
+    "views": 6633,
+    "likes": 124,
+    "shares": 482
+  },
+  {
+    "id": "NFT_vomj68s16",
+    "name": "古典主义·虚拟空间",
+    "kind": "混合媒介",
+    "description": "艺术家通过混合媒介的形式，以古典主义的手法诠释了虚拟空间。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "9180000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1715217275327,
+    "lastUpdated": 1715995451613,
+    "views": 5495,
+    "likes": 206,
+    "shares": 364
+  },
+  {
+    "id": "NFT_81nve3aeu",
+    "name": "抽象主义·自然风光",
+    "kind": "素描",
+    "description": "作品以素描为载体，运用抽象主义的表现方式，深入探讨了自然风光的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "8670000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739115892520
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1726524886803,
+    "lastUpdated": 1728575288170,
+    "views": 1623,
+    "likes": 94,
+    "shares": 78
+  },
+  {
+    "id": "NFT_mg6oktwrn",
+    "name": "赛博朋克·社会议题",
+    "kind": "装置艺术",
+    "description": "这是一件关于社会议题的装置艺术作品，艺术家采用赛博朋克的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "7740000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1729901747936,
+    "lastUpdated": 1730631616197,
+    "views": 3026,
+    "likes": 328,
+    "shares": 400
+  },
+  {
+    "id": "NFT_ndyv4x331",
+    "name": "极简主义·历史文化",
+    "kind": "摄影作品",
+    "description": "这是一幅极具代表性的摄影作品作品，采用极简主义风格，展现了历史文化的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "9040000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1741317691890
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740985081433
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1741038386520
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1725385455511,
+    "lastUpdated": 1725892354816,
+    "views": 8586,
+    "likes": 875,
+    "shares": 21
+  },
+  {
+    "id": "NFT_iulpyatad",
+    "name": "复古未来主义·人物肖像",
+    "kind": "虚拟现实艺术",
+    "description": "这件虚拟现实艺术作品融合了复古未来主义元素，围绕人物肖像展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "7990000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1723950517376,
+    "lastUpdated": 1725774194524,
+    "views": 7061,
+    "likes": 596,
+    "shares": 413
+  },
+  {
+    "id": "NFT_lg8uqcgb7",
+    "name": "超现实主义·数字身份",
+    "kind": "雕塑",
+    "description": "作品以雕塑为载体，运用超现实主义的表现方式，深入探讨了数字身份的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "3790000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1741163604978
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739150506370
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1738790278728
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "数字身份"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1724001180039,
+    "lastUpdated": 1724572617142,
+    "views": 9665,
+    "likes": 848,
+    "shares": 243
+  },
+  {
+    "id": "NFT_c5l0qnfeu",
+    "name": "像素艺术·虚拟空间",
+    "kind": "雕塑",
+    "description": "艺术家通过雕塑的形式，以像素艺术的手法诠释了虚拟空间。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "6190000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "155000000000000000",
+        "timestamp": 1741306904701
+      },
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "182900000000000000",
+        "timestamp": 1741218222814
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "124000000000000000",
+        "timestamp": 1741044802365
+      }
+    ],
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1740428014778
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1738775692686
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739604259654
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "像素艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1728081022423,
+    "lastUpdated": 1729805499575,
+    "views": 5120,
+    "likes": 357,
+    "shares": 464
+  },
+  {
+    "id": "NFT_0foid5yha",
+    "name": "复古未来主义·民族特色",
+    "kind": "增强现实艺术",
+    "description": "作品以增强现实艺术为载体，运用复古未来主义的表现方式，深入探讨了民族特色的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "6620000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1741065577524
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "民族特色"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1737746050591,
+    "lastUpdated": 1739184098679,
+    "views": 8629,
+    "likes": 499,
+    "shares": 79
+  },
+  {
+    "id": "NFT_lld4h3204",
+    "name": "抽象主义·想象世界",
+    "kind": "混合媒介",
+    "description": "这是一件关于想象世界的混合媒介作品，艺术家采用抽象主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "6070000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "想象世界"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1721342025604,
+    "lastUpdated": 1722557625348,
+    "views": 8335,
+    "likes": 497,
+    "shares": 202
+  },
+  {
+    "id": "NFT_2uepoyk2o",
+    "name": "抽象主义·数字身份",
+    "kind": "中国画",
+    "description": "这是一幅极具代表性的中国画作品，采用抽象主义风格，展现了数字身份的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "5530000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "中国画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "数字身份"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1713760773364,
+    "lastUpdated": 1714254949985,
+    "views": 4456,
+    "likes": 662,
+    "shares": 18
+  },
+  {
+    "id": "NFT_z7yzbmywi",
+    "name": "写实主义·想象世界",
+    "kind": "雕塑",
+    "description": "艺术家通过雕塑的形式，以写实主义的手法诠释了想象世界。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "8230000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739207015358
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1741097607847
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "想象世界"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1733640389577,
+    "lastUpdated": 1735190658969,
+    "views": 7815,
+    "likes": 959,
+    "shares": 365
+  },
+  {
+    "id": "NFT_y8v2dp9nk",
+    "name": "极简主义·区块链",
+    "kind": "交互式艺术",
+    "description": "艺术家通过交互式艺术的形式，以极简主义的手法诠释了区块链。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "2940000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1724920012047,
+    "lastUpdated": 1727228869874,
+    "views": 4747,
+    "likes": 604,
+    "shares": 218
+  },
+  {
+    "id": "NFT_1fq0gxynw",
+    "name": "印象派·人工智能",
+    "kind": "雕塑",
+    "description": "艺术家通过雕塑的形式，以印象派的手法诠释了人工智能。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "2280000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "120000000000000000",
+        "timestamp": 1741048381138
+      },
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "139200000000000000",
+        "timestamp": 1740774653915
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "印象派"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1723223349744,
+    "lastUpdated": 1725628121558,
+    "views": 7928,
+    "likes": 691,
+    "shares": 226
+  },
+  {
+    "id": "NFT_1qsu6x80a",
+    "name": "写实主义·区块链",
+    "kind": "交互式艺术",
+    "description": "这是一幅极具代表性的交互式艺术作品，采用写实主义风格，展现了区块链的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "3780000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1728125595429,
+    "lastUpdated": 1729255365874,
+    "views": 361,
+    "likes": 277,
+    "shares": 443
+  },
+  {
+    "id": "NFT_htvfidecc",
+    "name": "未来主义·抽象概念",
+    "kind": "装置艺术",
+    "description": "这是一件关于抽象概念的装置艺术作品，艺术家采用未来主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "4990000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "154720800000000000",
+        "timestamp": 1741307549948
+      },
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "135720000000000000",
+        "timestamp": 1740882223624
+      },
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "117000000000000000",
+        "timestamp": 1740839182572
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "抽象概念"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1715149170573,
+    "lastUpdated": 1716642871767,
+    "views": 6906,
+    "likes": 219,
+    "shares": 309
+  },
+  {
+    "id": "NFT_76s286luw",
+    "name": "像素艺术·自然风光",
+    "kind": "版画",
+    "description": "艺术家通过版画的形式，以像素艺术的手法诠释了自然风光。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "4360000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740774542542
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "像素艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1736229576420,
+    "lastUpdated": 1737984068607,
+    "views": 2918,
+    "likes": 32,
+    "shares": 273
+  },
+  {
+    "id": "NFT_vzoicxbz9",
+    "name": "复古未来主义·想象世界",
+    "kind": "装置艺术",
+    "description": "这是一件关于想象世界的装置艺术作品，艺术家采用复古未来主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "210000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "129870000000000000",
+        "timestamp": 1741332053517
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "174636189000000000",
+        "timestamp": 1741053560307
+      },
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "111000000000000000",
+        "timestamp": 1740939816137
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "154545300000000000",
+        "timestamp": 1740890180729
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "想象世界"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1734318864928,
+    "lastUpdated": 1736577487487,
+    "views": 5159,
+    "likes": 901,
+    "shares": 19
+  },
+  {
+    "id": "NFT_7k24vnnn5",
+    "name": "表现主义·社会议题",
+    "kind": "混合媒介",
+    "description": "这是一幅极具代表性的混合媒介作品，采用表现主义风格，展现了社会议题的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "1650000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740989075511
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740574991397
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1727653650480,
+    "lastUpdated": 1728302792570,
+    "views": 622,
+    "likes": 713,
+    "shares": 224
+  },
+  {
+    "id": "NFT_oc85xh9sw",
+    "name": "后现代主义·历史文化",
+    "kind": "混合媒介",
+    "description": "艺术家通过混合媒介的形式，以后现代主义的手法诠释了历史文化。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "6550000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740327089768
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1725597839955,
+    "lastUpdated": 1726126782228,
+    "views": 2645,
+    "likes": 808,
+    "shares": 313
+  },
+  {
+    "id": "NFT_pn8tik8jd",
+    "name": "抽象主义·城市景观",
+    "kind": "水彩画",
+    "description": "这是一幅极具代表性的水彩画作品，采用抽象主义风格，展现了城市景观的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "9310000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "水彩画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1736146156755,
+    "lastUpdated": 1738208454082,
+    "views": 9798,
+    "likes": 908,
+    "shares": 404
+  },
+  {
+    "id": "NFT_kx0u6nh05",
+    "name": "表现主义·数字身份",
+    "kind": "版画",
+    "description": "艺术家通过版画的形式，以表现主义的手法诠释了数字身份。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "3700000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1738975107576
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1738815682463
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "数字身份"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1718879739858,
+    "lastUpdated": 1720774722317,
+    "views": 9601,
+    "likes": 310,
+    "shares": 94
+  },
+  {
+    "id": "NFT_uu50tck4r",
+    "name": "极简主义·环境保护",
+    "kind": "装置艺术",
+    "description": "这件装置艺术作品融合了极简主义元素，围绕环境保护展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "7530000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1738999944735,
+    "lastUpdated": 1739259139168,
+    "views": 272,
+    "likes": 641,
+    "shares": 54
+  },
+  {
+    "id": "NFT_ozygqqk6w",
+    "name": "赛博朋克·社会议题",
+    "kind": "版画",
+    "description": "艺术家通过版画的形式，以赛博朋克的手法诠释了社会议题。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "8800000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "版画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1712870215152,
+    "lastUpdated": 1714747375418,
+    "views": 1829,
+    "likes": 457,
+    "shares": 295
+  },
+  {
+    "id": "NFT_fhnenp3ot",
+    "name": "波普艺术·虚拟空间",
+    "kind": "雕塑",
+    "description": "艺术家通过雕塑的形式，以波普艺术的手法诠释了虚拟空间。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "1300000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1738950197106
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1725401865838,
+    "lastUpdated": 1726216840317,
+    "views": 717,
+    "likes": 241,
+    "shares": 29
+  },
+  {
+    "id": "NFT_86k519fdf",
+    "name": "极简主义·人物肖像",
+    "kind": "虚拟现实艺术",
+    "description": "这是一幅极具代表性的虚拟现实艺术作品，采用极简主义风格，展现了人物肖像的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "4030000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1740013346289,
+    "lastUpdated": 1740922504997,
+    "views": 3161,
+    "likes": 195,
+    "shares": 313
+  },
+  {
+    "id": "NFT_fzrph2gql",
+    "name": "古典主义·虚拟空间",
+    "kind": "混合媒介",
+    "description": "这件混合媒介作品融合了古典主义元素，围绕虚拟空间展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "9260000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1739460935838
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1741119326619
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1724420301239,
+    "lastUpdated": 1724707701533,
+    "views": 7537,
+    "likes": 209,
+    "shares": 240
+  },
+  {
+    "id": "NFT_d3c3mmduq",
+    "name": "波普艺术·元宇宙场景",
+    "kind": "素描",
+    "description": "这是一幅极具代表性的素描作品，采用波普艺术风格，展现了元宇宙场景的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 9,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "240000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1724532298192,
+    "lastUpdated": 1726347532354,
+    "views": 4726,
+    "likes": 973,
+    "shares": 318
+  },
+  {
+    "id": "NFT_3hbyx6b48",
+    "name": "抽象主义·自然风光",
+    "kind": "素描",
+    "description": "这是一件关于自然风光的素描作品，艺术家采用抽象主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "6430000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1741110482787
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1740801746278
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1720822760519,
+    "lastUpdated": 1722001815323,
+    "views": 1229,
+    "likes": 866,
+    "shares": 14
+  },
+  {
+    "id": "NFT_yraq99cqv",
+    "name": "未来主义·环境保护",
+    "kind": "AI生成艺术",
+    "description": "作品以AI生成艺术为载体，运用未来主义的表现方式，深入探讨了环境保护的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "80000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "170755200000000000",
+        "timestamp": 1741309035856
+      },
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "121000000000000000",
+        "timestamp": 1740954274304
+      },
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "211736448000000000",
+        "timestamp": 1740828145789
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "152460000000000000",
+        "timestamp": 1740755065724
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1719459544923,
+    "lastUpdated": 1719790235510,
+    "views": 3840,
+    "likes": 451,
+    "shares": 135
+  },
+  {
+    "id": "NFT_ez5brn98o",
+    "name": "现代主义·元宇宙场景",
+    "kind": "摄影作品",
+    "description": "作品以摄影作品为载体，运用现代主义的表现方式，深入探讨了元宇宙场景的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "1630000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740735150335
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1739581692577
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1741106765463
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1716272589064,
+    "lastUpdated": 1716581321439,
+    "views": 7987,
+    "likes": 972,
+    "shares": 285
+  },
+  {
+    "id": "NFT_vi8utjbpp",
+    "name": "写实主义·人物肖像",
+    "kind": "水彩画",
+    "description": "艺术家通过水彩画的形式，以写实主义的手法诠释了人物肖像。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "940000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740744872611
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "水彩画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1730291280190,
+    "lastUpdated": 1730872506337,
+    "views": 2952,
+    "likes": 555,
+    "shares": 45
+  },
+  {
+    "id": "NFT_ged4ri1pa",
+    "name": "后现代主义·历史文化",
+    "kind": "油画",
+    "description": "这是一幅极具代表性的油画作品，采用后现代主义风格，展现了历史文化的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "8500000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1741204222854
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1738988967565
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1739553447940
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "油画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1735520454804,
+    "lastUpdated": 1737410215497,
+    "views": 6204,
+    "likes": 448,
+    "shares": 5
+  },
+  {
+    "id": "NFT_g3ha8ayr1",
+    "name": "现代主义·城市景观",
+    "kind": "AI生成艺术",
+    "description": "艺术家通过AI生成艺术的形式，以现代主义的手法诠释了城市景观。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "4880000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1714339605848,
+    "lastUpdated": 1715610275237,
+    "views": 9532,
+    "likes": 242,
+    "shares": 388
+  },
+  {
+    "id": "NFT_88svykiuj",
+    "name": "表现主义·自然风光",
+    "kind": "摄影作品",
+    "description": "艺术家通过摄影作品的形式，以表现主义的手法诠释了自然风光。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "6670000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1719100475456,
+    "lastUpdated": 1721079257884,
+    "views": 4187,
+    "likes": 838,
+    "shares": 265
+  },
+  {
+    "id": "NFT_xw1jplfvd",
+    "name": "极简主义·社会议题",
+    "kind": "素描",
+    "description": "艺术家通过素描的形式，以极简主义的手法诠释了社会议题。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 1,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "9740000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1740420756609
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740763364477
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1741134686341
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1727422542498,
+    "lastUpdated": 1729472951510,
+    "views": 1352,
+    "likes": 513,
+    "shares": 371
+  },
+  {
+    "id": "NFT_yml9p3lau",
+    "name": "赛博朋克·人物肖像",
+    "kind": "交互式艺术",
+    "description": "这是一件关于人物肖像的交互式艺术作品，艺术家采用赛博朋克的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "7340000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740441255424
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739463809191
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1740979468263
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "赛博朋克"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1727261690931,
+    "lastUpdated": 1728746199007,
+    "views": 9547,
+    "likes": 675,
+    "shares": 209
+  },
+  {
+    "id": "NFT_qs96e0fhd",
+    "name": "复古未来主义·元宇宙场景",
+    "kind": "交互式艺术",
+    "description": "作品以交互式艺术为载体，运用复古未来主义的表现方式，深入探讨了元宇宙场景的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "6240000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1740671280960
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1739966027312
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "交互式艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "复古未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1726894301001,
+    "lastUpdated": 1728762404047,
+    "views": 7330,
+    "likes": 885,
+    "shares": 20
+  },
+  {
+    "id": "NFT_5tqzf9pye",
+    "name": "超现实主义·元宇宙场景",
+    "kind": "NFT艺术",
+    "description": "这是一件关于元宇宙场景的NFT艺术作品，艺术家采用超现实主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "7290000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1741085298582
+      },
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740106591025
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1738917956575
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "元宇宙场景"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1712983021327,
+    "lastUpdated": 1715191749470,
+    "views": 5250,
+    "likes": 492,
+    "shares": 148
+  },
+  {
+    "id": "NFT_cboqgsmut",
+    "name": "后现代主义·城市景观",
+    "kind": "增强现实艺术",
+    "description": "作品以增强现实艺术为载体，运用后现代主义的表现方式，深入探讨了城市景观的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "1140000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1716763251461,
+    "lastUpdated": 1717705510032,
+    "views": 3273,
+    "likes": 565,
+    "shares": 293
+  },
+  {
+    "id": "NFT_3wql2hwn6",
+    "name": "后现代主义·区块链",
+    "kind": "增强现实艺术",
+    "description": "作品以增强现实艺术为载体，运用后现代主义的表现方式，深入探讨了区块链的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "9840000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1741016987213
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739831653534
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1722988524263,
+    "lastUpdated": 1724931688512,
+    "views": 4340,
+    "likes": 158,
+    "shares": 348
+  },
+  {
+    "id": "NFT_4w93fx3qo",
+    "name": "抽象主义·人物肖像",
+    "kind": "摄影作品",
+    "description": "作品以摄影作品为载体，运用抽象主义的表现方式，深入探讨了人物肖像的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "6260000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1720184206718,
+    "lastUpdated": 1720486384679,
+    "views": 7523,
+    "likes": 745,
+    "shares": 289
+  },
+  {
+    "id": "NFT_713ryt66s",
+    "name": "后现代主义·社会议题",
+    "kind": "NFT艺术",
+    "description": "这是一幅极具代表性的NFT艺术作品，采用后现代主义风格，展现了社会议题的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "9900000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1718059059338,
+    "lastUpdated": 1718228032745,
+    "views": 5931,
+    "likes": 801,
+    "shares": 298
+  },
+  {
+    "id": "NFT_yb71y45qh",
+    "name": "未来主义·历史文化",
+    "kind": "油画",
+    "description": "艺术家通过油画的形式，以未来主义的手法诠释了历史文化。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "1260000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "油画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "未来主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1721242309928,
+    "lastUpdated": 1722084306989,
+    "views": 6915,
+    "likes": 597,
+    "shares": 100
+  },
+  {
+    "id": "NFT_iit0mwq79",
+    "name": "写实主义·民族特色",
+    "kind": "摄影作品",
+    "description": "这是一件关于民族特色的摄影作品作品，艺术家采用写实主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "3500000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1740508214686
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1740514526388
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740284056093
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "写实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "民族特色"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1723849719015,
+    "lastUpdated": 1726233106418,
+    "views": 3407,
+    "likes": 475,
+    "shares": 322
+  },
+  {
+    "id": "NFT_w6odp87u0",
+    "name": "现代主义·环境保护",
+    "kind": "油画",
+    "description": "这件油画作品融合了现代主义元素，围绕环境保护展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 2,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "7260000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1741327751561
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "油画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1729905859076,
+    "lastUpdated": 1730261408856,
+    "views": 3963,
+    "likes": 620,
+    "shares": 119
+  },
+  {
+    "id": "NFT_ckfnz1qot",
+    "name": "后现代主义·人工智能",
+    "kind": "NFT艺术",
+    "description": "这是一件关于人工智能的NFT艺术作品，艺术家采用后现代主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "7350000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1727910534201,
+    "lastUpdated": 1727956458647,
+    "views": 2502,
+    "likes": 834,
+    "shares": 126
+  },
+  {
+    "id": "NFT_dzkmhybyc",
+    "name": "新水墨·环境保护",
+    "kind": "混合媒介",
+    "description": "这件混合媒介作品融合了新水墨元素，围绕环境保护展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "6570000000000000000",
+    "status": "listed",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739122214395
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1740897308920
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1740980251235
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "混合媒介"
+      },
+      {
+        "trait_type": "风格",
+        "value": "新水墨"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1722058316766,
+    "lastUpdated": 1722958668731,
+    "views": 4428,
+    "likes": 368,
+    "shares": 124
+  },
+  {
+    "id": "NFT_8u8zqsx03",
+    "name": "超现实主义·自然风光",
+    "kind": "增强现实艺术",
+    "description": "艺术家通过增强现实艺术的形式，以超现实主义的手法诠释了自然风光。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "440000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739832992255
+      },
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739374911546
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "自然风光"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1726591119995,
+    "lastUpdated": 1726666335847,
+    "views": 3696,
+    "likes": 173,
+    "shares": 371
+  },
+  {
+    "id": "NFT_frtd9e4we",
+    "name": "后现代主义·人工智能",
+    "kind": "虚拟现实艺术",
+    "description": "这件虚拟现实艺术作品融合了后现代主义元素，围绕人工智能展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "6060000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1714303901020,
+    "lastUpdated": 1716118323846,
+    "views": 9163,
+    "likes": 932,
+    "shares": 433
+  },
+  {
+    "id": "NFT_3h7qg3yv3",
+    "name": "古典主义·抽象概念",
+    "kind": "NFT艺术",
+    "description": "这是一幅极具代表性的NFT艺术作品，采用古典主义风格，展现了抽象概念的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "1380000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "NFT艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "抽象概念"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1710413629011,
+    "lastUpdated": 1712762766808,
+    "views": 450,
+    "likes": 379,
+    "shares": 29
+  },
+  {
+    "id": "NFT_0eivtd3el",
+    "name": "波普艺术·想象世界",
+    "kind": "数字艺术",
+    "description": "这是一件关于想象世界的数字艺术作品，艺术家采用波普艺术的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "4660000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "想象世界"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1718652781223,
+    "lastUpdated": 1720776528710,
+    "views": 4899,
+    "likes": 783,
+    "shares": 68
+  },
+  {
+    "id": "NFT_58h0auoex",
+    "name": "后现代主义·人工智能",
+    "kind": "装置艺术",
+    "description": "作品以装置艺术为载体，运用后现代主义的表现方式，深入探讨了人工智能的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "9380000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740023505321
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1739497851539
+      },
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740948748933
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1714742688898,
+    "lastUpdated": 1716738072379,
+    "views": 7026,
+    "likes": 416,
+    "shares": 412
+  },
+  {
+    "id": "NFT_moyzuvy47",
+    "name": "印象派·城市景观",
+    "kind": "雕塑",
+    "description": "这件雕塑作品融合了印象派元素，围绕城市景观展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "3670000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739096747230
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "印象派"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1710131096355,
+    "lastUpdated": 1712565634690,
+    "views": 3386,
+    "likes": 687,
+    "shares": 100
+  },
+  {
+    "id": "NFT_vewybrfel",
+    "name": "超现实主义·数字身份",
+    "kind": "素描",
+    "description": "这件素描作品融合了超现实主义元素，围绕数字身份展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "740000000000000000",
+    "status": "unlisted",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1741253176736
+      },
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "经过专业机构认证，该作品在艺术性和技术性上都具有很高的价值。",
+        "timestamp": 1739259078223
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "数字身份"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1740269297338,
+    "lastUpdated": 1742135185793,
+    "views": 8539,
+    "likes": 363,
+    "shares": 11
+  },
+  {
+    "id": "NFT_j6hwdxbkh",
+    "name": "波普艺术·区块链",
+    "kind": "油画",
+    "description": "这件油画作品融合了波普艺术元素，围绕区块链展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+      "name": "数字文化研究所",
+      "logo": "https://example.com/logo5.png",
+      "verified": true,
+      "avatar": "https://example.com/logo5.png"
+    },
+    "price": "6160000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "油画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "区块链"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1737339345893,
+    "lastUpdated": 1738660763438,
+    "views": 970,
+    "likes": 149,
+    "shares": 460
+  },
+  {
+    "id": "NFT_oytgx9lw5",
+    "name": "抽象主义·人工智能",
+    "kind": "中国画",
+    "description": "艺术家通过中国画的形式，以抽象主义的手法诠释了人工智能。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+      "name": "区块链艺术协会",
+      "logo": "https://example.com/logo3.png",
+      "verified": true,
+      "avatar": "https://example.com/logo3.png"
+    },
+    "price": "9710000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "中国画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人工智能"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "普通"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1721030727645,
+    "lastUpdated": 1721542537438,
+    "views": 1974,
+    "likes": 131,
+    "shares": 153
+  },
+  {
+    "id": "NFT_ogky32zde",
+    "name": "后现代主义·社会议题",
+    "kind": "AI生成艺术",
+    "description": "作品以AI生成艺术为载体，运用后现代主义的表现方式，深入探讨了社会议题的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "5490000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "156090000000000000",
+        "timestamp": 1741324195593
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "129000000000000000",
+        "timestamp": 1740964851633
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "社会议题"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1740355164211,
+    "lastUpdated": 1741838308043,
+    "views": 2981,
+    "likes": 498,
+    "shares": 313
+  },
+  {
+    "id": "NFT_tq9tboo0d",
+    "name": "超现实主义·虚拟空间",
+    "kind": "素描",
+    "description": "艺术家通过素描的形式，以超现实主义的手法诠释了虚拟空间。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "8570000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "素描"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1721526291875,
+    "lastUpdated": 1722974431039,
+    "views": 316,
+    "likes": 63,
+    "shares": 274
+  },
+  {
+    "id": "NFT_jrj8obebs",
+    "name": "古典主义·环境保护",
+    "kind": "摄影作品",
+    "description": "作品以摄影作品为载体，运用古典主义的表现方式，深入探讨了环境保护的深层含义。艺术家巧妙地运用数字技术，创造出震撼人心的视觉体验。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "9260000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "摄影作品"
+      },
+      {
+        "trait_type": "风格",
+        "value": "古典主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "VR"
+      }
+    ],
+    "createdAt": 1735230800777,
+    "lastUpdated": 1735347200932,
+    "views": 9848,
+    "likes": 142,
+    "shares": 62
+  },
+  {
+    "id": "NFT_6cy0db0gi",
+    "name": "波普艺术·民族特色",
+    "kind": "雕塑",
+    "description": "艺术家通过雕塑的形式，以波普艺术的手法诠释了民族特色。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "1580000000000000000",
+    "status": "listed",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "雕塑"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "民族特色"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1713659705318,
+    "lastUpdated": 1715662553686,
+    "views": 6053,
+    "likes": 569,
+    "shares": 161
+  },
+  {
+    "id": "NFT_d48fkw72t",
+    "name": "波普艺术·民族特色",
+    "kind": "装置艺术",
+    "description": "这是一幅极具代表性的装置艺术作品，采用波普艺术风格，展现了民族特色的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 6,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "8410000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "193577400000000000",
+        "timestamp": 1741144565521
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "218742462000000000",
+        "timestamp": 1741053524406
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "157380000000000000",
+        "timestamp": 1740924971424
+      },
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "122000000000000000",
+        "timestamp": 1740824415373
+      }
+    ],
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1739643007975
+      },
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1739474013549
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739122936888
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "波普艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "民族特色"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1716573324939,
+    "lastUpdated": 1718370845753,
+    "views": 8154,
+    "likes": 951,
+    "shares": 460
+  },
+  {
+    "id": "NFT_ate68nenk",
+    "name": "后现代主义·人物肖像",
+    "kind": "数字艺术",
+    "description": "这件数字艺术作品融合了后现代主义元素，围绕人物肖像展开创作，呈现出独特的艺术视角。作品通过NFT技术确保了其唯一性和真实性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 4,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "2010000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "数字艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1737630797906,
+    "lastUpdated": 1738486588373,
+    "views": 2030,
+    "likes": 912,
+    "shares": 412
+  },
+  {
+    "id": "NFT_nb1ytgc3o",
+    "name": "极简主义·人物肖像",
+    "kind": "装置艺术",
+    "description": "这是一幅极具代表性的装置艺术作品，采用极简主义风格，展现了人物肖像的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "1420000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "140800000000000000",
+        "timestamp": 1741287863247
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "110000000000000000",
+        "timestamp": 1741230093107
+      },
+      {
+        "bidder": {
+          "address": "0x14dC79964da2C08b23698B3D3cc7Ca32193d9955",
+          "name": "数字艺术投资者",
+          "avatar": "https://example.com/avatar2.png"
+        },
+        "amount": "170368000000000000",
+        "timestamp": 1741189857948
+      }
+    ],
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+          "name": "元宇宙艺术基金会",
+          "logo": "https://example.com/logo2.png",
+          "verified": true
+        },
+        "message": "经过专业评估，确认作品的创新性和艺术价值，建议收藏。",
+        "timestamp": 1739506622898
+      },
+      {
+        "institution": {
+          "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+          "name": "数字艺术研究院",
+          "logo": "https://example.com/logo1.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1741309795266
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "极简主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "人物肖像"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1739139198538,
+    "lastUpdated": 1739648592263,
+    "views": 1202,
+    "likes": 294,
+    "shares": 10
+  },
+  {
+    "id": "NFT_mp28wxvg4",
+    "name": "像素艺术·环境保护",
+    "kind": "中国画",
+    "description": "这是一件关于环境保护的中国画作品，艺术家采用像素艺术的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 5,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "7400000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "115000000000000000",
+        "timestamp": 1740940530288
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "中国画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "像素艺术"
+      },
+      {
+        "trait_type": "主题",
+        "value": "环境保护"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1726819638073,
+    "lastUpdated": 1727101883293,
+    "views": 6541,
+    "likes": 639,
+    "shares": 132
+  },
+  {
+    "id": "NFT_mbtmgmmb8",
+    "name": "抽象主义·历史文化",
+    "kind": "水彩画",
+    "description": "这是一幅极具代表性的水彩画作品，采用抽象主义风格，展现了历史文化的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "4310000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "水彩画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1718054444330,
+    "lastUpdated": 1719905744888,
+    "views": 5173,
+    "likes": 818,
+    "shares": 97
+  },
+  {
+    "id": "NFT_7eibwugk5",
+    "name": "超现实主义·城市景观",
+    "kind": "油画",
+    "description": "艺术家通过油画的形式，以超现实主义的手法诠释了城市景观。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 8,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "1610000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "油画"
+      },
+      {
+        "trait_type": "风格",
+        "value": "超现实主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AI"
+      }
+    ],
+    "createdAt": 1733216211096,
+    "lastUpdated": 1733324309449,
+    "views": 8923,
+    "likes": 935,
+    "shares": 40
+  },
+  {
+    "id": "NFT_je8nbdsus",
+    "name": "表现主义·虚拟空间",
+    "kind": "增强现实艺术",
+    "description": "这是一件关于虚拟空间的增强现实艺术作品，艺术家采用表现主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 3,
+    "creator": {
+      "address": "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+      "name": "元宇宙艺术基金会",
+      "logo": "https://example.com/logo2.png",
+      "verified": true,
+      "avatar": "https://example.com/logo2.png"
+    },
+    "price": "4180000000000000000",
+    "status": "sold",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "增强现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "虚拟空间"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传说"
+      },
+      {
+        "trait_type": "技术",
+        "value": "AR"
+      }
+    ],
+    "createdAt": 1714471292584,
+    "lastUpdated": 1716556918931,
+    "views": 7182,
+    "likes": 804,
+    "shares": 417
+  },
+  {
+    "id": "NFT_avw0yqlyz",
+    "name": "表现主义·历史文化",
+    "kind": "装置艺术",
+    "description": "这是一件关于历史文化的装置艺术作品，艺术家采用表现主义的创作方法，展现出独特的艺术魅力。作品完美展示了数字艺术与传统美学的碰撞。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "3340000000000000000",
+    "status": "unlisted",
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "装置艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "表现主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "历史文化"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "2D"
+      }
+    ],
+    "createdAt": 1717650649863,
+    "lastUpdated": 1719996573095,
+    "views": 7389,
+    "likes": 304,
+    "shares": 139
+  },
+  {
+    "id": "NFT_16nzkimwc",
+    "name": "后现代主义·城市景观",
+    "kind": "虚拟现实艺术",
+    "description": "这是一幅极具代表性的虚拟现实艺术作品，采用后现代主义风格，展现了城市景观的独特魅力。艺术家通过创新的数字技术，将传统艺术与现代表达完美融合。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 9,
+    "creator": {
+      "address": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "name": "数字艺术研究院",
+      "logo": "https://example.com/logo1.png",
+      "verified": true,
+      "avatar": "https://example.com/logo1.png"
+    },
+    "price": "7040000000000000000",
+    "status": "sold",
+    "accreditations": [
+      {
+        "institution": {
+          "address": "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
+          "name": "数字文化研究所",
+          "logo": "https://example.com/logo5.png",
+          "verified": true
+        },
+        "message": "这是一件具有重要艺术价值和收藏价值的数字艺术品，已通过专业评估认证。",
+        "timestamp": 1740652662081
+      },
+      {
+        "institution": {
+          "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+          "name": "NFT艺术家联盟",
+          "logo": "https://example.com/logo4.png",
+          "verified": true
+        },
+        "message": "该作品在技术创新和艺术表现上都达到了很高的水准，具有收藏价值。",
+        "timestamp": 1739146766995
+      },
+      {
+        "institution": {
+          "address": "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
+          "name": "区块链艺术协会",
+          "logo": "https://example.com/logo3.png",
+          "verified": true
+        },
+        "message": "作品品质优秀，创意独特，是难得的数字艺术精品。",
+        "timestamp": 1740681558896
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "虚拟现实艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "后现代主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "极稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1737374588581,
+    "lastUpdated": 1739435550444,
+    "views": 6058,
+    "likes": 161,
+    "shares": 24
+  },
+  {
+    "id": "NFT_vq0744ysu",
+    "name": "抽象主义·城市景观",
+    "kind": "AI生成艺术",
+    "description": "艺术家通过AI生成艺术的形式，以抽象主义的手法诠释了城市景观。作品融合了区块链技术与艺术创作，展现了数字时代的艺术可能性。",
+    "imageUrl": "https://gateway.pinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe",
+    "royaltyFee": 7,
+    "creator": {
+      "address": "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
+      "name": "NFT艺术家联盟",
+      "logo": "https://example.com/logo4.png",
+      "verified": true,
+      "avatar": "https://example.com/logo4.png"
+    },
+    "price": "1820000000000000000",
+    "status": "auction",
+    "bidHistory": [
+      {
+        "bidder": {
+          "address": "0xa0Ee7A142d267C1f36714E4a8F75612F20a79720",
+          "name": "艺术品经纪人",
+          "avatar": "https://example.com/avatar4.png"
+        },
+        "amount": "194462400000000000",
+        "timestamp": 1741309646316
+      },
+      {
+        "bidder": {
+          "address": "0xBcd4042DE499D14e55001CcbB24a551F3b954096",
+          "name": "元宇宙收藏家",
+          "avatar": "https://example.com/avatar5.png"
+        },
+        "amount": "167640000000000000",
+        "timestamp": 1741164884017
+      },
+      {
+        "bidder": {
+          "address": "0x976EA74026E726554dB657fA54763abd0C3a0aa9",
+          "name": "加密艺术收藏家",
+          "avatar": "https://example.com/avatar1.png"
+        },
+        "amount": "152400000000000000",
+        "timestamp": 1741120244658
+      },
+      {
+        "bidder": {
+          "address": "0x23618e81E3f5cdF7f54C3d65f7FBc0aBf5B21E8f",
+          "name": "NFT鉴赏家",
+          "avatar": "https://example.com/avatar3.png"
+        },
+        "amount": "127000000000000000",
+        "timestamp": 1740846949118
+      }
+    ],
+    "attributes": [
+      {
+        "trait_type": "类型",
+        "value": "AI生成艺术"
+      },
+      {
+        "trait_type": "风格",
+        "value": "抽象主义"
+      },
+      {
+        "trait_type": "主题",
+        "value": "城市景观"
+      },
+      {
+        "trait_type": "创作年代",
+        "value": "2025"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "稀有"
+      },
+      {
+        "trait_type": "技术",
+        "value": "3D"
+      }
+    ],
+    "createdAt": 1730011334347,
+    "lastUpdated": 1731409430225,
+    "views": 5757,
+    "likes": 543,
+    "shares": 194
+  }
+]

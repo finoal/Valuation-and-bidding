@@ -2,16 +2,30 @@
 
 import { useState, useEffect } from "react";
 import { Address } from "~~/components/scaffold-eth";
-import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory, useScaffoldReadContract} from "~~/hooks/scaffold-eth";
 
 const NFTMessage = () => {
+ 
+
   const [nftData] = useState(() => {
+
     if (typeof window !== 'undefined') {
       const selectedNft = localStorage.getItem("selectedNft");
       return selectedNft ? JSON.parse(selectedNft) : null;
     }
+
+
     return null;
   });
+
+  const {
+    data: auction,
+  } = useScaffoldReadContract({
+    contractName:"YourCollectible",
+    functionName:"getAuction",
+    args:[BigInt(nftData.tokenId.toString())]
+  });
+
   const [auctionRecords, setAuctionRecords] = useState<any[]>([]);
   const [parsedAccreditationData, setParsedAccreditationData] = useState<any[]>([]);
   const [accreditationPage, setAccreditationPage] = useState(1);
@@ -36,11 +50,13 @@ const NFTMessage = () => {
     isLoading: isLoadingAccreditationEvents,
   } = useScaffoldEventHistory({
     contractName: "YourCollectible",
-    eventName: "AccreditationPerformed",
+    eventName: "AccreditationPerformed",// getAuction
     fromBlock: 0n,
     watch: true,
   });
 
+
+  
   // 添加数据加载完成的状态
   const [accreditationDataLoaded, setAccreditationDataLoaded] = useState(false);
   const [auctionDataLoaded, setAuctionDataLoaded] = useState(false);
@@ -273,10 +289,10 @@ const NFTMessage = () => {
                 <span className="text-lg col-span-3">{nftData.accreditedCount}</span>
               </div>
               
-              {nftData.bidCount ? (
+              {auction?.isActive ? (
                 <div className="grid grid-cols-4 gap-4 mb-2">
                   <span className="text-lg font-semibold text-right col-span-1">竞拍次数：</span>
-                  <span className="text-lg col-span-3">{nftData.bidCount}</span>
+                  <span className="text-lg col-span-3">{Number(auction?.bidCount)}</span>
                 </div>
               ) : (
                 <div className="grid grid-cols-4 gap-4 mb-2">
@@ -288,21 +304,21 @@ const NFTMessage = () => {
               <div className="grid grid-cols-4 gap-4 mb-2">
                 <span className="text-lg font-semibold text-right col-span-1">起拍价：</span>
                 <span className="text-lg col-span-3">
-                  {isNaN(Number(nftData.startingBid) / 1e18) ? "未设置" : `${Number(nftData.startingBid) / 1e18} ETH`}
+                  {isNaN(Number(auction?.startPrice) / 1e18) ? "未设置" : `${Number(auction?.startPrice) / 1e18} ETH`}
                 </span>
               </div>
               
               <div className="grid grid-cols-4 gap-4 mb-2">
                 <span className="text-lg font-semibold text-right col-span-1">当前出价：</span>
                 <span className="text-lg col-span-3">
-                  {isNaN(Number(nftData.currentBid) / 1e18) ? "未开始竞拍" : `${Number(nftData.currentBid) / 1e18} ETH`}
+                  {isNaN(Number(auction?.highestBid) / 1e18) ? "未开始竞拍" : `${Number(auction?.highestBid) / 1e18} ETH`}
                 </span>
               </div>
               
               <div className="grid grid-cols-4 gap-4 mb-2">
                 <span className="text-lg font-semibold text-right col-span-1">最高出价者：</span>
                 <span className="text-lg col-span-3">
-                  {nftData.highestBidder ? <Address address={nftData.highestBidder} /> : "未开始竞拍"}
+                  {auction?.highestBidder ? <Address address={auction?.highestBidder} /> : "未开始竞拍"}
                 </span>
               </div>
               

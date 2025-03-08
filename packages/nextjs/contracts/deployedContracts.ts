@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  1337: {
     YourCollectible: {
-      address: "0x610178dA211FEF7D417bC0e6FeD39F05609AD788",
+      address: "0xab771E61bFDF4cC6508d5b30c2223f422fA58475",
       abi: [
         {
           inputs: [],
@@ -203,6 +203,12 @@ const deployedContracts = {
               name: "amount",
               type: "uint256",
             },
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "timestamp",
+              type: "uint256",
+            },
           ],
           name: "AuctionEnded",
           type: "event",
@@ -357,117 +363,6 @@ const deployedContracts = {
           inputs: [
             {
               indexed: true,
-              internalType: "uint256",
-              name: "tokenId",
-              type: "uint256",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "seller",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "price",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "timestamp",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "transactionId",
-              type: "uint256",
-            },
-          ],
-          name: "NftListed",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "uint256",
-              name: "tokenId",
-              type: "uint256",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "buyer",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "seller",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "price",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "timestamp",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "transactionId",
-              type: "uint256",
-            },
-          ],
-          name: "NftPurchased",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "transactionId",
-              type: "uint256",
-            },
-            {
-              indexed: true,
-              internalType: "uint256",
-              name: "tokenId",
-              type: "uint256",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "seller",
-              type: "address",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "timestamp",
-              type: "uint256",
-            },
-          ],
-          name: "NftUnlisted",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
               internalType: "address",
               name: "previousOwner",
               type: "address",
@@ -525,20 +420,20 @@ const deployedContracts = {
             {
               indexed: true,
               internalType: "address",
-              name: "buyer",
+              name: "from",
               type: "address",
             },
             {
               indexed: true,
               internalType: "address",
-              name: "seller",
+              name: "to",
               type: "address",
             },
             {
               indexed: false,
-              internalType: "uint256",
-              name: "tokenId",
-              type: "uint256",
+              internalType: "string",
+              name: "transactionType",
+              type: "string",
             },
             {
               indexed: false,
@@ -560,43 +455,6 @@ const deployedContracts = {
             },
           ],
           name: "TransactionRecord",
-          type: "event",
-        },
-        {
-          anonymous: false,
-          inputs: [
-            {
-              indexed: true,
-              internalType: "address",
-              name: "from",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "address",
-              name: "to",
-              type: "address",
-            },
-            {
-              indexed: true,
-              internalType: "uint256",
-              name: "tokenId",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "uint256",
-              name: "timestamp",
-              type: "uint256",
-            },
-            {
-              indexed: false,
-              internalType: "bytes32",
-              name: "transactionId",
-              type: "bytes32",
-            },
-          ],
-          name: "Transfer",
           type: "event",
         },
         {
@@ -1062,6 +920,19 @@ const deployedContracts = {
               internalType: "uint256[]",
               name: "",
               type: "uint256[]",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getContractAddress",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
             },
           ],
           stateMutability: "view",

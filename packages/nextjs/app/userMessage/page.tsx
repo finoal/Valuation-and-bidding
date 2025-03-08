@@ -82,7 +82,7 @@ const UpdateAssessInfo: NextPage = () => {
         <div className="hidden md:block md:w-1/3 bg-gradient-to-br from-blue-400 to-green-400">
           <div className="flex items-center justify-center h-full">
             <img
-              src="https://peach-obedient-peafowl-970.mypinata.cloud/ipfs/bafkreihminjekdwihdkwcpz6zu4cuaslebwtsa3erjkfzkpro2l22j2s2e?pinataGatewayToken=r6y5mp8OMzhdDC_MvCV6xQ9PAi9qmBnn6_TBvdvT40ygLAJqmHuaeRpSMYtOskf8"
+              src="https://peach-obedient-peafowl-970.mypinata.cloud/ipfs/bafybeifrki6oqfko2wunc6e4v6dqfkjui3wdovwsj77vdijjveqnozzugq?pinataGatewayToken=r6y5mp8OMzhdDC_MvCV6xQ9PAi9qmBnn6_TBvdvT40ygLAJqmHuaeRpSMYtOskf8"
               alt="Institution Preview"
               className="object-cover w-full h-full"
             />

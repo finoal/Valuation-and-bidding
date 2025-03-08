@@ -7,10 +7,11 @@ import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 const Transfers: NextPage = () => {
   const { data: transferEvents, isLoading } = useScaffoldEventHistory({
     contractName: "YourCollectible",
-    eventName: "NftPurchased",
+    eventName: "TransactionRecord",
     // Specify the starting block number from which to read events, this is a bigint.
     fromBlock: 0n,
   });
+  console.log("222", transferEvents);
 
   if (isLoading)
     return (
@@ -24,44 +25,42 @@ const Transfers: NextPage = () => {
       <div className="flex items-center flex-col flex-grow pt-10">
         <div className="px-5">
           <h1 className="text-center mb-8">
-            <span className="block text-4xl font-bold">All Transfers Events</span>
+            <span className="block text-4xl font-bold">交易历史记录</span>
           </h1>
         </div>
         <div className="overflow-x-auto shadow-lg">
           <table className="table table-zebra w-full">
             <thead>
               <tr>
-                <th className="bg-primary">Transaction ID</th>
-                <th className="bg-primary">Timestamp</th>
-                <th className="bg-primary">Token Id</th>
-                <th className="bg-primary">From</th>
-                <th className="bg-primary">To</th>
-                <th className="bg-primary">prine</th>
+                <th className="bg-primary">交易序号</th>
+                <th className="bg-primary">交易时间</th>
+                <th className="bg-primary">类型</th>
+                <th className="bg-primary">发送者</th>
+                <th className="bg-primary">接收者</th>
+                <th className="bg-primary">金额 (ETH)</th>
               </tr>
             </thead>
             <tbody>
               {!transferEvents || transferEvents.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="text-center">
-                    No events found
+                  <td colSpan={6} className="text-center">
+                    没有记录
                   </td>
                 </tr>
               ) : (
                 transferEvents?.map((event, index) => {
                   return (
                     <tr key={index}>
-                      {/* 使用 .toString() 转换 transactionId 为字符串 */}
                       <th className="text-center">{event.args.transactionId?.toString()}</th>
-                      {/* 显式转换 timestamp 为数字并显示 */}
                       <td className="text-center">{new Date(Number(event.args.timestamp) * 1000).toLocaleString()}</td>
-                      <th className="text-center">{event.args.tokenId?.toString()}</th>
+                      <td className="text-center">{event.args.transactionType}</td>
                       <td>
-                        <Address address={event.args.buyer} />
+                        <Address address={event.args.from} />
                       </td>
                       <td>
-                        <Address address={event.args.seller} />
+                        <Address address={event.args.to} />
                       </td>
-                      <th className="text-center">{(Number(event.args.price) / 1e18).toFixed(4)} ETH</th>
+                      <th className="text-center">{(Number(event.args.amount) / 1e18).toFixed(4)} ETH</th>
                     </tr>
                   );
                 })

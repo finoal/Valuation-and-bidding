@@ -100,7 +100,7 @@ const CreateNft: NextPage = () => {
         <div className="hidden md:block md:w-1/3 bg-gradient-to-br from-blue-400 to-green-400">
           <div className="flex items-center justify-center h-full">
             <img
-              src="https://peach-obedient-peafowl-970.mypinata.cloud/ipfs/bafkreih247yor3jxtaxo6bvehzfillhwfngu35t3juq2szupajbnx2e5rm?pinataGatewayToken=r6y5mp8OMzhdDC_MvCV6xQ9PAi9qmBnn6_TBvdvT40ygLAJqmHuaeRpSMYtOskf8"
+              src="https://peach-obedient-peafowl-970.mypinata.cloud/ipfs/bafybeig7ts2xb2jn435bzfyarlxkjhh7ucohsyhjvgln763erpn7omsvwe?pinataGatewayToken=r6y5mp8OMzhdDC_MvCV6xQ9PAi9qmBnn6_TBvdvT40ygLAJqmHuaeRpSMYtOskf8"
               alt="NFT Preview"
               className="object-cover w-full h-full"
             />

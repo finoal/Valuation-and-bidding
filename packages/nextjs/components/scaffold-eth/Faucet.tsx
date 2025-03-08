@@ -13,7 +13,20 @@ import { notification } from "~~/utils/scaffold-eth";
 const FAUCET_ACCOUNT_INDEX = 0;
 
 const localWalletClient = createWalletClient({
-  chain: hardhat,
+  chain: {
+    id: 1337,
+    name: "Localhost",
+    network: "localhost",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: { http: ["http://127.0.0.1:8888"] },
+      public: { http: ["http://127.0.0.1:8888"] },
+    },
+  },
   transport: http(),
 });
 
@@ -76,7 +89,7 @@ export const Faucet = () => {
   };
 
   // Render only on local chain
-  if (ConnectedChain?.id !== hardhat.id) {
+  if (ConnectedChain?.id !== 1337) {
     return null;
   }
 

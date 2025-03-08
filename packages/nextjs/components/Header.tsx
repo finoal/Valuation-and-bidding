@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { UserIcon, UserCircleIcon, Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
+import { UserIcon, UserCircleIcon, Bars3Icon, BugAntIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useAuth } from "./AuthContext";
 
@@ -55,12 +55,6 @@ export const Header = () => {
           condition: isAuthenticated && !isAccrediting,
           icon: <BugAntIcon className="h-4 w-4" />,
         },
-        // {
-        //   label: "debug", // 用于调试
-        //   href: "/debug",
-        //   condition: isAuthenticated && !isAccrediting,
-        //   icon: <UserIcon className="h-4 w-4" />,
-        // },
         {
           label: "查看机构信息",
           href: "/getUserMessage",
@@ -98,6 +92,12 @@ export const Header = () => {
           icon: <UserCircleIcon className="h-4 w-4" />,
           onClick: logout, // 调用注销逻辑
         },
+        {
+          label: "交易记录",
+          href: "/transfers",
+          condition: isAuthenticated,
+          icon: <DocumentTextIcon className="h-4 w-4" />,
+        },
       ]
     : [
         {
@@ -111,6 +111,12 @@ export const Header = () => {
           href: "/login",
           condition: !isAuthenticated,
           icon: <UserCircleIcon className="h-4 w-4" />,
+        },
+        {
+          label: "debug", // 用于调试
+          href: "/debug",
+          condition: !isAuthenticated,
+          icon: <UserIcon className="h-4 w-4" />,
         },
       ];
 

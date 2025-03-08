@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { NFTCard } from "./NFTCard";
 import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-import { notification } from "~~/utils/scaffold-eth";
+// import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
@@ -14,13 +14,13 @@ export interface Collectible extends Partial<NFTMetaData> {
   uri: string;
   owner: string;
   isAccredited: boolean;
-  transactionRecords?: {
-    transactionId: string;
-    timestamp: string;
-    price: string;
-    from: string;
-    to: string;
-  }[];
+  // transactionRecords?: {
+  //   transactionId: string;
+  //   timestamp: string;
+  //   price: string;
+  //   from: string;
+  //   to: string;
+  // }[];
 }
 
 export const MyHoldings = () => {
@@ -43,11 +43,11 @@ export const MyHoldings = () => {
     watch: true,
   });
 
-  const { data: nftTransactionEvents, isLoading: transactionLoading } = useScaffoldEventHistory({
-    contractName: "YourCollectible",
-    eventName: "NftPurchased",
-    fromBlock: 0n,
-  });
+  // const { data: nftTransactionEvents, isLoading: transactionLoading } = useScaffoldEventHistory({
+  //   contractName: "YourCollectible",
+  //   eventName: "NftPurchased",
+  //   fromBlock: 0n,
+  // });
 
   const updateCollectible = (updatedNft: Collectible) => {
     setMyAllCollectibles(prevCollectibles =>
@@ -78,16 +78,16 @@ export const MyHoldings = () => {
           const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(tokenURI as string);
           const nftitem = await yourCollectibleContract.read.getNftItem([tokenId]);
-          const tokenTransactions =
-            nftTransactionEvents?.filter(event => event.args.tokenId.toString() === tokenId.toString()) || [];
+          // const tokenTransactions =
+          //   nftTransactionEvents?.filter(event => event.args.tokenId.toString() === tokenId.toString()) || [];
 
-          const transactionRecords = tokenTransactions.map(event => ({
-            transactionId: event.args.transactionId?.toString(),
-            timestamp: new Date(Number(event.args.timestamp) * 1000).toLocaleString(),
-            price: (Number(event.args.price) / 1e18).toFixed(4) + " ETH",
-            from: event.args.buyer,
-            to: event.args.seller,
-          }));
+          // const transactionRecords = tokenTransactions.map(event => ({
+          //   transactionId: event.args.transactionId?.toString(),
+          //   timestamp: new Date(Number(event.args.timestamp) * 1000).toLocaleString(),
+          //   price: (Number(event.args.price) / 1e18).toFixed(4) + " ETH",
+          //   from: event.args.buyer,
+          //   to: event.args.seller,
+          // }));
 
           collectibleUpdate.push({
             id: parseInt(tokenId.toString()),
@@ -95,10 +95,9 @@ export const MyHoldings = () => {
             owner: connectedAddress,
             isAccredited: nftitem.isAccredited,
             ...nftMetadata,
-            transactionRecords,
+            // transactionRecords,
           });
         } catch (e) {
-          notification.error("Error fetching collectibles");
           console.error(e);
         }
       }
@@ -110,7 +109,7 @@ export const MyHoldings = () => {
 
     updateMyCollectibles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [connectedAddress, myTotalBalance, nftTransactionEvents]);
+  }, [connectedAddress, myTotalBalance]);
 
   useEffect(() => {
     // 避免不必要的状态更新
@@ -134,7 +133,7 @@ export const MyHoldings = () => {
 
   const totalPages = Math.ceil(filteredCollectibles.length / itemsPerPage);
 
-  if (allCollectiblesLoading || transactionLoading)
+  if (allCollectiblesLoading)
     return (
       <div className="flex justify-center items-center mt-10">
         <span className="loading loading-spinner loading-lg"></span>
@@ -162,33 +161,6 @@ export const MyHoldings = () => {
             <div key={item.id} className="flex flex-col items-center">
               {/* <NFTCard nft={item} /> */}
               <NFTCard nft={item} updateCollectible={updateCollectible} />
-              {item.transactionRecords?.length > 0 && (
-                <div className="mt-4 w-full">
-                  <h3 className="font-bold text-lg">交易记录:</h3>
-                  <table className="table table-zebra w-full">
-                    <thead>
-                      <tr>
-                        <th>交易ID</th>
-                        <th>时间戳</th>
-                        <th>价格</th>
-                        <th>发送账户</th>
-                        <th>目标账户</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {item.transactionRecords.map((record, index) => (
-                        <tr key={index}>
-                          <td>{record.transactionId}</td>
-                          <td>{record.timestamp}</td>
-                          <td>{record.price}</td>
-                          <td>{record.from}</td>
-                          <td>{record.to}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
             </div>
           ))}
         </div>

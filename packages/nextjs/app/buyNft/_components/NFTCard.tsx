@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Collectible } from "./MyHoldings";
 import { Address } from "~~/components/scaffold-eth";
@@ -52,16 +54,18 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   };
 
   return (
-    <div className="card card-compact bg-base-100 shadow-lg w-[300px] shadow-secondary">
-      <figure className="relative">
-        <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-        <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-          <span className="text-white"># {nft.id}</span>
+    <div className="card card-compact bg-base-100 shadow-lg w-[300px] h-[550px] shadow-secondary hover:shadow-xl transition-shadow duration-300">
+      <figure className="relative h-[180px] w-full overflow-hidden">
+        <img src={nft.image} alt="NFT Image" className="w-full h-full object-cover object-center" />
+        <figcaption className="glass absolute bottom-4 left-4 p-4 rounded-xl backdrop-blur-sm">
+          <span className="text-white font-semibold"># {nft.id}</span>
         </figcaption>
       </figure>
-      <div className="card-body space-y-3">
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">{nft.name}</p>
+      <div className="card-body flex flex-col h-[370px] p-4">
+        <div className="flex-grow space-y-2">
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold truncate w-full">{nft.name}</p>
+          </div>
           <div className="flex flex-wrap space-x-2 mt-1">
             {nft.attributes?.map((attr, index) => (
               <span key={index} className="badge badge-primary py-3">
@@ -69,24 +73,25 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               </span>
             ))}
           </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold break-words line-clamp-3">{nft.description}</p>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg font-semibold">所有人 : </span>
+            <Address address={nft.owner} />
+          </div>
+          <div className="flex items-start">
+            <span className="text-lg font-semibold">价格: {ethers.formatEther(nft.price)} ETH</span>
+          </div>
+          <div className="flex items-start">
+            <span className="text-lg font-semibold">状态: {nft.listed ? "已上架" : "未上架"}</span>
+          </div>
         </div>
-        <div className="flex flex-col justify-center mt-1">
-          <p className="my-0 text-lg">{nft.description}</p>
-        </div>
-        <div className="flex space-x-3 mt-1 items-center">
-          <span className="text-lg font-semibold">Owner : </span>
-          <Address address={nft.owner} />
-        </div>
-        <div className="flex space-x-3 mt-1 items-center">
-          <span className="text-lg font-semibold">Price: {ethers.formatEther(nft.price)} ETH</span>
-        </div>
-        <div className="flex space-x-3 mt-1 items-center">
-          <span className="text-lg font-semibold">Listed: {nft.listed ? "已上架" : "未上架"}</span>
-        </div>
-        <div className="card-actions justify-end space-x-3">
+
+        <div className="mt-auto space-y-2 w-full">
           {nft.listed && (
             <button
-              className="btn btn-secondary btn-md px-8 tracking-wide"
+              className="btn btn-secondary w-full hover:bg-opacity-90 transition-colors duration-300"
               onClick={handlePurchaseNft}
             >
               购买
@@ -94,7 +99,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           )}
           {isOwner && nft.listed && (
             <button
-              className="btn btn-error btn-md px-8 tracking-wide"
+              className="btn btn-error w-full hover:bg-opacity-90 transition-colors duration-300"
               onClick={handleUnlistNft}
             >
               下架

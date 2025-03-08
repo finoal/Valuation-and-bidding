@@ -10,8 +10,25 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live                  hardhat
-  targetNetworks: [chains.hardhat],
-
+  // targetNetworks: [chains.hardhat],
+  // The networks on which your DApp is live
+  targetNetworks: [{
+    id: 1337,
+    name: "Dev Chain",
+    nativeCurrency: {
+      name: "Ether",
+      symbol: "ETH",
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: {
+        http: ["http://127.0.0.1:8888"],
+      },
+      public: {
+        http: ["http://127.0.0.1:8888"],
+      },
+    },
+  }],
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)
   pollingInterval: 30000,

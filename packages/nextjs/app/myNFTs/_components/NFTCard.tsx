@@ -22,6 +22,12 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     args: [BigInt(nft.id.toString())],
   });
 
+  // 截断描述文本，限制为50个字符
+  const truncateDescription = (text: string | undefined, maxLength: number = 50) => {
+    if (!text) return "";
+    return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+  };
+
   const handleCreateAuction = async () => {
     if (!startPrice || !selectedDateTime) {
       notification.error("请输入起拍价格和结束时间！");
@@ -52,7 +58,6 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
   };
 
   const handleEndAuction = async () => {
-    const notificationId = notification.loading("正在结束拍卖...");
     try {
       const now = Math.floor(Date.now() / 1000); // 当前时间戳（秒）
 
@@ -60,12 +65,7 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
         functionName: "endAuction",
         args: [BigInt(nft.id.toString()), BigInt(now)],
       });
-
-      notification.remove(notificationId);
-      notification.success("拍卖成功结束！");
     } catch (error) {
-      notification.remove(notificationId);
-      notification.error("结束拍卖失败！");
       console.error(error);
     }
   };
@@ -84,7 +84,6 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
 
       notification.remove(notificationId);
       notification.success("鉴定状态更新成功！");
-      // 更新本地状态以触发重新渲染
       updateCollectible({ ...nft, isAccredited: !nft.isAccredited });
     } catch (error) {
       notification.remove(notificationId);
@@ -101,53 +100,66 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
   };
 
   return (
-    <div className="card card-compact bg-base-100 shadow-lg w-[300px] shadow-secondary">
+    <div className="card card-compact bg-base-100 shadow-lg w-[300px] h-[550px] shadow-secondary hover:shadow-xl transition-shadow duration-300">
       <div className="cursor-pointer" onClick={() => handleNavigateToDetail(nft.id)}>
-        <figure className="relative">
-          <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-          <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-            <span className="text-white "># {nft.id}</span>
+        <figure className="relative h-[180px] overflow-hidden">
+          <img src={nft.image} alt="NFT Image" className="w-full h-full object-cover" />
+          <figcaption className="glass absolute bottom-4 left-4 p-4 rounded-xl backdrop-blur-sm">
+            <span className="text-white font-semibold"># {nft.id}</span>
           </figcaption>
         </figure>
       </div>
-      <div className="card-body space-y-3">
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">名称 : {nft.name}</p>
+      <div className="card-body flex flex-col h-[370px] p-4">
+        <div className="flex-grow space-y-2">
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold truncate w-full">名称 : {nft.name}</p>
+          </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold truncate w-full">种类 : {nft.kind}</p>
+          </div>
+          <div className="flex items-start">
+            <p className="text-xl p-0 m-0 font-semibold break-words line-clamp-3">
+              描述 : {truncateDescription(nft.description, 100)}
+            </p>
+          </div>
+          <div className="flex items-start gap-2">
+            <span className="text-lg font-semibold">所有人 : </span>
+            <Address address={nft.owner} />
+          </div>
+          <div className="flex items-start">
+            <span className="text-lg font-semibold">是否允许鉴定 : </span>
+            <span className="text-lg font-semibold ml-2">{nft.isAccredited ? '允许' : '不允许'}</span>
+          </div>
         </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">种类 : {nft.kind}</p>
-        </div>
-        <div className="flex items-center justify-center">
-          <p className="text-xl p-0 m-0 font-semibold">描述 : {nft.description}</p>
-        </div>
-        <div className="flex space-x-3 mt-1 items-center">
-          <span className="text-lg font-semibold">所有人 : </span>
-          <Address address={nft.owner} />
-        </div>
-        <div className="flex space-x-3 mt-1 items-center">
-          <span className="text-lg font-semibold">是否允许鉴定 : </span>
-          <span className="text-lg font-semibold">{nft.isAccredited ? '允许' : '不允许'}</span>
-        </div>
-        {/* 改变鉴定状态按钮 */}
-        <button className="btn btn-danger mt-4" onClick={() => handleToggleAccreditation()}>
-          {nft.isAccredited ? "取消允许鉴定" : "允许鉴定"}
-        </button>
-        {/* 创建拍卖按钮 */}
-        {!auction?.isActive && (
-          <button className="btn btn-primary mt-4" onClick={() => setIsModalOpen(true)}>
-            创建拍卖
+        
+        <div className="mt-auto space-y-2 w-full">
+          <button 
+            className="btn btn-danger w-full hover:bg-opacity-90 transition-colors duration-300" 
+            onClick={() => handleToggleAccreditation()}
+          >
+            {nft.isAccredited ? "取消允许鉴定" : "允许鉴定"}
           </button>
-        )}
+          
+          {!auction?.isActive && (
+            <button 
+              className="btn btn-primary w-full" 
+              onClick={() => setIsModalOpen(true)}
+            >
+              创建拍卖
+            </button>
+          )}
 
-        {/* 结束拍卖按钮 */}
-        {auction?.isActive && (
-          <button className="btn btn-danger mt-4" onClick={handleEndAuction}>
-            结束拍卖
-          </button>
-        )}
+          {auction?.isActive && (
+            <button 
+              className="btn btn-danger w-full" 
+              onClick={handleEndAuction}
+            >
+              结束拍卖
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* 弹窗 */}
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
