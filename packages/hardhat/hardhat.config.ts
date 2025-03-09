@@ -30,21 +30,32 @@ const config: HardhatUserConfig = {
       },
     },
   },
-  defaultNetwork: "localhost",
+  defaultNetwork: "devChain",
   namedAccounts: {
     deployer: {
-      // By default, it will take the first Hardhat account as the deployer
-      default: 0,
+      default: "0xA8311e0e5742902444A83eb53d883CE4CBf4830e",
     },
   },
   networks: {
     // View the networks that are pre-configured.
     // If the network you are looking for is not here you can add new network settings
+    devChain: {
+      url: "http://127.0.0.1:8888",
+      chainId: 1337,
+      from: "0xA8311e0e5742902444A83eb53d883CE4CBf4830e",
+      accounts: ["0x1a3f2ad8b39f0019848460d9b235482b3ca50e785e6fa11195ce5445cadca432"],
+      timeout: 60000,
+      gas: 5000000,
+      gasPrice: 1000000000,
+    },
     hardhat: {
-      forking: {
-        url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
-        enabled: process.env.MAINNET_FORKING_ENABLED === "true",
+      chainId: 1337,
+      mining: {
+        auto: true,
+        interval: 0,
       },
+      saveDeployments: true,
+      live: false,
     },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,

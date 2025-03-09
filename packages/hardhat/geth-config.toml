@@ -1,0 +1,23 @@
+[Node]
+DataDir = "./data"
+IPCPath = "geth.ipc"
+
+[Node.P2P]
+ListenAddr = ":30303"
+MaxPeers = 0
+
+[Node.HTTPTimeouts]
+ReadTimeout = 30
+WriteTimeout = 30
+IdleTimeout = 120
+
+[HTTP]
+Port = 8888
+Host = "127.0.0.1"
+Cors = ["*"]
+VHosts = ["*"]
+API = ["eth", "net", "web3", "personal", "debug", "miner", "txpool", "admin"]
+
+[Eth]
+SyncMode = "full"
+NetworkId = 1337
