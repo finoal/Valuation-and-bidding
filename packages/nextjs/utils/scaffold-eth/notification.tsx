@@ -64,6 +64,13 @@ const Notification = ({
     {
       duration: status === "loading" ? Infinity : duration,
       position,
+      toastOptions: {
+        // 禁用所有默认提示
+        success: { duration: 0 },
+        error: { duration: 0 },
+        loading: { duration: 0 },
+        custom: { duration: 0 }
+      }
     },
   );
 };

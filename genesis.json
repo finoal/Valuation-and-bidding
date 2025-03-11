@@ -56,6 +56,21 @@
         },
         "0xA8311e0e5742902444A83eb53d883CE4CBf4830e": {
            "balance": "0xfffffffffffffffffff"
+        },
+        "0xE0d0c81606147b8B83164C1d89f92a031c250F68": {
+            "balance": "0xfffffffffffffffffffff"
+        },
+        "0xd2F41407DDaAB13b48f8BA17C9AB528DcBd9Ee7E": {
+            "balance": "0xfffffffffffffffffffffff"
+        },
+        "0x73cf72D8f967072280e43fd06C61b4B38E8C9863": {
+            "balance": "0xfffffffffffffffffffffff"
+        },
+        "0xD1225FE1b26d94d57410d3312d20e0C1f26C9D57": {
+            "balance": "0xfffffffffffffffffffffff"
+        },
+        "0x26b979E3CB5E8237aEbfE45ADB62a8b5e9f035a0": {
+            "balance": "0xfffffffffffffffffffffff"
         }
     },
     "number": "0x0",
