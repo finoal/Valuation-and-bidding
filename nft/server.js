@@ -219,10 +219,189 @@ app.get('/getAccreditings', (req, res) => {
     });
 });
 
+// 创建blockchain_transactions表（如果不存在）
+const createBlockchainTransactionsTable = () => {
+  const query = `
+    CREATE TABLE IF NOT EXISTS blockchain_transactions (
+      id INT(11) AUTO_INCREMENT PRIMARY KEY,
+      block_number BIGINT NOT NULL,
+      block_timestamp DATETIME NOT NULL,
+      transaction_hash VARCHAR(66) NOT NULL,
+      from_address VARCHAR(42) NOT NULL,
+      to_address VARCHAR(42) NOT NULL,
+      gas VARCHAR(255) NOT NULL,
+      status VARCHAR(50) NOT NULL,
+      operation_description TEXT NOT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `;
+  
+  pool.query(query, (error, results) => {
+    if (error) {
+      console.error('创建blockchain_transactions表失败:', error);
+    } else {
+      console.log('blockchain_transactions表已创建或已存在');
+    }
+  });
+};
 
+// 在应用启动时执行表创建
+createBlockchainTransactionsTable();
 
+// 9. 添加区块链交易记录
+app.post('/addTransaction', (req, res) => {
+  const {
+    blockNumber,
+    blockTimestamp,
+    transactionHash,
+    fromAddress,
+    toAddress,
+    gas,
+    status,
+    operationDescription
+  } = req.body;
 
+  const query = `
+    INSERT INTO blockchain_transactions (
+      block_number, block_timestamp, transaction_hash, from_address, 
+      to_address, gas, status, operation_description
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `;
 
+  pool.execute(query, [
+    blockNumber, 
+    blockTimestamp, 
+    transactionHash, 
+    fromAddress, 
+    toAddress, 
+    gas, 
+    status, 
+    operationDescription
+  ], (err, result) => {
+    if (err) {
+      console.error('保存区块链交易记录失败:', err);
+      return res.status(500).json({ error: "保存区块链交易记录失败" });
+    }
+    res.status(200).json({ 
+      message: '交易记录保存成功', 
+      transactionId: result.insertId 
+    });
+    console.log("添加区块链交易记录成功");
+  });
+});
+
+// 10. 获取所有交易记录
+app.get('/getTransactions', (req, res) => {
+  const sortField = req.query.sortField || 'block_timestamp';
+  const sortOrder = req.query.sortOrder || 'desc';
+  
+  // 构建排序SQL
+  const sortSql = `ORDER BY ${sortField === 'block_number' ? 'block_number' : 'block_timestamp'} ${sortOrder === 'asc' ? 'ASC' : 'DESC'}`;
+  
+  const query = `SELECT * FROM blockchain_transactions ${sortSql}`;
+  
+  pool.query(query, (error, results) => {
+    if (error) {
+      console.error('获取交易记录失败:', error);
+      return res.status(500).json({ error: '获取交易记录失败' });
+    }
+    res.json(results);
+    console.log("获取所有交易记录成功");
+  });
+});
+
+// 11. 根据地址获取交易记录
+app.get('/getTransactionsByAddress/:address', (req, res) => {
+  const address = req.params.address;
+  const sortField = req.query.sortField || 'block_timestamp';
+  const sortOrder = req.query.sortOrder || 'desc';
+  
+  // 构建排序SQL
+  const sortSql = `ORDER BY ${sortField === 'block_number' ? 'block_number' : 'block_timestamp'} ${sortOrder === 'asc' ? 'ASC' : 'DESC'}`;
+  
+  const query = `
+    SELECT * FROM blockchain_transactions 
+    WHERE from_address = ? OR to_address = ? 
+    ${sortSql}
+  `;
+  
+  pool.query(query, [address, address], (error, results) => {
+    if (error) {
+      console.error('获取地址交易记录失败:', error);
+      return res.status(500).json({ error: '获取地址交易记录失败' });
+    }
+    res.json(results);
+    console.log(`获取地址 ${address} 的交易记录成功`);
+  });
+});
+
+// 12. 获取交易详情
+app.get('/getTransaction/:hash', (req, res) => {
+  const hash = req.params.hash;
+  
+  const query = 'SELECT * FROM blockchain_transactions WHERE transaction_hash = ?';
+  
+  pool.query(query, [hash], (error, results) => {
+    if (error) {
+      console.error('获取交易详情失败:', error);
+      return res.status(500).json({ error: '获取交易详情失败' });
+    }
+    
+    if (results.length === 0) {
+      return res.status(404).json({ error: '未找到交易记录' });
+    }
+    
+    res.json(results[0]);
+    console.log(`获取交易 ${hash} 的详情成功`);
+  });
+});
+
+// 13. 获取最近的交易记录，带分页功能
+app.get('/getRecentTransactions', (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const pageSize = parseInt(req.query.pageSize) || 10;
+  const offset = (page - 1) * pageSize;
+  const sortField = req.query.sortField || 'block_timestamp';
+  const sortOrder = req.query.sortOrder || 'desc';
+  
+  // 构建排序SQL
+  const sortSql = `ORDER BY ${sortField === 'block_number' ? 'block_number' : 'block_timestamp'} ${sortOrder === 'asc' ? 'ASC' : 'DESC'}`;
+  
+  const countQuery = 'SELECT COUNT(*) as total FROM blockchain_transactions';
+  const dataQuery = `
+    SELECT * FROM blockchain_transactions 
+    ${sortSql}
+    LIMIT ? OFFSET ?
+  `;
+  
+  pool.query(countQuery, (error, countResults) => {
+    if (error) {
+      console.error('获取交易记录总数失败:', error);
+      return res.status(500).json({ error: '获取交易记录失败' });
+    }
+    
+    const totalRecords = countResults[0].total;
+    const totalPages = Math.ceil(totalRecords / pageSize);
+    
+    pool.query(dataQuery, [pageSize, offset], (error, dataResults) => {
+      if (error) {
+        console.error('获取交易记录失败:', error);
+        return res.status(500).json({ error: '获取交易记录失败' });
+      }
+      
+      res.json({
+        data: dataResults,
+        pagination: {
+          currentPage: page,
+          pageSize: pageSize,
+          totalRecords: totalRecords,
+          totalPages: totalPages
+        }
+      });
+      console.log("获取最近交易记录成功");
+    });
+  });
+});
 
 app.listen(port, () => {
     console.log(`服务器运行在端口${port}`);

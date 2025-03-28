@@ -40,7 +40,7 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
 
   const result: TransactionFunc = async (tx, options) => {
     if (!walletClient) {
-      notification.error("Cannot access account");
+      notification.error("无法访问账户");
       console.error("⚡️ ~ file: useTransactor.tsx ~ error");
       return;
     }
@@ -52,7 +52,7 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
       // Get full transaction from public client
       const publicClient = getPublicClient(wagmiConfig);
 
-      notificationId = notification.loading(<TxnNotification message="Awaiting for user confirmation" />);
+      notificationId = notification.loading(<TxnNotification message="等待用户确认" />);
       if (typeof tx === "function") {
         // Tx is already prepared by the caller
         const result = await tx();
@@ -60,14 +60,14 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
       } else if (tx != null) {
         transactionHash = await walletClient.sendTransaction(tx);
       } else {
-        throw new Error("Incorrect transaction passed to transactor");
+        throw new Error("错误的交易传递");
       }
       notification.remove(notificationId);
 
       const blockExplorerTxURL = network ? getBlockExplorerTxLink(network, transactionHash) : "";
 
       notificationId = notification.loading(
-        <TxnNotification message="Waiting for transaction to complete." blockExplorerLink={blockExplorerTxURL} />,
+        <TxnNotification message="等待交易完成" blockExplorerLink={blockExplorerTxURL} />,
       );
 
       const transactionReceipt = await publicClient.waitForTransactionReceipt({
@@ -77,7 +77,7 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
       notification.remove(notificationId);
 
       notification.success(
-        <TxnNotification message="Transaction completed successfully!" blockExplorerLink={blockExplorerTxURL} />,
+        <TxnNotification message="操作完成!" blockExplorerLink={blockExplorerTxURL} />,
         {
           icon: "🎉",
         },

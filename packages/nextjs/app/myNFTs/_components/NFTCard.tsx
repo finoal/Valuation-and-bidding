@@ -6,11 +6,16 @@ import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { useRouter } from "next/navigation"; // 页面跳转
+import { useAccount, usePublicClient } from "wagmi"; // 添加usePublicClient和useAccount
+import { Hash } from "viem"; // 导入Hash类型
+import axios from "axios"; // 导入axios用于API调用
 
 export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCollectible: (updatedNft: Collectible) => void }) => {
   // };
   // export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const router = useRouter();
+  const { address } = useAccount(); // 获取当前用户地址
+  const publicClient = usePublicClient(); // 获取区块链客户端
   const [isModalOpen, setIsModalOpen] = useState(false); // 控制弹窗显示状态
   const [startPrice, setStartPrice] = useState(0);
   const [selectedDateTime, setSelectedDateTime] = useState<string>("");
@@ -22,8 +27,39 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     args: [BigInt(nft.id.toString())],
   });
 
+  // 将交易数据保存到数据库
+  const saveTransactionToDatabase = async (
+    blockNumber: bigint,
+    blockTimestamp: bigint,
+    transactionHash: Hash,
+    fromAddress: string,
+    toAddress: string, 
+    gas: bigint,
+    status: "success" | "reverted" | string,
+    operationDescription: string
+  ) => {
+    try {
+      const response = await axios.post('http://localhost:3001/addTransaction', {
+        blockNumber: blockNumber.toString(),
+        blockTimestamp: new Date(Number(blockTimestamp) * 1000).toISOString().slice(0, 19).replace('T', ' '),
+        transactionHash,
+        fromAddress,
+        toAddress,
+        gas: gas.toString(),
+        status,
+        operationDescription
+      });
+      
+      console.log('交易数据已保存到数据库:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('保存交易数据失败:', error);
+      throw error;
+    }
+  };
+
   // 截断描述文本，限制为50个字符
-  const truncateDescription = (text: string | undefined, maxLength: number = 50) => {
+  const truncateDescription = (text: string | undefined, maxLength = 50) => {
     if (!text) return "";
     return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
   };
@@ -37,7 +73,7 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     const notificationId = notification.loading("正在创建拍卖...");
     try {
       const endTime = Math.floor(new Date(selectedDateTime).getTime() / 1000); // 转换为时间戳
-      await writeContractAsync({
+      const txHash = await writeContractAsync({
         functionName: "createAuction",
         args: [
           BigInt(nft.id.toString()),
@@ -46,6 +82,34 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
           BigInt(endTime),
         ],
       });
+
+      if (!publicClient || !txHash) {
+        notification.error("获取交易信息失败");
+        notification.remove(notificationId);
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        `创建拍卖 - 拍品ID: ${nft.id}, 名称: ${nft.name}` // 操作描述
+      );
 
       notification.remove(notificationId);
       notification.success("拍卖创建成功！");
@@ -58,14 +122,48 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
   };
 
   const handleEndAuction = async () => {
+    const notificationId = notification.loading("正在结束拍卖...");
     try {
       const now = Math.floor(Date.now() / 1000); // 当前时间戳（秒）
 
-      await writeContractAsync({
+      const txHash = await writeContractAsync({
         functionName: "endAuction",
         args: [BigInt(nft.id.toString()), BigInt(now)],
       });
+
+      if (!publicClient || !txHash) {
+        notification.error("获取交易信息失败");
+        notification.remove(notificationId);
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        `结束拍卖 - 拍品ID: ${nft.id}, 名称: ${nft.name}` // 操作描述
+      );
+
+      notification.remove(notificationId);
+      notification.success("拍卖已成功结束！");
     } catch (error) {
+      notification.remove(notificationId);
+      notification.error("结束拍卖失败！");
       console.error(error);
     }
   };
@@ -77,10 +175,38 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
     const notificationId = notification.loading("正在更新鉴定状态...");
 
     try {
-      await writeContractAsync({
+      const txHash = await writeContractAsync({
         functionName: "modiyAccredited", // 假设智能合约有这个函数
         args: [BigInt(nft.id.toString()), !nft.isAccredited], // 切换鉴定状态
       });
+
+      if (!publicClient || !txHash) {
+        notification.error("获取交易信息失败");
+        notification.remove(notificationId);
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        `鉴定状态修改 - 拍品ID: ${nft.id}, 名称: ${nft.name}, 状态: ${!nft.isAccredited ? '允许' : '不允许'}` // 操作描述
+      );
 
       notification.remove(notificationId);
       notification.success("鉴定状态更新成功！");
@@ -124,7 +250,7 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
           </div>
           <div className="flex items-start gap-2">
             <span className="text-lg font-semibold">所有人 : </span>
-            <Address address={nft.owner} />
+            <Address address={nft.owner as `0x${string}`} />
           </div>
           <div className="flex items-start">
             <span className="text-lg font-semibold">是否允许鉴定 : </span>

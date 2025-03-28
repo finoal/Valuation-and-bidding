@@ -8,6 +8,7 @@ import { addToIPFS, uploadImageToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NextPage } from "next";
 //进行数据库操作;
 import axios from "axios";
+import { Hash } from "viem";
 
 const CreateNft: NextPage = () => {
   const { writeContractAsync } = useScaffoldWriteContract("YourCollectible");
@@ -27,6 +28,37 @@ const CreateNft: NextPage = () => {
   };
   //获取合约的操作信息
   const publicClient = usePublicClient();
+
+  // 将交易数据保存到数据库
+  const saveTransactionToDatabase = async (
+    blockNumber: bigint,
+    blockTimestamp: bigint,
+    transactionHash: Hash,
+    fromAddress: string,
+    toAddress: string, 
+    gas: bigint,
+    status: "success" | "reverted" | string,
+    operationDescription: string
+  ) => {
+    try {
+      const response = await axios.post('http://localhost:3001/addTransaction', {
+        blockNumber: blockNumber.toString(),
+        blockTimestamp: new Date(Number(blockTimestamp) * 1000).toISOString().slice(0, 19).replace('T', ' '),
+        transactionHash,
+        fromAddress,
+        toAddress,
+        gas: gas.toString(),
+        status,
+        operationDescription
+      });
+      
+      console.log('交易数据已保存到数据库:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('保存交易数据失败:', error);
+      throw error;
+    }
+  };
 
   const handleMintNft = async () => {
     if (files.length === 0 || !isConnected) {
@@ -67,10 +99,39 @@ const CreateNft: NextPage = () => {
       for (let index = 0; index < metadataUris.length; index++) {
         const cid = metadataUris[index];
         const royalty = royaltyFeeArray[index];
-        await writeContractAsync({
+        
+        // 铸造NFT
+        const txHash = await writeContractAsync({
           functionName: "mintItem",
           args: [address, cid, royalty],
         });
+        
+        if (!publicClient || !txHash) {
+          notification.error("获取交易信息失败");
+          continue;
+        }
+        
+        // 获取交易收据
+        const receipt = await publicClient?.waitForTransactionReceipt({ 
+          hash: txHash as Hash
+        });
+        
+        // 获取区块信息
+        const block = await publicClient?.getBlock({ 
+          blockNumber: receipt.blockNumber 
+        });
+        
+        // 将交易数据保存到数据库
+        await saveTransactionToDatabase(
+          receipt.blockNumber,
+          block.timestamp,
+          receipt.transactionHash,
+          address || '', // 发送者
+          receipt.to || '', // 接收者（合约地址）
+          receipt.gasUsed, // 使用的gas
+          receipt.status, // 交易状态
+          `创建拍品 - ${name}` // 操作描述
+        );
       }
 
       notification.success("藏品创建成功!");

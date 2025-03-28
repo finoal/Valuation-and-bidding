@@ -3,8 +3,11 @@
 import { useEffect, useState } from "react";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
-import { usePublicClient } from "wagmi";
+import { usePublicClient, useAccount } from "wagmi";
 import { useRouter } from "next/navigation"; // 页面跳转
+import axios from "axios"; // 导入axios用于API调用
+import { Hash } from "viem"; // 导入Hash类型
+import { notification } from "~~/utils/scaffold-eth"; // 导入notification
 
 export interface AuctionNFT {
   tokenId: number;
@@ -26,6 +29,7 @@ const PAGE_SIZE = 3; // 每页显示的拍卖数量
 
 const AuctionPage = () => {
   const router = useRouter();
+  const { address } = useAccount(); // 获取当前用户地址
   const [auctionNfts, setAuctionNfts] = useState<AuctionNFT[]>([]);
   const [filteredNfts, setFilteredNfts] = useState<AuctionNFT[]>([]); // 筛选后的拍卖数据
   const [currentPage, setCurrentPage] = useState(1); // 当前页码
@@ -46,6 +50,37 @@ const AuctionPage = () => {
   });
 
   const { writeContractAsync } = useScaffoldWriteContract("YourCollectible");
+
+  // 将交易数据保存到数据库
+  const saveTransactionToDatabase = async (
+    blockNumber: bigint,
+    blockTimestamp: bigint,
+    transactionHash: Hash,
+    fromAddress: string,
+    toAddress: string, 
+    gas: bigint,
+    status: "success" | "reverted" | string,
+    operationDescription: string
+  ) => {
+    try {
+      const response = await axios.post('http://localhost:3001/addTransaction', {
+        blockNumber: blockNumber.toString(),
+        blockTimestamp: new Date(Number(blockTimestamp) * 1000).toISOString().slice(0, 19).replace('T', ' '),
+        transactionHash,
+        fromAddress,
+        toAddress,
+        gas: gas.toString(),
+        status,
+        operationDescription
+      });
+      
+      console.log('交易数据已保存到数据库:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('保存交易数据失败:', error);
+      throw error;
+    }
+  };
 
   // 获取 NFT 元数据
   const fetchNftDetails = async (tokenId: number, uri: string): Promise<AuctionNFT> => {
@@ -218,21 +253,60 @@ const AuctionPage = () => {
       alert("请输入有效的出价金额！");
       return;
     }
+    
+    // 获取NFT信息用于描述
+    const nft = auctionNfts.find(item => item.tokenId === tokenId);
+    if (!nft) {
+      alert("找不到拍品信息！");
+      return;
+    }
+    
+    const notificationId = notification.loading("正在提交竞价...");
+    
     try {
       const inputBid = Number(bidValue) * 10 ** 18;
-      const tx = await writeContractAsync({
+      const txHash = await writeContractAsync({
         functionName: "placeBid",
         args: [BigInt(tokenId)],
         value: BigInt(inputBid),
       });
-      console.log(tx);
-      const receipt = await publicClient?.getTransactionReceipt({ hash: tx as `0x${string}` });
-      console.log(receipt);
-      alert("出价成功！但请关注拍品动向，可能有其他用户出价更高。");
+      
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        alert("获取交易信息失败");
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        `参与竞价 - 拍品ID: ${tokenId}, 名称: ${nft.name}, 出价金额: ${bidValue} ETH` // 操作描述
+      );
+      
+      notification.remove(notificationId);
+      notification.success("出价成功！但请关注拍品动向，可能有其他用户出价更高。");
+      
       setBidAmounts(prev => ({ ...prev, [tokenId]: "" })); // 清空当前拍品的输入框
     } catch (error) {
+      notification.remove(notificationId);
       console.error("出价失败:", error);
-      alert("出价失败，请检查您的输入或钱包余额。");
+      notification.error("出价失败，请检查您的输入或钱包余额。");
     }
   };
 

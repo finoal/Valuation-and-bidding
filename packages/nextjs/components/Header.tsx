@@ -4,9 +4,30 @@ import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { UserIcon, UserCircleIcon, Bars3Icon, BugAntIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import { 
+  Bars3Icon, 
+  HomeIcon,
+  SquaresPlusIcon,
+  BuildingStorefrontIcon,
+  ShoppingBagIcon,
+  ClipboardDocumentCheckIcon,
+  PencilSquareIcon,
+  AcademicCapIcon,
+  IdentificationIcon,
+  ArrowRightOnRectangleIcon,
+  ArrowLeftEndOnRectangleIcon,
+  BugAntIcon,
+  BanknotesIcon,
+  CircleStackIcon,
+  PowerIcon,
+  UserPlusIcon,
+  CurrencyDollarIcon
+} from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useAuth } from "./AuthContext";
+
+// 定义分类枚举类型
+type MenuCategory = 'common' | 'collector' | 'institution' | 'public' | 'auth' | 'dev';
 
 type HeaderMenuLink = {
   label: string;
@@ -14,6 +35,7 @@ type HeaderMenuLink = {
   condition?: boolean; // 判断菜单项是否显示的条件
   icon?: React.ReactNode;
   onClick?: () => void; // 点击菜单项时的回调函数
+  category?: MenuCategory; // 菜单分类
 };
 
 export const Header = () => {
@@ -31,127 +53,257 @@ export const Header = () => {
 
   const menuLinks: HeaderMenuLink[] = isAuthenticated
     ? [
+        // 通用菜单项
+        {
+          label: "首页",
+          href: "/",
+          condition: true,
+          icon: <HomeIcon className="h-5 w-5" />,
+          category: "common"
+        },
+        
+        // 收藏家菜单项
         {
           label: "仪表盘",
           href: "/dashboard",
           condition: isAuthenticated && !isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <CircleStackIcon className="h-5 w-5" />,
+          category: "collector"
         },
         {
           label: "我的拍品",
           href: "/myNFTs",
           condition: isAuthenticated && !isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <ShoppingBagIcon className="h-5 w-5" />,
+          category: "collector"
         },
         {
           label: "添加拍品",
           href: "/createNft",
           condition: isAuthenticated && !isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <SquaresPlusIcon className="h-5 w-5" />,
+          category: "collector"
         },
         {
-          label: "拍卖",
+          label: "拍卖市场",
           href: "/auction",
           condition: isAuthenticated && !isAccrediting,
-          icon: <BugAntIcon className="h-4 w-4" />,
+          icon: <BuildingStorefrontIcon className="h-5 w-5" />,
+          category: "collector"
         },
+        
+        // 鉴定机构菜单项
         {
           label: "查看机构信息",
           href: "/getUserMessage",
           condition: isAuthenticated && isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <IdentificationIcon className="h-5 w-5" />,
+          category: "institution"
         },
         {
           label: "更新机构信息",
           href: "/userMessage",
           condition: isAuthenticated && isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <PencilSquareIcon className="h-5 w-5" />,
+          category: "institution"
         },
         {
-          label: "鉴定",
-          href: "/authenticate",
+          label: "可鉴定藏品",
+          href: "/accreditableNFTs",
           condition: isAuthenticated && isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <ClipboardDocumentCheckIcon className="h-5 w-5" />,
+          category: "institution"
         },
         {
           label: "我的鉴定",
           href: "/myauthmessage",
           condition: isAuthenticated && isAccrediting,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <AcademicCapIcon className="h-5 w-5" />,
+          category: "institution"
         },
+        
+        // 公共菜单项（已登录用户）
         {
           label: "我的授权",
           href: "/power",
           condition: isAuthenticated,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <PowerIcon className="h-5 w-5" />,
+          category: "public"
         },
         {
-          label: "注销", // 退出登录
-          href: "", // 避免 href 冲突，全部由 onClick 控制
-          condition: isAuthenticated, // 登录状态时显示
-          icon: <UserCircleIcon className="h-4 w-4" />,
-          onClick: logout, // 调用注销逻辑
+          label: "区块链交易",
+          href: "/transactions",
+          condition: isAuthenticated,
+          icon: <BanknotesIcon className="h-5 w-5" />,
+          category: "public"
         },
         {
           label: "交易记录",
           href: "/transfers",
           condition: isAuthenticated,
-          icon: <DocumentTextIcon className="h-4 w-4" />,
+          icon: <CurrencyDollarIcon className="h-5 w-5" />,
+          category: "public"
+        },
+        {
+          label: "退出登录",
+          href: "",
+          condition: isAuthenticated,
+          icon: <ArrowRightOnRectangleIcon className="h-5 w-5" />,
+          onClick: logout,
+          category: "auth"
         },
       ]
     : [
         {
+          label: "首页",
+          href: "/",
+          condition: true,
+          icon: <HomeIcon className="h-5 w-5" />,
+          category: "common"
+        },
+        {
           label: "注册",
           href: "/register",
           condition: !isAuthenticated,
-          icon: <UserIcon className="h-4 w-4" />,
+          icon: <UserPlusIcon className="h-5 w-5" />,
+          category: "auth"
         },
         {
           label: "登录",
           href: "/login",
           condition: !isAuthenticated,
-          icon: <UserCircleIcon className="h-4 w-4" />,
+          icon: <ArrowLeftEndOnRectangleIcon className="h-5 w-5" />,
+          category: "auth"
         },
-        {
-          label: "debug", // 用于调试
-          href: "/debug",
-          condition: !isAuthenticated,
-          icon: <UserIcon className="h-4 w-4" />,
-        },
+        // {
+        //   label: "Debug", // 调试选项
+        //   href: "/debug",
+        //   condition: process.env.NODE_ENV === "development", // 仅在开发环境下显示
+        //   icon: <BugAntIcon className="h-5 w-5" />,
+        //   category: "dev"
+        // },
       ];
 
-  const HeaderMenuLinks = () => (
-    <>
-      {menuLinks.map(({ label, href, condition, icon, onClick }) => {
-        const isActive = pathname === href;
-        if (condition !== undefined && !condition) return null;
-        return (
-          <li key={label}>
-            {href ? (
-              <Link
-                href={href}
-                passHref
-                className={`${
-                  isActive ? "bg-secondary shadow-md" : ""
-                } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
-              >
-                {icon}
-                <span>{label}</span>
-              </Link>
-            ) : (
-              <button
-                onClick={onClick}
-                className="hover:bg-secondary hover:shadow-md focus:!bg-secondary py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col"
-              >
-                {icon}
-                <span>{label}</span>
-              </button>
-            )}
-          </li>
-        );
-      })}
-    </>
-  );
+  // 对菜单项进行分组展示
+  const getMenuGroups = () => {
+    if (!isAuthenticated) return menuLinks;
+    
+    const categoryOrder: Record<MenuCategory, number> = {
+      common: 1,
+      collector: 2,
+      institution: 3,
+      public: 4,
+      auth: 5,
+      dev: 6
+    };
+    
+    const sortByCategory = [...menuLinks].sort((a, b) => {
+      const aCat = a.category || 'common';
+      const bCat = b.category || 'common';
+      return (categoryOrder[aCat] || 99) - (categoryOrder[bCat] || 99);
+    });
+    
+    return sortByCategory;
+  };
+
+  const HeaderMenuLinks = () => {
+    const groupedLinks = getMenuGroups();
+    let lastCategory: MenuCategory | null = null;
+    
+    return (
+      <>
+        {groupedLinks.map((link, index) => {
+          const { label, href, condition, icon, onClick, category } = link;
+          const isActive = pathname === href;
+          
+          // 如果不满足显示条件，则不显示
+          if (condition !== undefined && !condition) return null;
+          
+          // 检查是否需要添加分隔线
+          const showDivider = lastCategory !== category && lastCategory !== null && index > 0;
+          lastCategory = category as MenuCategory || null;
+          
+          return (
+            <React.Fragment key={label}>
+              {showDivider && <div className="hidden xl:block border-l h-8 mx-2 opacity-30"></div>}
+              <li>
+                {href ? (
+                  <Link
+                    href={href}
+                    passHref
+                    className={`${
+                      isActive ? "bg-secondary shadow-md" : ""
+                    } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-2 px-3 text-sm rounded-full gap-2 grid grid-flow-col items-center transition-all duration-200`}
+                  >
+                    {icon}
+                    <span>{label}</span>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={onClick}
+                    className="hover:bg-secondary hover:shadow-md focus:!bg-secondary py-2 px-3 text-sm rounded-full gap-2 grid grid-flow-col items-center transition-all duration-200"
+                  >
+                    {icon}
+                    <span>{label}</span>
+                  </button>
+                )}
+              </li>
+            </React.Fragment>
+          );
+        })}
+      </>
+    );
+  };
+
+  // 移动端菜单处理
+  const MobileHeaderMenuLinks = () => {
+    const groupedLinks = getMenuGroups();
+    let lastCategory: MenuCategory | null = null;
+    
+    return (
+      <>
+        {groupedLinks.map((link, index) => {
+          const { label, href, condition, icon, onClick, category } = link;
+          const isActive = pathname === href;
+          
+          // 如果不满足显示条件，则不显示
+          if (condition !== undefined && !condition) return null;
+          
+          // 检查是否需要添加分隔线
+          const showDivider = lastCategory !== category && lastCategory !== null && index > 0;
+          lastCategory = category as MenuCategory || null;
+          
+          return (
+            <React.Fragment key={label}>
+              {showDivider && <div className="divider my-1 opacity-30"></div>}
+              <li>
+                {href ? (
+                  <Link
+                    href={href}
+                    passHref
+                    className={`${
+                      isActive ? "bg-secondary" : ""
+                    } hover:bg-secondary py-2 px-4 text-sm gap-2 flex items-center`}
+                  >
+                    <span className="w-6">{icon}</span>
+                    <span>{label}</span>
+                  </Link>
+                ) : (
+                  <button
+                    onClick={onClick}
+                    className="hover:bg-secondary py-2 px-4 text-sm gap-2 flex items-center w-full text-left"
+                  >
+                    <span className="w-6">{icon}</span>
+                    <span>{label}</span>
+                  </button>
+                )}
+              </li>
+            </React.Fragment>
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <div className="sticky xl:static top-0 navbar bg-primary min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2">
@@ -167,10 +319,10 @@ export const Header = () => {
           {isDrawerOpen && (
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-64"
               onClick={() => setIsDrawerOpen(false)}
             >
-              <HeaderMenuLinks />
+              <MobileHeaderMenuLinks />
             </ul>
           )}
         </div>

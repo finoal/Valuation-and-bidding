@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, usePublicClient } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
+import axios from "axios";
+import { Hash } from "viem";
 
 interface NFTItem {
   id: number;
@@ -20,6 +22,7 @@ interface NFTItem {
 
 export const PowerNFTManagement = () => {
   const { address: connectedAddress } = useAccount();
+  const publicClient = usePublicClient(); // 用于获取交易详情
   const [nfts, setNfts] = useState<NFTItem[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 1;
@@ -34,7 +37,8 @@ export const PowerNFTManagement = () => {
   const [startPrice, setStartPrice] = useState(0);
   const [selectedDateTime, setSelectedDateTime] = useState<string>("");
 
-  const { data: totalBalance } = useScaffoldReadContract({
+  // 获取用户的NFT总数（用于显示信息）
+  useScaffoldReadContract({
     contractName: "YourCollectible",
     functionName: "balanceOf",
     args: [connectedAddress],
@@ -96,13 +100,82 @@ export const PowerNFTManagement = () => {
     }
   }, [connectedAddress, yourCollectibleContract, lastFetchTime]);
 
+  // 将交易数据保存到数据库
+  const saveTransactionToDatabase = async (
+    blockNumber: bigint,
+    blockTimestamp: bigint,
+    transactionHash: Hash,
+    fromAddress: string,
+    toAddress: string, 
+    gas: bigint,
+    status: "success" | "reverted" | string,
+    operationDescription: string
+  ) => {
+    try {
+      const response = await axios.post('http://localhost:3001/addTransaction', {
+        blockNumber: blockNumber.toString(),
+        blockTimestamp: new Date(Number(blockTimestamp) * 1000).toISOString().slice(0, 19).replace('T', ' '),
+        transactionHash,
+        fromAddress,
+        toAddress,
+        gas: gas.toString(),
+        status,
+        operationDescription
+      });
+      
+      console.log('交易数据已保存到数据库:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('保存交易数据失败:', error);
+      throw error;
+    }
+  };
+
   const handleToggleAccreditation = async (tokenId: number, currentStatus: boolean) => {
     const notificationId = notification.loading("正在更新鉴定状态...");
     try {
-      await writeContractAsync({
+      // 记录NFT名称
+      const nftItem = nfts.find(nft => nft.id === tokenId);
+      const nftName = nftItem?.name || `拍品 #${tokenId}`;
+      
+      // 执行智能合约的方法
+      const txHash = await writeContractAsync({
         functionName: "modiyAccredited",
         args: [BigInt(tokenId), !currentStatus],
       });
+      
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        notification.error("获取交易信息失败");
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 构建操作描述
+      const action = currentStatus ? "禁止鉴定" : "允许鉴定";
+      const opDescription = `${action} - 拍品ID: ${tokenId}, 名称: ${nftName}`;
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        connectedAddress || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        opDescription // 操作描述
+      );
+      
       notification.remove(notificationId);
       notification.success("鉴定状态更新成功！");
       setNfts(prev =>
@@ -127,7 +200,13 @@ export const PowerNFTManagement = () => {
     try {
       const endTime = Math.floor(new Date(selectedDateTime).getTime() / 1000);
       console.log("结束时间戳:", endTime);
-      await writeContractAsync({
+      
+      // 记录NFT名称
+      const nftItem = nfts.find(nft => nft.id === tokenId);
+      const nftName = nftItem?.name || `拍品 #${tokenId}`;
+      
+      // 执行智能合约的方法
+      const txHash = await writeContractAsync({
         functionName: "createAuction",
         args: [
           BigInt(tokenId),
@@ -136,6 +215,37 @@ export const PowerNFTManagement = () => {
           BigInt(endTime),
         ],
       });
+
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        notification.error("获取交易信息失败");
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 构建操作描述
+      const opDescription = `创建拍卖 - 拍品ID: ${tokenId}, 名称: ${nftName}, 起拍价: ${startPrice} ETH, 结束时间: ${new Date(endTime * 1000).toLocaleString()}`;
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        connectedAddress || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        opDescription // 操作描述
+      );
 
       notification.remove(notificationId);
       notification.success("拍卖创建成功！");
@@ -175,10 +285,48 @@ export const PowerNFTManagement = () => {
         console.log(currentTime, Number(auction.endTime));
       }
 
-      await writeContractAsync({
+      // 记录NFT名称
+      const nftItem = nfts.find(nft => nft.id === tokenId);
+      const nftName = nftItem?.name || `拍品 #${tokenId}`;
+      
+      // 执行智能合约的方法
+      const txHash = await writeContractAsync({
         functionName: "endAuction",
         args: [BigInt(tokenId.toString()), BigInt(currentTime)],
       });
+      
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        notification.error("获取交易信息失败");
+        return;
+      }
+      
+      // 获取交易收据
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      // 获取区块信息
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      // 构建操作描述
+      const highestBid = Number(auction.highestBid) / 10**18;
+      const opDescription = `结束拍卖 - 拍品ID: ${tokenId}, 名称: ${nftName}, 最终价格: ${highestBid} ETH, 最高出价者: ${auction.highestBidder}`;
+      
+      // 将交易数据保存到数据库
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        connectedAddress || '', // 发送者
+        receipt.to || '', // 接收者（合约地址）
+        receipt.gasUsed, // 使用的gas
+        receipt.status, // 交易状态
+        opDescription // 操作描述
+      );
+      
       notification.remove(notificationId);
       notification.success("拍卖成功结束！");
       // 更新NFT的拍卖状态

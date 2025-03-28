@@ -3,17 +3,20 @@
 import { useEffect, useState } from "react";
 import type { NextPage } from "next";
 import { useRouter } from "next/navigation";
-import { useAccount } from "wagmi";
+import { useAccount, usePublicClient } from "wagmi";
 import { useScaffoldContract, useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { isAddress } from "ethers";
 import { Address } from "~~/components/scaffold-eth";
+import axios from "axios";
+import { Hash } from "viem";
 
 const UserAuth: NextPage = () => {
   const router = useRouter();
   const { address } = useAccount();
+  const publicClient = usePublicClient(); // 获取区块链客户端
   const [nftId, setNftId] = useState<number | null>(null);
-  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
+  const [_isAuthorized, setIsAuthorized] = useState<boolean>(false);
   const [authorizedAddress, setAuthorizedAddress] = useState<string>("");
   const [authorizedAddresses, setAuthorizedAddresses] = useState<string[]>([]);
 
@@ -21,26 +24,51 @@ const UserAuth: NextPage = () => {
     contractName: "YourCollectible",
   });
 
-  const { data: isAuthorizedFromContract } = useScaffoldReadContract({
-    contractName: "YourCollectible",
-    functionName: "isAuthorizedForAuction",
-    args: nftId ? [BigInt(nftId), address] : undefined,
-  });
-
   const { data: authorizedAddressesFromContract } = useScaffoldReadContract({
     contractName: "YourCollectible",
     functionName: "getAuthorizedAddresses",
-    args: nftId ? [BigInt(nftId)] : undefined,
+    args: nftId ? [BigInt(nftId)] as const : undefined,
   });
 
   const { writeContractAsync: authorizeNft, isMining: isAuthorizing } = useScaffoldWriteContract("YourCollectible");
-  const { writeContractAsync: cancelAuthorization, isMining: isCanceling } = useScaffoldWriteContract("YourCollectible");
+  const { writeContractAsync: cancelAuthorization } = useScaffoldWriteContract("YourCollectible");
 
   const { data: auctionData } = useScaffoldReadContract({
     contractName: "YourCollectible",
     functionName: "getAuction",
-    args: nftId ? [BigInt(nftId)] : undefined,
+    args: nftId ? [BigInt(nftId)] as const : undefined,
   });
+
+  // 将交易数据保存到数据库
+  const saveTransactionToDatabase = async (
+    blockNumber: bigint,
+    blockTimestamp: bigint,
+    transactionHash: Hash,
+    fromAddress: string,
+    toAddress: string, 
+    gas: bigint,
+    status: "success" | "reverted" | string,
+    operationDescription: string
+  ) => {
+    try {
+      const response = await axios.post('http://localhost:3001/addTransaction', {
+        blockNumber: blockNumber.toString(),
+        blockTimestamp: new Date(Number(blockTimestamp) * 1000).toISOString().slice(0, 19).replace('T', ' '),
+        transactionHash,
+        fromAddress,
+        toAddress,
+        gas: gas.toString(),
+        status,
+        operationDescription
+      });
+      
+      console.log('交易数据已保存到数据库:', response.data);
+      return response.data;
+    } catch (error) {
+      console.error('保存交易数据失败:', error);
+      throw error;
+    }
+  };
 
   useEffect(() => {
     const storedNft = localStorage.getItem("selectedNft");
@@ -54,7 +82,11 @@ const UserAuth: NextPage = () => {
 
   const checkAuthorization = async (tokenId: number) => {
     try {
-      const isAuth = await yourContract?.read.isAuthorizedForAuction([BigInt(tokenId), address]);
+      if (!address) {
+        console.error("用户地址未连接");
+        return;
+      }
+      const isAuth = await yourContract?.read.isAuthorizedForAuction([BigInt(tokenId), address as `0x${string}`]);
       setIsAuthorized(!!isAuth);
     } catch (error) {
       console.error("检查授权状态失败:", error);
@@ -77,7 +109,7 @@ const UserAuth: NextPage = () => {
         return;
       }
       console.log('获取授权地址列表:', addresses);
-      setAuthorizedAddresses([...addresses]);
+      setAuthorizedAddresses(addresses);
     } catch (error) {
       console.error('获取授权地址列表失败:', error);
       notification.error('获取授权地址列表失败，请稍后重试');
@@ -94,22 +126,60 @@ const UserAuth: NextPage = () => {
       notification.error("请输入有效的钱包地址");
       return;
     }
-    // 检查地址是否已经在授权列表中
     if (authorizedAddresses.includes(authorizedAddress)) {
       notification.error("该地址已经被授权");
       return;
     }
+    
+    const notificationId = notification.loading("正在授权...");
+    
     try {
-      await authorizeNft({
+      const txHash = await authorizeNft({
         functionName: "authorizeAuctionEnder",
         args: [BigInt(nftId), authorizedAddress]
       });
+      
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        notification.error("获取交易信息失败");
+        return;
+      }
+      
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '',
+        receipt.to || '',
+        receipt.gasUsed,
+        receipt.status,
+        `添加授权 - Token ID: ${nftId}, 被授权地址: ${authorizedAddress}`
+      );
+      
+      notification.remove(notificationId);
       notification.success("授权成功");
       setIsAuthorized(true);
-      // 更新授权地址列表
-      setAuthorizedAddresses(prev => [...prev, authorizedAddress]);
-      setAuthorizedAddress(""); // 清空输入框
+      
+      if (!authorizedAddresses.includes(authorizedAddress)) {
+        setAuthorizedAddresses(prev => [...prev, authorizedAddress]);
+      }
+      
+      setAuthorizedAddress("");
+      
+      if (nftId) {
+        fetchAuthorizedAddresses(nftId);
+      }
+      
     } catch (error) {
+      notification.remove(notificationId);
       console.error("授权失败:", error);
       notification.error("授权失败");
     }
@@ -117,18 +187,55 @@ const UserAuth: NextPage = () => {
 
   const handleCancelAuthorization = async (addressToRevoke: string) => {
     if (!nftId) return;
+    
+    const notificationId = notification.loading("正在取消授权...");
+    
     try {
-      await cancelAuthorization({
+      const txHash = await cancelAuthorization({
         functionName: "revokeAuctionAuthorization",
         args: [BigInt(nftId), addressToRevoke]
       });
+      
+      if (!publicClient || !txHash) {
+        notification.remove(notificationId);
+        notification.error("获取交易信息失败");
+        return;
+      }
+      
+      const receipt = await publicClient.waitForTransactionReceipt({ 
+        hash: txHash as Hash
+      });
+      
+      const block = await publicClient.getBlock({ 
+        blockNumber: receipt.blockNumber 
+      });
+      
+      await saveTransactionToDatabase(
+        receipt.blockNumber,
+        block.timestamp,
+        receipt.transactionHash,
+        address || '',
+        receipt.to || '',
+        receipt.gasUsed,
+        receipt.status,
+        `取消授权 - Token ID: ${nftId}, 被取消授权地址: ${addressToRevoke}`
+      );
+      
+      notification.remove(notificationId);
       notification.success("取消授权成功");
-      // 从列表中移除已取消授权的地址
+      
       setAuthorizedAddresses(prev => prev.filter(addr => addr !== addressToRevoke));
+      
       if (addressToRevoke === address) {
         setIsAuthorized(false);
       }
+      
+      if (nftId) {
+        fetchAuthorizedAddresses(nftId);
+      }
+      
     } catch (error) {
+      notification.remove(notificationId);
       console.error("取消授权失败:", error);
       notification.error("取消授权失败");
     }
@@ -211,7 +318,7 @@ const UserAuth: NextPage = () => {
                 <div className="space-y-3">
                   {authorizedAddresses.map((addr, index) => (
                     <div key={index} className="flex items-center justify-between p-3 bg-white rounded-lg shadow">
-                      <Address address={addr} />
+                      <Address address={addr as `0x${string}`} />
                       <button
                         onClick={() => handleCancelAuthorization(addr)}
                         className="btn btn-sm btn-error"

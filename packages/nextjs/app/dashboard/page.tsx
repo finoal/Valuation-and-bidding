@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import axios from "axios";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -29,32 +30,166 @@ ChartJS.register(
   BarElement
 );
 
+// 交易记录类型定义
+interface Transaction {
+  id: number;
+  block_number: string;
+  block_timestamp: string;
+  transaction_hash: string;
+  from_address: string;
+  to_address: string;
+  gas: string;
+  status: string;
+  operation_description: string;
+  created_at: string;
+}
+
 interface DashboardData {
-  dailyTransactions: any[];
-  accreditationStats: any[];
-  userStats: any[];
-  nftStats: any[];
+  dailyTransactions: { date: string; count: number }[];
+  operationTypeStats: { type: string; count: number }[];
+  addressStats: { address: string; count: number }[];
+  statusStats: { status: string; count: number }[];
 }
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState<DashboardData>({
-    dailyTransactions: generateMockDailyTransactions(),
-    accreditationStats: [65, 25, 10], // 模拟鉴定统计数据
-    userStats: [120, 85, 200], // 模拟用户统计数据
-    nftStats: [45, 35, 20] // 模拟 NFT 分类统计
+    dailyTransactions: [],
+    operationTypeStats: [],
+    addressStats: [],
+    statusStats: []
   });
-  const [isLoading, setIsLoading] = useState(false); // 改为 false 以直接显示模拟数据
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 注释掉原有的数据获取逻辑
-  /*
+  // 获取区块链交易数据并处理
   useEffect(() => {
-    const fetchDashboardData = async () => {
-      // ... 原有的数据获取逻辑 ...
+    const fetchBlockchainData = async () => {
+      try {
+        setIsLoading(true);
+        
+        // 获取所有交易记录
+        const response = await axios.get<Transaction[]>("http://localhost:3001/getTransactions");
+        const transactions = response.data;
+        
+        if (transactions && transactions.length > 0) {
+          // 处理每日交易量统计
+          const dailyTransactions = processDailyTransactions(transactions);
+          
+          // 处理操作类型统计
+          const operationTypeStats = processOperationTypes(transactions);
+          
+          // 处理地址活跃度统计
+          const addressStats = processAddressActivity(transactions);
+          
+          // 处理交易状态统计
+          const statusStats = processTransactionStatus(transactions);
+          
+          setDashboardData({
+            dailyTransactions,
+            operationTypeStats,
+            addressStats,
+            statusStats
+          });
+          
+          notification.success("数据加载成功");
+        } else {
+          notification.error("没有找到交易数据");
+        }
+      } catch (error) {
+        console.error("获取区块链数据失败:", error);
+        notification.error("获取区块链数据失败");
+      } finally {
+        setIsLoading(false);
+      }
     };
 
-    fetchDashboardData();
+    fetchBlockchainData();
   }, []);
-  */
+
+  // 处理每日交易量统计
+  const processDailyTransactions = (transactions: Transaction[]) => {
+    // 按日期分组交易
+    const dailyStats = transactions.reduce((acc: Record<string, number>, tx: Transaction) => {
+      // 格式化日期为 YYYY-MM-DD
+      const date = new Date(tx.block_timestamp).toISOString().split('T')[0];
+      acc[date] = (acc[date] || 0) + 1;
+      return acc;
+    }, {});
+
+    // 获取最近30天的日期
+    const today = new Date();
+    const last30Days = Array.from({ length: 30 }, (_, i) => {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      return date.toISOString().split('T')[0];
+    }).reverse();
+
+    // 生成每日交易量数据
+    const result = last30Days.map(date => ({
+      date,
+      count: dailyStats[date] || 0
+    }));
+
+    return result;
+  };
+
+  // 处理操作类型统计
+  const processOperationTypes = (transactions: Transaction[]) => {
+    // 提取操作类型（根据operation_description中的关键词）
+    const typeMap: Record<string, number> = {};
+    
+    transactions.forEach(tx => {
+      let type = "其他";
+      
+      if (tx.operation_description.includes("鉴定")) {
+        type = "鉴定操作";
+      } else if (tx.operation_description.includes("授权")) {
+        type = "授权操作";
+      } else if (tx.operation_description.includes("参与竞价") || tx.operation_description.includes("拍卖")) {
+        type = "拍卖/竞价";
+      } else if (tx.operation_description.includes("创建")) {
+        type = "创建操作";
+      } else if (tx.operation_description.includes("更新")) {
+        type = "更新操作";
+      }
+      
+      typeMap[type] = (typeMap[type] || 0) + 1;
+    });
+    
+    // 转换为数组格式
+    return Object.entries(typeMap).map(([type, count]) => ({ type, count }));
+  };
+
+  // 处理地址活跃度统计
+  const processAddressActivity = (transactions: Transaction[]) => {
+    // 统计地址出现的次数
+    const addressCount: Record<string, number> = {};
+    
+    transactions.forEach(tx => {
+      addressCount[tx.from_address] = (addressCount[tx.from_address] || 0) + 1;
+    });
+    
+    // 排序并获取最活跃的5个地址
+    return Object.entries(addressCount)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([address, count]) => ({
+        address: `${address.substring(0, 6)}...${address.substring(address.length - 4)}`,
+        count
+      }));
+  };
+
+  // 处理交易状态统计
+  const processTransactionStatus = (transactions: Transaction[]) => {
+    // 统计交易状态
+    const statusCount: Record<string, number> = {};
+    
+    transactions.forEach(tx => {
+      statusCount[tx.status] = (statusCount[tx.status] || 0) + 1;
+    });
+    
+    // 转换为数组格式
+    return Object.entries(statusCount).map(([status, count]) => ({ status, count }));
+  };
 
   if (isLoading) {
     return (
@@ -66,7 +201,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto p-6 bg-base-200 min-h-screen">
-      <h1 className="text-4xl font-bold mb-8 text-center">数据分析仪表盘</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">区块链数据分析仪表盘</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* 交易量趋势图 */}
@@ -79,6 +214,7 @@ const Dashboard = () => {
                 label: '每日交易量',
                 data: dashboardData.dailyTransactions.map(item => item.count),
                 borderColor: 'rgb(75, 192, 192)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 tension: 0.1
               }]
             }}
@@ -90,49 +226,25 @@ const Dashboard = () => {
                 },
                 title: {
                   display: true,
-                  text: '每日交易量统计'
+                  text: '每日区块链交易量统计'
                 }
               }
             }}
           />
         </div>
 
-        {/* 鉴定情况饼图 */}
+        {/* 操作类型分布饼图 */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">鉴定情况分布</h2>
+          <h2 className="text-xl font-semibold mb-4">操作类型分布</h2>
           <Pie
             data={{
-              labels: ['已鉴定', '待鉴定', '鉴定失败'],
+              labels: dashboardData.operationTypeStats.map(item => item.type),
               datasets: [{
-                data: dashboardData.accreditationStats,
+                data: dashboardData.operationTypeStats.map(item => item.count),
                 backgroundColor: [
                   'rgba(75, 192, 192, 0.6)',
                   'rgba(255, 206, 86, 0.6)',
                   'rgba(255, 99, 132, 0.6)',
-                ]
-              }]
-            }}
-            options={{
-              responsive: true,
-              plugins: {
-                legend: {
-                  position: 'top' as const,
-                }
-              }
-            }}
-          />
-        </div>
-
-        {/* 用户活跃度柱状图 */}
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">用户活跃度</h2>
-          <Bar
-            data={{
-              labels: ['参与拍卖', '参与鉴定', '新增用户'],
-              datasets: [{
-                label: '用户数量',
-                data: dashboardData.userStats,
-                backgroundColor: [
                   'rgba(54, 162, 235, 0.6)',
                   'rgba(153, 102, 255, 0.6)',
                   'rgba(255, 159, 64, 0.6)',
@@ -150,17 +262,43 @@ const Dashboard = () => {
           />
         </div>
 
-        {/* NFT 分类统计 */}
+        {/* 活跃地址柱状图 */}
         <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">NFT 分类统计</h2>
+          <h2 className="text-xl font-semibold mb-4">最活跃地址</h2>
+          <Bar
+            data={{
+              labels: dashboardData.addressStats.map(item => item.address),
+              datasets: [{
+                label: '交易次数',
+                data: dashboardData.addressStats.map(item => item.count),
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+              }]
+            }}
+            options={{
+              responsive: true,
+              indexAxis: 'y' as const, // 横向柱状图
+              plugins: {
+                legend: {
+                  position: 'top' as const,
+                }
+              }
+            }}
+          />
+        </div>
+
+        {/* 交易状态统计 */}
+        <div className="bg-white p-6 rounded-lg shadow-lg">
+          <h2 className="text-xl font-semibold mb-4">交易状态统计</h2>
           <Pie
             data={{
-              labels: ['艺术品', '收藏品', '其他'],
+              labels: dashboardData.statusStats.map(item => item.status === '1' ? '成功' : (item.status === '0' ? '失败' : item.status)),
               datasets: [{
-                data: dashboardData.nftStats,
+                data: dashboardData.statusStats.map(item => item.count),
                 backgroundColor: [
+                  'rgba(75, 192, 192, 0.6)',
                   'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
                   'rgba(255, 206, 86, 0.6)',
                 ]
               }]
@@ -178,82 +316,6 @@ const Dashboard = () => {
       </div>
     </div>
   );
-};
-
-// 生成模拟的每日交易数据
-const generateMockDailyTransactions = () => {
-  const days = 30; // 生成30天的数据
-  const result = [];
-  const now = new Date();
-
-  for (let i = 0; i < days; i++) {
-    const date = new Date(now);
-    date.setDate(date.getDate() - i);
-    result.unshift({
-      date: date.toLocaleDateString(),
-      count: Math.floor(Math.random() * 50) + 10 // 生成10-60之间的随机数
-    });
-  }
-
-  return result;
-};
-
-// 以下是更详细的模拟数据生成函数，如果需要更真实的数据可以使用
-const generateMockData = () => {
-  // 模拟拍卖数据
-  const mockAuctions = Array.from({ length: 100 }, (_, index) => ({
-    id: index + 1,
-    seller: `0x${Math.random().toString(16).slice(2, 42)}`,
-    tokenId: Math.floor(Math.random() * 1000),
-    startPrice: Math.floor(Math.random() * 10000),
-    highestBid: Math.floor(Math.random() * 20000),
-    created_at: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000),
-    category: ['艺术品', '收藏品', '其他'][Math.floor(Math.random() * 3)],
-    status: ['active', 'completed', 'cancelled'][Math.floor(Math.random() * 3)]
-  }));
-
-  // 模拟鉴定数据
-  const mockAccreditings = Array.from({ length: 50 }, (_, index) => ({
-    id: index + 1,
-    owner: `0x${Math.random().toString(16).slice(2, 42)}`,
-    tokenId: Math.floor(Math.random() * 1000),
-    is_approved: Math.random() > 0.3,
-    created_at: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000)
-  }));
-
-  return {
-    auctions: mockAuctions,
-    accreditings: mockAccreditings
-  };
-};
-
-// 数据处理辅助函数
-const processDailyTransactions = (auctions: any[]) => {
-  const dailyStats = auctions.reduce((acc: any, auction: any) => {
-    const date = new Date(auction.created_at).toLocaleDateString();
-    acc[date] = (acc[date] || 0) + 1;
-    return acc;
-  }, {});
-
-  return Object.entries(dailyStats).map(([date, count]) => ({
-    date,
-    count
-  }));
-};
-
-const processAccreditationStats = (accreditings: any[]) => {
-  // 直接返回模拟数据
-  return [65, 25, 10]; // 已鉴定、待鉴定、鉴定失败
-};
-
-const processUserStats = (auctions: any[], accreditings: any[]) => {
-  // 直接返回模拟数据
-  return [120, 85, 200]; // 参与拍卖、参与鉴定、新增用户
-};
-
-const processNFTStats = (auctions: any[]) => {
-  // 直接返回模拟数据
-  return [45, 35, 20]; // 艺术品、收藏品、其他
 };
 
 export default Dashboard;
