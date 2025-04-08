@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 import { useScaffoldReadContract, useScaffoldWriteContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
-import Link from "next/link";
 import { uploadImageToIPFS, addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import axios from "axios";
 import { Hash } from "viem";
@@ -61,6 +60,15 @@ const Pagination = ({
   return (
     <div className="flex items-center gap-2">
       <div className="btn-group">
+        {/* 首页按钮 */}
+        <button
+          className="btn btn-sm"
+          onClick={() => onPageChange(1)}
+          disabled={currentPage === 1}
+        >
+          首页
+        </button>
+        
         {/* 上一页按钮 */}
         <button
           className="btn btn-sm"
@@ -88,6 +96,15 @@ const Pagination = ({
           disabled={currentPage === totalPages}
         >
           »
+        </button>
+        
+        {/* 尾页按钮 */}
+        <button
+          className="btn btn-sm"
+          onClick={() => onPageChange(totalPages)}
+          disabled={currentPage === totalPages}
+        >
+          尾页
         </button>
       </div>
       <span className="text-sm text-gray-500">
@@ -149,6 +166,7 @@ interface AccreditationRecord {
 
 const NFTDetailPage = () => {
   const params = useParams();
+  const router = useRouter();
   const { address } = useAccount();
   const publicClient = usePublicClient();
   const tokenId = Number(params.tokenId);
@@ -576,6 +594,11 @@ const NFTDetailPage = () => {
     }
   };
 
+  // 返回到列表页
+  const handleGoBack = () => {
+    router.push('/accreditableNFTs');
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -607,9 +630,12 @@ const NFTDetailPage = () => {
   return (
     <div className="container mx-auto py-8 px-4">
       <div className="mb-4">
-        <Link href="/accreditableNFTs" className="btn btn-sm btn-outline">
+        <button 
+          onClick={handleGoBack}
+          className="btn btn-sm btn-outline"
+        >
           « 返回列表
-        </Link>
+        </button>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

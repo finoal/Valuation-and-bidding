@@ -41,7 +41,7 @@ const LoginPage: React.FC = () => {
         // 跳转到对应页面
         const isAccrediting = loginResult?.[1];
         setIsAccrediting(isAccrediting); // 更新用户角色状态
-        router.push(isAccrediting ? "/userMessage" : "/createNft");
+        router.push(isAccrediting ? "/getUserMessage" : "/createNft");
       } else {
         notification.error("用户名或密码错误。");
         setIsAuthenticated(false);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { usePublicClient, useAccount } from "wagmi";
@@ -26,6 +26,49 @@ export interface AuctionNFT {
 }
 
 const PAGE_SIZE = 3; // 每页显示的拍卖数量
+
+// 倒计时显示组件
+const CountdownDisplay = ({ endTime }: { endTime: number }) => {
+  const [countdown, setCountdown] = useState<string>("加载中...");
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    // 立即计算一次倒计时
+    updateCountdown();
+    
+    // 设置计时器每秒更新一次
+    timerRef.current = setInterval(updateCountdown, 1000);
+    
+    // 清理函数
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [endTime]);
+  
+  // 更新倒计时的函数
+  const updateCountdown = () => {
+    const currentTime = Math.floor(Date.now() / 1000);
+    const remainingTime = endTime - currentTime;
+    
+    if (remainingTime <= 0) {
+      setCountdown("已结束");
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+      return;
+    }
+    
+    const hours = Math.floor(remainingTime / 3600);
+    const minutes = Math.floor((remainingTime % 3600) / 60);
+    const seconds = remainingTime % 60;
+    
+    setCountdown(`${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`);
+  };
+  
+  return <span>{countdown}</span>;
+};
 
 const AuctionPage = () => {
   const router = useRouter();
@@ -143,45 +186,36 @@ const AuctionPage = () => {
 
   // 排序函数
   const sortNfts = (nfts: AuctionNFT[], type: "latest" | "hottest" | "default") => {
+    // 深拷贝数组，避免排序影响原始数据
+    const nftsCopy = [...nfts];
+    
     if (type === "latest") {
-      return nfts.sort((a, b) => {
+      return nftsCopy.sort((a, b) => {
         const aStartTime = new Date(a.startTime).getTime();
         const bStartTime = new Date(b.startTime).getTime();
         return bStartTime - aStartTime;
       });
     } else if (type === "hottest") {
-      return nfts.sort((a, b) => b.bidCount - a.bidCount);
+      return nftsCopy.sort((a, b) => b.bidCount - a.bidCount);
     }
-    return nfts;
+    return nftsCopy;
   };
 
-  // 启动倒计时并检测结束状态
-  const updateCountdownAndEndAuction = (endTime: number, tokenId: number) => {
+  // 启动倒计时并检测结束状态 - 简化此函数，只保留拍卖结束检测
+  const checkAuctionEnded = (endTime: number, tokenId: number) => {
+    // 每5秒检查一次拍卖是否结束
     const intervalId = setInterval(() => {
-      setAuctionNfts(prev => {
-        const updatedNfts = prev.map(nft => {
-          if (nft.tokenId === tokenId) {
-            const countdown = calculateCountdown(endTime);
-
-            if (countdown === "已结束") {
-              clearInterval(intervalId);
-              alert(`拍卖 ${tokenId} 已结束！`);
-            }
-
-            return { ...nft, countdown };
-          }
-          return nft;
-        });
-
-        // 使用最新的 sortType 进行排序
-        return sortNfts(updatedNfts, sortType);
-      });
-    }, 1000); // 每秒更新一次
-
+      const currentTime = Math.floor(Date.now() / 1000);
+      if (endTime <= currentTime) {
+        clearInterval(intervalId);
+        alert(`拍卖 ${tokenId} 已结束！`);
+      }
+    }, 5000);
+    
     return intervalId;
   };
 
-  // 加载拍卖数据
+  // 加载拍卖数据 - 简化此函数
   useEffect(() => {
     const fetchAuctionNfts = async () => {
       if (!ongoingAuctions) return;
@@ -203,10 +237,11 @@ const AuctionPage = () => {
           nftDetails.startingBid = auction.startPrice.toString();
           nftDetails.bidCount = Number(auction.bidCount);
           nftDetails.startTime = new Date(Number(auction.startTime.toString()) * 1000).toLocaleString();
-          nftDetails.countdown = calculateCountdown(endTime);
+          nftDetails.countdown = calculateCountdown(endTime); // 初始倒计时，仅用于数据显示
           nftData.push(nftDetails);
 
-          updateCountdownAndEndAuction(endTime, tokenId); // 启动倒计时并监测拍卖结束
+          // 设置检查拍卖结束的定时器
+          checkAuctionEnded(endTime, tokenId);
         } catch (error) {
           console.error("加载拍卖数据失败:", error);
         }
@@ -224,8 +259,9 @@ const AuctionPage = () => {
 
   // 筛选拍卖
   useEffect(() => {
+    // 只有在筛选条件实际改变时才执行筛选
     const filtered = auctionNfts.filter(nft => {
-      const matchesDescription = nft.description?.includes(filterDescription);
+      const matchesDescription = !filterDescription || (nft.description?.includes(filterDescription) ?? true);
       const matchesPrice =
         (!filterPrice.min || Number(nft.currentBid) / 1e18 >= Number(filterPrice.min)) &&
         (!filterPrice.max || Number(nft.currentBid) / 1e18 <= Number(filterPrice.max));
@@ -234,16 +270,50 @@ const AuctionPage = () => {
 
     // 根据当前排序状态对筛选后的数据进行排序
     const sortedFilteredNfts = sortNfts(filtered, sortType);
-    setFilteredNfts(sortedFilteredNfts);
-    setCurrentPage(1); // 筛选后回到第一页
-  }, [filterDescription, filterPrice, auctionNfts, sortType]);
+    
+    // 将排序后的NFT与当前的filteredNfts合并，保留倒计时状态
+    const mergedNfts = sortedFilteredNfts.map(newNft => {
+      // 查找当前filteredNfts中相同tokenId的NFT
+      const existingNft = filteredNfts.find(n => n.tokenId === newNft.tokenId);
+      // 如果找到，保留其倒计时状态
+      if (existingNft) {
+        return { ...newNft, countdown: existingNft.countdown };
+      }
+      return newNft;
+    });
+    
+    // 检查是否与现有筛选结果不同，避免不必要的状态更新
+    const currentFilteredJSON = JSON.stringify(filteredNfts.map(nft => nft.tokenId));
+    const newFilteredJSON = JSON.stringify(mergedNfts.map(nft => nft.tokenId));
+    
+    if (currentFilteredJSON !== newFilteredJSON) {
+      setFilteredNfts(mergedNfts);
+      
+      // 只有在用户手动更改筛选条件时才重置页码
+      // 通过检测变化源来决定是否重置页码
+      const isManualFilterChange = 
+        !localStorage.getItem("isRestoringState") && 
+        (localStorage.getItem("lastFilterDescription") !== filterDescription ||
+         localStorage.getItem("lastFilterPriceMin") !== filterPrice.min ||
+         localStorage.getItem("lastFilterPriceMax") !== filterPrice.max);
+      
+      if (isManualFilterChange) {
+        setCurrentPage(1); // 只在手动筛选条件变化时重置页码
+      }
+      
+      // 更新上次的筛选条件记录
+      localStorage.setItem("lastFilterDescription", filterDescription);
+      localStorage.setItem("lastFilterPriceMin", filterPrice.min);
+      localStorage.setItem("lastFilterPriceMax", filterPrice.max);
+    }
+  }, [filterDescription, filterPrice, auctionNfts, sortType, filteredNfts]);
 
   // 处理排序
   const handleSort = (type: "latest" | "hottest") => {
     setSortType(type);
-    const sortedNfts = sortNfts([...auctionNfts], type);
-    setFilteredNfts(sortedNfts);
-    setCurrentPage(1); // 排序后回到第一页
+    // 排序处理已经在useEffect中处理，这里不再重复执行
+    // 标记为手动操作
+    localStorage.setItem("isManualSortChange", "true");
   };
 
   // 处理出价
@@ -313,9 +383,51 @@ const AuctionPage = () => {
   // 封装跳转逻辑
   const handleNavigateToDetail = (nft: AuctionNFT) => {
     console.log(`NFT 选中, Token ID: ${nft.tokenId}`);
+    // 保存NFT数据和当前页面状态到localStorage
     localStorage.setItem("selectedNft", JSON.stringify(nft));
+    localStorage.setItem("auctionPageState", JSON.stringify({
+      currentPage,
+      filterDescription,
+      filterPrice,
+      sortType
+    }));
     router.push(`/nftMessage`);
   };
+
+  // 首页加载时恢复页面状态
+  useEffect(() => {
+    // 标记为正在恢复状态，避免触发筛选条件变化导致页码重置
+    localStorage.setItem("isRestoringState", "true");
+    
+    const savedState = localStorage.getItem("auctionPageState");
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        // 首先设置筛选条件和排序，这样filteredNfts会先更新
+        setFilterDescription(state.filterDescription || "");
+        setFilterPrice(state.filterPrice || { min: "", max: "" });
+        setSortType(state.sortType || "default");
+        
+        // 设置上次筛选条件记录
+        localStorage.setItem("lastFilterDescription", state.filterDescription || "");
+        localStorage.setItem("lastFilterPriceMin", state.filterPrice?.min || "");
+        localStorage.setItem("lastFilterPriceMax", state.filterPrice?.max || "");
+        
+        // 延迟设置页码，确保筛选结果先更新完成
+        setTimeout(() => {
+          setCurrentPage(state.currentPage || 1);
+          // 恢复完成后移除标记
+          localStorage.removeItem("isRestoringState");
+          localStorage.removeItem("isManualSortChange");
+        }, 100);
+      } catch (error) {
+        console.error("恢复页面状态失败:", error);
+        localStorage.removeItem("isRestoringState");
+      }
+    } else {
+      localStorage.removeItem("isRestoringState");
+    }
+  }, []);
 
   if (isLoading) {
     return (
@@ -330,6 +442,17 @@ const AuctionPage = () => {
     (currentPage - 1) * PAGE_SIZE,
     currentPage * PAGE_SIZE
   );
+
+  const totalPages = Math.ceil(filteredNfts.length / PAGE_SIZE);
+
+  // 分页功能
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
+  };
 
   return (
     <div className="container mx-auto">
@@ -414,7 +537,7 @@ const AuctionPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span>最高出价者:</span>
-                    <Address address={nft.highestBidder} />
+                    <Address address={nft.highestBidder as `0x${string}`} />
                   </div>
                   <div className="flex justify-between">
                     <span>鉴定次数:</span>
@@ -426,7 +549,10 @@ const AuctionPage = () => {
                   </div>
                   <div className="flex justify-between">
                     <span>剩余时间:</span>
-                    <span>{nft.countdown}</span>
+                    <CountdownDisplay 
+                      endTime={ongoingAuctions?.find(a => Number(a.tokenId) === nft.tokenId)?.endTime ? 
+                        Number(ongoingAuctions.find(a => Number(a.tokenId) === nft.tokenId)?.endTime) : 0} 
+                    />
                   </div>
                   <div className="mt-4 flex space-x-2">
                     <input
@@ -459,7 +585,14 @@ const AuctionPage = () => {
             ))}
           </div>
           {/* 分页导航 */}
-          <div className="flex justify-center items-center mt-6 space-x-4">
+          <div className="flex justify-center items-center mt-6 space-x-2">
+            <button
+              className="btn btn-secondary"
+              onClick={goToFirstPage}
+              disabled={currentPage === 1}
+            >
+              首页
+            </button>
             <button
               className="btn btn-secondary"
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
@@ -467,13 +600,20 @@ const AuctionPage = () => {
             >
               上一页
             </button>
-            <span>第 {currentPage} 页 / 共 {Math.ceil(filteredNfts.length / PAGE_SIZE)} 页</span>
+            <span className="px-4">第 {currentPage} 页 / 共 {totalPages} 页</span>
             <button
               className="btn btn-secondary"
-              onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(filteredNfts.length / PAGE_SIZE)))}
-              disabled={currentPage === Math.ceil(filteredNfts.length / PAGE_SIZE)}
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
             >
               下一页
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={goToLastPage}
+              disabled={currentPage === totalPages}
+            >
+              尾页
             </button>
           </div>
         </>

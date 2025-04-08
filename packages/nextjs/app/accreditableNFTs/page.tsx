@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAccount } from "wagmi";
+import { useAccount, usePublicClient } from "wagmi";
 import { useScaffoldReadContract, useScaffoldWriteContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
-import Link from "next/link";
 import { uploadImageToIPFS, addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import axios from "axios";
 import { Hash } from "viem";
-import { usePublicClient } from "wagmi";
 import { notification } from "~~/utils/scaffold-eth";
+import { useRouter } from "next/navigation";
 
 // 分页组件
 const Pagination = ({ 
@@ -60,6 +59,15 @@ const Pagination = ({
   return (
     <div className="flex items-center gap-2">
       <div className="btn-group">
+        {/* 首页按钮 */}
+        <button
+          className="btn btn-sm"
+          onClick={() => onPageChange(1)}
+          disabled={currentPage === 1}
+        >
+          首页
+        </button>
+        
         {/* 上一页按钮 */}
         <button
           className="btn btn-sm"
@@ -87,6 +95,15 @@ const Pagination = ({
           disabled={currentPage === totalPages}
         >
           »
+        </button>
+        
+        {/* 尾页按钮 */}
+        <button
+          className="btn btn-sm"
+          onClick={() => onPageChange(totalPages)}
+          disabled={currentPage === totalPages}
+        >
+          尾页
         </button>
       </div>
       <span className="text-sm text-gray-500">
@@ -130,6 +147,7 @@ interface AccreditationRecord {
 }
 
 const AccreditableNFTs = () => {
+  const router = useRouter();
   const { address } = useAccount();
   const publicClient = usePublicClient();
   const [nfts, setNfts] = useState<NFTItem[]>([]);
@@ -465,7 +483,29 @@ const AccreditableNFTs = () => {
   // 处理页面变化
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+    // 保存当前页码到localStorage
+    savePageState(pageNumber);
   };
+
+  // 保存页面状态
+  const savePageState = (pageNumber: number) => {
+    localStorage.setItem("accreditableNFTsPageState", JSON.stringify({
+      currentPage: pageNumber,
+    }));
+  };
+  
+  // 恢复页面状态
+  useEffect(() => {
+    const savedState = localStorage.getItem("accreditableNFTsPageState");
+    if (savedState) {
+      try {
+        const state = JSON.parse(savedState);
+        setCurrentPage(state.currentPage || 1);
+      } catch (error) {
+        console.error("恢复页面状态失败:", error);
+      }
+    }
+  }, []);
 
   // 截断地址显示
   const truncateAddress = (address: string) => {
@@ -475,6 +515,14 @@ const AccreditableNFTs = () => {
   // 格式化时间戳
   const formatTimestamp = (timestamp: number) => {
     return new Date(timestamp * 1000).toLocaleString();
+  };
+
+  // 处理详情页跳转
+  const handleNavigateToDetail = (tokenId: bigint) => {
+    // 保存当前页面状态
+    savePageState(currentPage);
+    // 使用Next.js路由进行跳转，而不是完全刷新页面
+    router.push(`/accreditableNFTs/${tokenId.toString()}`);
   };
 
   if (loading) {
@@ -576,12 +624,12 @@ const AccreditableNFTs = () => {
                     
                     {/* 操作按钮 */}
                     <div className="card-actions justify-between mt-4">
-                      <Link 
-                        href={`/accreditableNFTs/${nft.tokenId.toString()}`} 
+                      <button 
+                        onClick={() => handleNavigateToDetail(nft.tokenId)}
                         className="btn btn-sm btn-outline"
                       >
                         查看详情
-                      </Link>
+                      </button>
                       
                       <div className="flex gap-2">
                         {nft.accreditedInstitutions.length > 0 && (

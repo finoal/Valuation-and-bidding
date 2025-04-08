@@ -8,13 +8,10 @@ const NFTMessage = () => {
  
 
   const [nftData] = useState(() => {
-
     if (typeof window !== 'undefined') {
       const selectedNft = localStorage.getItem("selectedNft");
       return selectedNft ? JSON.parse(selectedNft) : null;
     }
-
-
     return null;
   });
 
@@ -23,13 +20,15 @@ const NFTMessage = () => {
   } = useScaffoldReadContract({
     contractName:"YourCollectible",
     functionName:"getAuction",
-    args:[BigInt(nftData.tokenId.toString())]
+    args:[BigInt(nftData?.tokenId?.toString() || "0")]
   });
 
   const [auctionRecords, setAuctionRecords] = useState<any[]>([]);
   const [parsedAccreditationData, setParsedAccreditationData] = useState<any[]>([]);
   const [accreditationPage, setAccreditationPage] = useState(1);
   const [auctionPage, setAuctionPage] = useState(1);
+  // 添加防止频繁更新的状态标记
+  const [isChangingPage, setIsChangingPage] = useState(false);
 
   const ITEMS_PER_PAGE = 1;
   const ACCREDITATION_PER_PAGE = 1;
@@ -140,6 +139,21 @@ const NFTMessage = () => {
     auctionPage * ITEMS_PER_PAGE
   );
 
+  // 封装页码更新函数，添加防抖
+  const updateAccreditationPage = (newPage: number) => {
+    if (isChangingPage) return;
+    setIsChangingPage(true);
+    setAccreditationPage(newPage);
+    setTimeout(() => setIsChangingPage(false), 100);
+  };
+
+  const updateAuctionPage = (newPage: number) => {
+    if (isChangingPage) return;
+    setIsChangingPage(true);
+    setAuctionPage(newPage);
+    setTimeout(() => setIsChangingPage(false), 100);
+  };
+
   // 修改右侧鉴定记录的展示部分
   const renderAccreditationSection = () => (
     <>
@@ -183,20 +197,34 @@ const NFTMessage = () => {
       <div className="flex justify-center mb-8">
         <button 
           className="btn btn-secondary" 
-          onClick={() => setAccreditationPage(prev => prev - 1)} 
+          onClick={() => updateAccreditationPage(1)} 
+          disabled={accreditationPage === 1}
+        >
+          首页
+        </button>
+        <button 
+          className="btn btn-secondary mx-2" 
+          onClick={() => updateAccreditationPage(prev => prev - 1)} 
           disabled={accreditationPage === 1}
         >
           上一页
         </button>
-        <span className="mx-4 flex items-center">
+        <span className="mx-2 flex items-center">
           第 {accreditationPage} / {Math.max(1, Math.ceil(parsedAccreditationData.length / ACCREDITATION_PER_PAGE))} 页
         </span>
         <button 
-          className="btn btn-secondary" 
-          onClick={() => setAccreditationPage(prev => prev + 1)} 
+          className="btn btn-secondary mx-2" 
+          onClick={() => updateAccreditationPage(prev => prev + 1)} 
           disabled={accreditationPage >= Math.ceil(parsedAccreditationData.length / ACCREDITATION_PER_PAGE)}
         >
           下一页
+        </button>
+        <button 
+          className="btn btn-secondary" 
+          onClick={() => updateAccreditationPage(Math.ceil(parsedAccreditationData.length / ACCREDITATION_PER_PAGE))} 
+          disabled={accreditationPage >= Math.ceil(parsedAccreditationData.length / ACCREDITATION_PER_PAGE)}
+        >
+          尾页
         </button>
       </div>
     </>
@@ -229,20 +257,34 @@ const NFTMessage = () => {
       <div className="flex justify-center">
         <button 
           className="btn btn-secondary" 
-          onClick={() => setAuctionPage(prev => prev - 1)} 
+          onClick={() => updateAuctionPage(1)} 
+          disabled={auctionPage === 1}
+        >
+          首页
+        </button>
+        <button 
+          className="btn btn-secondary mx-2" 
+          onClick={() => updateAuctionPage(prev => prev - 1)} 
           disabled={auctionPage === 1}
         >
           上一页
         </button>
-        <span className="mx-4 flex items-center">
+        <span className="mx-2 flex items-center">
           第 {auctionPage} / {Math.max(1, Math.ceil(auctionRecords.length / ITEMS_PER_PAGE))} 页
         </span>
         <button 
-          className="btn btn-secondary" 
-          onClick={() => setAuctionPage(prev => prev + 1)} 
+          className="btn btn-secondary mx-2" 
+          onClick={() => updateAuctionPage(prev => prev + 1)} 
           disabled={auctionPage >= Math.ceil(auctionRecords.length / ITEMS_PER_PAGE)}
         >
           下一页
+        </button>
+        <button 
+          className="btn btn-secondary" 
+          onClick={() => updateAuctionPage(Math.ceil(auctionRecords.length / ITEMS_PER_PAGE))} 
+          disabled={auctionPage >= Math.ceil(auctionRecords.length / ITEMS_PER_PAGE)}
+        >
+          尾页
         </button>
       </div>
     </>

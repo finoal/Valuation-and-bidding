@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Collectible } from "./MyHoldings";
 import { Address } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
@@ -19,13 +19,38 @@ export const NFTCard = ({ nft, updateCollectible }: { nft: Collectible; updateCo
   const [isModalOpen, setIsModalOpen] = useState(false); // 控制弹窗显示状态
   const [startPrice, setStartPrice] = useState(0);
   const [selectedDateTime, setSelectedDateTime] = useState<string>("");
+  const [isAuctionExpired, setIsAuctionExpired] = useState(false); // 仅用于内部状态，不影响UI
 
   const { writeContractAsync } = useScaffoldWriteContract("YourCollectible");
   const { data: auction } = useScaffoldReadContract({
     contractName: "YourCollectible",
     functionName: "getAuction",
     args: [BigInt(nft.id.toString())],
+    watch: true,
   });
+
+  // 检查拍卖是否已到期但不影响UI
+  useEffect(() => {
+    if (!auction?.isActive) return;
+
+    const checkAuctionStatus = () => {
+      const currentTime = Math.floor(Date.now() / 1000);
+      const endTime = Number(auction.endTime);
+      
+      // 仅在状态变化时更新
+      if (currentTime >= endTime && !isAuctionExpired) {
+        setIsAuctionExpired(true);
+      }
+    };
+    
+    // 初始检查
+    checkAuctionStatus();
+    
+    // 设置定时器每分钟更新一次
+    const timer = setInterval(checkAuctionStatus, 60000);
+    
+    return () => clearInterval(timer);
+  }, [auction, isAuctionExpired]);
 
   // 将交易数据保存到数据库
   const saveTransactionToDatabase = async (

@@ -4,16 +4,31 @@ import { useEffect, useState } from "react";
 import { NFTCard } from "./NFTCard";
 import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
-// import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
-import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
+
+interface Auction {
+  tokenId: bigint;
+  uri: string;
+  seller: string;
+  startPrice: bigint;
+  highestBid: bigint;
+  highestBidder: string;
+  endTime: bigint;
+  isActive: boolean;
+  isroyalty: boolean;
+  num: bigint;
+  bidCount: bigint;
+  bidders: readonly string[];
+  startTime: bigint;
+}
 
 export interface Collectible extends Partial<NFTMetaData> {
   id: number;
   uri: string;
   owner: string;
   isAccredited: boolean;
+  auction?: Auction;
   // transactionRecords?: {
   //   transactionId: string;
   //   timestamp: string;
@@ -31,6 +46,7 @@ export const MyHoldings = () => {
   const [searchQuery, setSearchQuery] = useState<string>(""); // 搜索框输入
   const [currentPage, setCurrentPage] = useState<number>(1); // 当前页码
   const itemsPerPage = 3; // 每页显示数量
+  const [checkedExpiredAuctions, setCheckedExpiredAuctions] = useState(false); // 是否已检查过期拍卖
 
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "YourCollectible",
@@ -43,12 +59,6 @@ export const MyHoldings = () => {
     watch: true,
   });
 
-  // const { data: nftTransactionEvents, isLoading: transactionLoading } = useScaffoldEventHistory({
-  //   contractName: "YourCollectible",
-  //   eventName: "NftPurchased",
-  //   fromBlock: 0n,
-  // });
-
   const updateCollectible = (updatedNft: Collectible) => {
     setMyAllCollectibles(prevCollectibles =>
       prevCollectibles.map(nft => (nft.id === updatedNft.id ? { ...nft, isAccredited: updatedNft.isAccredited } : nft)),
@@ -60,6 +70,37 @@ export const MyHoldings = () => {
       ),
     );
   };
+
+  const checkExpiredAuctions = () => {
+    if (!myAllCollectibles.length || checkedExpiredAuctions) return;
+    
+    const currentTime = Math.floor(Date.now() / 1000);
+    let expiredAuctionsFound = false;
+    
+    myAllCollectibles.forEach(collectible => {
+      if (collectible.auction && collectible.auction.isActive) {
+        const endTime = Number(collectible.auction.endTime);
+        if (currentTime >= endTime) {
+          // 使用自定义事件发送消息，而不是直接显示通知
+          const message = `拍品 #${collectible.id} "${collectible.name}" 的拍卖已到达结束时间，可以结束拍卖了。`;
+          
+          // 创建并触发自定义事件
+          const event = new CustomEvent('addSystemMessage', {
+            detail: { message }
+          });
+          window.dispatchEvent(event);
+          
+          expiredAuctionsFound = true;
+        }
+      }
+    });
+    
+    if (!expiredAuctionsFound) {
+      // 如果没有过期拍卖，记录状态避免反复检查
+      setCheckedExpiredAuctions(true);
+    }
+  };
+
   useEffect(() => {
     const updateMyCollectibles = async (): Promise<void> => {
       if (!myTotalBalance || !yourCollectibleContract || !connectedAddress) return;
@@ -78,24 +119,17 @@ export const MyHoldings = () => {
           const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(tokenURI as string);
           const nftitem = await yourCollectibleContract.read.getNftItem([tokenId]);
-          // const tokenTransactions =
-          //   nftTransactionEvents?.filter(event => event.args.tokenId.toString() === tokenId.toString()) || [];
-
-          // const transactionRecords = tokenTransactions.map(event => ({
-          //   transactionId: event.args.transactionId?.toString(),
-          //   timestamp: new Date(Number(event.args.timestamp) * 1000).toLocaleString(),
-          //   price: (Number(event.args.price) / 1e18).toFixed(4) + " ETH",
-          //   from: event.args.buyer,
-          //   to: event.args.seller,
-          // }));
-
+          
+          // 获取拍卖信息
+          const auctionInfo = await yourCollectibleContract.read.getAuction([tokenId]);
+          
           collectibleUpdate.push({
             id: parseInt(tokenId.toString()),
             uri: tokenURI,
             owner: connectedAddress,
             isAccredited: nftitem.isAccredited,
+            auction: auctionInfo, // 添加拍卖信息
             ...nftMetadata,
-            // transactionRecords,
           });
         } catch (e) {
           console.error(e);
@@ -105,11 +139,18 @@ export const MyHoldings = () => {
       setMyAllCollectibles(collectibleUpdate);
       setFilteredCollectibles(collectibleUpdate); // 初始化筛选结果
       setAllCollectiblesLoading(false);
+      setCheckedExpiredAuctions(false); // 重置检查标志
     };
 
     updateMyCollectibles();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connectedAddress, myTotalBalance]);
+
+  useEffect(() => {
+    if (myAllCollectibles.length > 0 && !checkedExpiredAuctions) {
+      checkExpiredAuctions();
+    }
+  }, [myAllCollectibles, checkedExpiredAuctions]);
 
   useEffect(() => {
     // 避免不必要的状态更新
@@ -132,6 +173,14 @@ export const MyHoldings = () => {
   );
 
   const totalPages = Math.ceil(filteredCollectibles.length / itemsPerPage);
+
+  const goToFirstPage = () => {
+    setCurrentPage(1);
+  };
+
+  const goToLastPage = () => {
+    setCurrentPage(totalPages);
+  };
 
   if (allCollectiblesLoading)
     return (
@@ -159,13 +208,19 @@ export const MyHoldings = () => {
         <div className="flex flex-wrap gap-4 my-8 px-5 justify-center">
           {paginatedCollectibles.map(item => (
             <div key={item.id} className="flex flex-col items-center">
-              {/* <NFTCard nft={item} /> */}
               <NFTCard nft={item} updateCollectible={updateCollectible} />
             </div>
           ))}
         </div>
       )}
-      <div className="flex justify-center items-center mt-6">
+      <div className="flex justify-center items-center mt-6 gap-2">
+        <button
+          className="btn btn-secondary"
+          disabled={currentPage === 1}
+          onClick={goToFirstPage}
+        >
+          首页
+        </button>
         <button
           className="btn btn-secondary"
           disabled={currentPage === 1}
@@ -182,6 +237,13 @@ export const MyHoldings = () => {
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           下一页
+        </button>
+        <button
+          className="btn btn-secondary"
+          disabled={currentPage === totalPages || totalPages === 0}
+          onClick={goToLastPage}
+        >
+          尾页
         </button>
       </div>
     </>
